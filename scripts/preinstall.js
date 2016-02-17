@@ -1,5 +1,5 @@
 'use strict';
 
 var slateCli = require('slate-cli');
-
-slateCli.ensureSlate();
+console.log(process.cwd());
+slateCli.ensureSlate(process.cwd());
