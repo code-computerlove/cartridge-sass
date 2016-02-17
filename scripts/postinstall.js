@@ -1,6 +1,6 @@
 'use strict';
 
-var quarry        = require('quarry');
+var slateCli        = require('slateCli');
 var config        = require('module_config');
 var packageConfig = require('package.json');
 
@@ -41,7 +41,7 @@ function startAddToRc() {
 
 	console.log('Adding ' + packageConfig.name + ' to .slaterc');
 
-	quarry.addToSlaterc(moduleConfig, function finishAddToRc(err) {
+	slateCli.addToSlaterc(moduleConfig, function finishAddToRc(err) {
 		taskComplete(
 			slateRcComplete,
 			err,
@@ -58,7 +58,7 @@ function modifyProjectConfig(config) {
 }
 
 function startProjectConfig() {
-	quarry.modifyProjectConfig(modifyProjectConfig, function finishProjectConfig(err) {
+	slateCli.modifyProjectConfig(modifyProjectConfig, function finishProjectConfig(err) {
 		taskComplete(
 			projectConfigComplete,
 			err,
@@ -70,7 +70,7 @@ function startProjectConfig() {
 function startModuleConfig() {
 	console.log('Adding ' + packageConfig.name + ' configuration files to _config');
 
-	quarry.addModuleConfig(config.configFiles, function finishModuleconfig(err){
+	slateCli.addModuleConfig(config.configFiles, function finishModuleconfig(err){
 		taskComplete(
 			moduleConfigComplete,
 			err,
