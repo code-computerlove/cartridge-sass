@@ -30,6 +30,7 @@
 		"pixrem": "^3.0.0"
 	},
 	"devDependencies": {
+		"chalk": "^1.1.1",
 		"chai": "^3.5.0",
 		"del": "^2.1.0",
 		"fs-extra": "^0.24.0",
