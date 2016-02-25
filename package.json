@@ -1,20 +1,19 @@
 {
-	"name": "slate-styles",
-	"version": "0.0.1",
-	"description": "Styles module for the slate project",
-	"homepage": "https://github.com/code-computerlove/slate-styles",
+	"name": "slate-sass",
+	"version": "0.0.2",
+	"description": "Sass module for the slate project",
+	"homepage": "https://github.com/code-computerlove/slate-sass",
 	"bugs": {
-		"url": "https://github.com/code-computerlove/slate-styles/issues"
+		"url": "https://github.com/code-computerlove/slate-sass/issues"
 	},
 	"license": "MIT",
 	"author": "Barney Scott <barney@codecomputerlove.co.uk>",
-	"main": "index.js",
+	"main": "task.js",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/code-computerlove/slate-styles.git"
+		"url": "https://github.com/code-computerlove/slate-sass.git"
 	},
 	"scripts": {
-		"test": "echo \"Error: no test specified\" && exit 1",
 		"preinstall": "node scripts/preinstall.js",
 		"postinstall": "node scripts/postinstall.js",
 		"preuninstall": "node scripts/preuninstall.js"
