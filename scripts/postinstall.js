@@ -1,8 +1,8 @@
 'use strict';
 
-var slateCli        = require('slateCli');
-var config        = require('module_config');
-var packageConfig = require('package.json');
+var slateCli      = require('slate-cli');
+var packageConfig = require('../package.json');
+var path          = require('path');
 
 var slateRcComplete       = false;
 var projectConfigComplete = false;
@@ -14,6 +14,7 @@ function isComplete() {
 
 function taskComplete(flag, err, message) {
 	if(err) {
+		console.error(err);
 		console.error('Error: ' + message);
 		process.exit(1);
 	}
@@ -34,9 +35,9 @@ function finish() {
 
 function startAddToRc() {
 	var moduleConfig = {
-		name:     packageConfig.name,
-		version:  packageConfig.version
-		taskFile: packageConfig.name + '/task.js'
+		name:    packageConfig.name,
+		version: packageConfig.version,
+		task:    packageConfig.name + '/task.js'
 	};
 
 	console.log('Adding ' + packageConfig.name + ' to .slaterc');
@@ -45,12 +46,19 @@ function startAddToRc() {
 		taskComplete(
 			slateRcComplete,
 			err,
-			'when adding ' + packageConfig.name + ' to .slaterc'
+			'adding ' + packageConfig.name + ' to .slaterc'
 		);
 	});
 }
 
 function modifyProjectConfig(config) {
+	if(!config.hasOwnProperty('paths')) {
+		config.paths = {
+			src:   {},
+			build: {}
+		};
+	}
+
 	config.paths.src.styles   = config.dirs.src  + '/styles/';
 	config.paths.build.styles = config.dirs.build + '/styles/';
 
@@ -58,23 +66,25 @@ function modifyProjectConfig(config) {
 }
 
 function startProjectConfig() {
+	console.log('Modifying project config for ' + packageConfig.name);
+
 	slateCli.modifyProjectConfig(modifyProjectConfig, function finishProjectConfig(err) {
 		taskComplete(
 			projectConfigComplete,
 			err,
-			'when modifying project config'
+			'modifying project config'
 		);
 	});
 }
 
 function startModuleConfig() {
-	console.log('Adding ' + packageConfig.name + ' configuration files to _config');
+	console.log('Copying files needed by ' + packageConfig.name + ' to _config');
 
-	slateCli.addModuleConfig(config.configFiles, function finishModuleconfig(err){
+	slateCli.addModuleConfig(path.resolve('_config'), function finishModuleconfig(err){
 		taskComplete(
 			moduleConfigComplete,
 			err,
-			'when adding module config'
+			'adding ' + packageConfig.name + ' config files'
 		);
 	});
 }
