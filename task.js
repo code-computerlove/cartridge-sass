@@ -4,6 +4,7 @@
 \* ============================================================ */
 
 // Gulp dependencies
+var gulp       = require('gulp');
 var sourcemaps = require('gulp-sourcemaps');
 var gulpif     = require('gulp-if')
 var rename     = require('gulp-rename');
@@ -19,7 +20,7 @@ var pixrem       = require('pixrem');
 var cssNano      = require('cssnano');
 var mqPacker     = require('css-mqpacker');
 
-module.exports = function(gulp, config, slateSettings, argv, creds) {
+module.exports = function(config, cartridgeSettings, creds) {
 
 	// Config
 	var itcss        = require(config.paths.config + 'itcss')(config);
@@ -51,14 +52,6 @@ module.exports = function(gulp, config, slateSettings, argv, creds) {
 		return plugins;
 	}
 
-	gulp.task('watch:sass', function () {
-		gulp.watch(
-			[config.paths.src.styles + '**/*.scss', config.paths.src.components + '**/*.scss', config.paths.src.partials + '**/*.scss'],
-			['sass', 'sass:legacy:ie8']
-		);
-	});
-	slateSettings.tasks.watch.push('watch:sass');
-
 	gulp.task('sass-generate-contents', function () {
 		return gulp.src(itcss())
 			.pipe(sgc(config.paths.src.styles + 'main.scss', creds))
@@ -80,5 +73,13 @@ module.exports = function(gulp, config, slateSettings, argv, creds) {
 			.pipe(postcss(getPostCssPlugins(stylesConfig.browsers.ie8)))
 			.pipe(gulp.dest(config.paths.dest.styles));
 	});
+
+	gulp.task('watch:sass', function () {
+		gulp.watch(
+			[config.paths.src.styles + '**/*.scss', config.paths.src.components + '**/*.scss', config.paths.src.partials + '**/*.scss'],
+			['sass', 'sass:legacy:ie8']
+		);
+	});
+	cartridgeSettings.tasks.watch.push('watch:sass');
 
 }

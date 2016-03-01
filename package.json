@@ -1,17 +1,17 @@
 {
-	"name": "slate-sass",
+	"name": "cartridge-sass",
 	"version": "0.0.2",
-	"description": "Sass module for the slate project",
-	"homepage": "https://github.com/code-computerlove/slate-sass",
+	"description": "Sass module for the cartridge project",
+	"homepage": "https://github.com/code-computerlove/cartridge-sass",
 	"bugs": {
-		"url": "https://github.com/code-computerlove/slate-sass/issues"
+		"url": "https://github.com/code-computerlove/cartridge-sass/issues"
 	},
 	"license": "MIT",
 	"author": "Barney Scott <barney@codecomputerlove.co.uk>",
 	"main": "task.js",
 	"repository": {
 		"type": "git",
-		"url": "https://github.com/code-computerlove/slate-sass.git"
+		"url": "https://github.com/code-computerlove/cartridge-sass.git"
 	},
 	"scripts": {
 		"preinstall": "node scripts/preinstall.js",

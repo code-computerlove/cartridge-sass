@@ -1,4 +1,4 @@
 'use strict';
 
-var slateCli = require('slate-cli');
-slateCli.ensureSlateExists();
+var cartridgeCli  = require('cartridge-cli');
+cartridgeCli.ensureCartridgeExists();

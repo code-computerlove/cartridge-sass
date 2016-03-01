@@ -1,15 +1,15 @@
 'use strict';
 
-var slateCli      = require('slate-cli');
+var cartridgeCli  = require('cartridge-cli');
 var packageConfig = require('../package.json');
 var path          = require('path');
 
-var slateRcComplete       = false;
+var rcComplete            = false;
 var projectConfigComplete = false;
 var moduleConfigComplete  = false;
 
 function isComplete() {
-	return slateRcComplete && projectConfigComplete && moduleConfigComplete;
+	return rcComplete && projectConfigComplete && moduleConfigComplete;
 }
 
 function taskComplete(flag, err, message) {
@@ -37,16 +37,17 @@ function startAddToRc() {
 	var moduleConfig = {
 		name:    packageConfig.name,
 		version: packageConfig.version,
+		site:    packageConfig.homepage,
 		task:    packageConfig.name + '/task.js'
 	};
 
-	console.log('Adding ' + packageConfig.name + ' to .slaterc');
+	console.log('Adding ' + packageConfig.name + ' to .cartridgerc');
 
-	slateCli.addToSlaterc(moduleConfig, function finishAddToRc(err) {
+	cartridgeCli.addToRc(moduleConfig, function finishAddToRc(err) {
 		taskComplete(
-			slateRcComplete,
+			rcComplete,
 			err,
-			'adding ' + packageConfig.name + ' to .slaterc'
+			'adding ' + packageConfig.name + ' to .cartridgerc'
 		);
 	});
 }
@@ -68,7 +69,7 @@ function modifyProjectConfig(config) {
 function startProjectConfig() {
 	console.log('Modifying project config for ' + packageConfig.name);
 
-	slateCli.modifyProjectConfig(modifyProjectConfig, function finishProjectConfig(err) {
+	cartridgeCli.modifyProjectConfig(modifyProjectConfig, function finishProjectConfig(err) {
 		taskComplete(
 			projectConfigComplete,
 			err,
@@ -80,7 +81,7 @@ function startProjectConfig() {
 function startModuleConfig() {
 	console.log('Copying files needed by ' + packageConfig.name + ' to _config');
 
-	slateCli.addModuleConfig(path.resolve('_config'), function finishModuleconfig(err){
+	cartridgeCli.addModuleConfig(path.resolve('_config'), function finishModuleconfig(err){
 		taskComplete(
 			moduleConfigComplete,
 			err,
