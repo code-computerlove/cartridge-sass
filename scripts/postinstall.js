@@ -61,7 +61,7 @@ function modifyProjectConfig(config) {
 	}
 
 	config.paths.src.styles   = config.dirs.src  + '/styles/';
-	config.paths.build.styles = config.dirs.build + '/styles/';
+	config.paths.dest.styles = config.dirs.dest + '/styles/';
 
 	return config;
 }

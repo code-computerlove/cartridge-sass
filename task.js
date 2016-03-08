@@ -8,6 +8,7 @@ var gulp       = require('gulp');
 var sourcemaps = require('gulp-sourcemaps');
 var gulpif     = require('gulp-if')
 var rename     = require('gulp-rename');
+var path       = require('path');
 
 // Sass dependencies
 var sgc  = require('gulp-sass-generate-contents');
@@ -21,10 +22,11 @@ var cssNano      = require('cssnano');
 var mqPacker     = require('css-mqpacker');
 
 module.exports = function(config, cartridgeSettings, creds) {
+	var activeDir = path.resolve(process.cwd());
 
 	// Config
-	var itcss        = require(config.paths.config + 'itcss')(config);
-	var stylesConfig = require(config.paths.config + 'styles-config');
+	var itcss        = require(path.resolve(activeDir, config.dirs.config, 'itcss.js'))(config);
+	var stylesConfig = require(path.resolve(activeDir, config.dirs.config, 'styles-config.json'));
 
 	var sassConfig = {
 		errLogToConsole: true,
@@ -53,7 +55,7 @@ module.exports = function(config, cartridgeSettings, creds) {
 	}
 
 	gulp.task('sass-generate-contents', function () {
-		return gulp.src(itcss())
+		return gulp.src(itcss)
 			.pipe(sgc(config.paths.src.styles + 'main.scss', creds))
 			.pipe(gulp.dest(config.paths.src.styles));
 	});
