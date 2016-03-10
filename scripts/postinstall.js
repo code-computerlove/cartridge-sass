@@ -56,8 +56,16 @@ function modifyProjectConfig(config) {
 	if(!config.hasOwnProperty('paths')) {
 		config.paths = {
 			src:   {},
-			build: {}
+			dest: {}
 		};
+	}
+
+	if(!config.paths.hasOwnProperty('src')) {
+		config.paths.src = {};
+	}
+
+	if(!config.paths.hasOwnProperty('dest')) {
+		config.paths.dest = {};
 	}
 
 	config.paths.src.styles   = config.dirs.src  + '/styles/';
