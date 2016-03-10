@@ -1,6 +1,6 @@
 'use strict';
 
-var cartridge     = require('cartridge');
+var cartridge     = require('cartridge-cli');
 var packageConfig = require('../package.json');
 var path          = require('path');
 
