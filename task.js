@@ -4,7 +4,6 @@
 \* ============================================================ */
 
 // Gulp dependencies
-var gulp       = require('gulp');
 var sourcemaps = require('gulp-sourcemaps');
 var gulpif     = require('gulp-if')
 var rename     = require('gulp-rename');
@@ -21,12 +20,14 @@ var pixrem       = require('pixrem');
 var cssNano      = require('cssnano');
 var mqPacker     = require('css-mqpacker');
 
-module.exports = function(config, cartridgeSettings, creds) {
+module.exports = function(gulp, config, tasks) {
 	var activeDir = path.resolve(process.cwd());
 
 	// Config
 	var itcss        = require(path.resolve(activeDir, config.dirs.config, 'itcss.js'))(config);
 	var stylesConfig = require(path.resolve(activeDir, config.dirs.config, 'styles-config.json'));
+
+	// config.cleanPaths.paths.push(co);
 
 	var sassConfig = {
 		errLogToConsole: true,
@@ -82,6 +83,6 @@ module.exports = function(config, cartridgeSettings, creds) {
 			['sass', 'sass:legacy:ie8']
 		);
 	});
-	cartridgeSettings.tasks.watch.push('watch:sass');
+	tasks.watch.push('watch:sass');
 
 }
