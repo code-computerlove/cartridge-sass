@@ -1,4 +1,4 @@
 'use strict';
 
-var cartridgeCli  = require('cartridge-cli');
-cartridgeCli.ensureCartridgeExists();
+var cartridge  = require('cartridge');
+cartridge.ensureCartridgeExists();

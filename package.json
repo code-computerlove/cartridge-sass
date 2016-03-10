@@ -2,13 +2,6 @@
 	"name": "cartridge-sass",
 	"version": "0.0.4",
 	"description": "Sass module for the cartridge project",
-	"homepage": "https://github.com/cartridge/cartridge-sass",
-	"bugs": {
-		"url": "https://github.com/cartridge/cartridge-sass/issues"
-	},
-	"license": "MIT",
-	"author": "Barney Scott <barney@codecomputerlove.co.uk>",
-	"main": "task.js",
 	"keywords": [
 		"gulp",
 		"dependency",
@@ -19,6 +12,13 @@
 		"libsass",
 		"postcss"
 	],
+	"homepage": "https://github.com/cartridge/cartridge-sass",
+	"bugs": {
+		"url": "https://github.com/cartridge/cartridge-sass/issues"
+	},
+	"license": "MIT",
+	"author": "Barney Scott <barney@codecomputerlove.co.uk>",
+	"main": "task.js",
 	"repository": {
 		"type": "git",
 		"url": "https://github.com/cartridge/cartridge-sass.git"
@@ -38,9 +38,7 @@
 		"gulp-sass": "1.3.3",
 		"gulp-sass-generate-contents": "^0.1.1",
 		"gulp-sourcemaps": "^1.5.2",
-		"pixrem": "^3.0.0"
-	},
-	"devDependencies": {
+		"pixrem": "^3.0.0",
 		"chalk": "^1.1.1",
 		"chai": "^3.5.0",
 		"del": "^2.1.0",
