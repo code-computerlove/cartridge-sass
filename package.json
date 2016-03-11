@@ -1,6 +1,6 @@
 {
 	"name": "cartridge-sass",
-	"version": "0.0.9",
+	"version": "0.0.10",
 	"description": "Sass module for the cartridge project",
 	"keywords": [
 		"gulp",

@@ -22,11 +22,15 @@ var mqPacker     = require('css-mqpacker');
 
 module.exports = function(gulp, projectConfig, tasks) {
 
+	/* --------------------
+	*	CONFIGURATION
+	* ---------------------*/
+
 	// Task Config
 	var taskConfig = require(path.resolve(process.cwd(), projectConfig.dirs.config, 'task.sass.js'))(projectConfig);
 
 	// Add the clean path for the generated styles
-	config.cleanPaths.paths.push(projectConfig.paths.dest.styles);
+	projectConfig.cleanPaths.push(projectConfig.paths.dest.styles);
 
 	var postCssPlugins = [
 		autoprefixer(taskConfig.autoprefixer),
@@ -37,6 +41,10 @@ module.exports = function(gulp, projectConfig, tasks) {
 	if(projectConfig.isProd) {
 		plugins.push(cssNano());
 	}
+
+	/* --------------------
+	*	MODULE TASKS
+	* ---------------------*/
 
 	gulp.task('sass-generate-contents', function () {
 		return gulp.src(itcss)
@@ -57,6 +65,10 @@ module.exports = function(gulp, projectConfig, tasks) {
 			.pipe(gulp.dest(projectConfig.paths.dest.styles));
 	});
 
+	/* --------------------
+	*	WATCH TASKS
+	* ---------------------*/
+
 	gulp.task('watch:sass', function () {
 		gulp.watch(
 			taskConfig.watch,
@@ -64,5 +76,4 @@ module.exports = function(gulp, projectConfig, tasks) {
 		);
 	});
 	tasks.watch.push('watch:sass');
-
 }
