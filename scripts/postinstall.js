@@ -1,12 +1,14 @@
 'use strict';
 
-var cartridge     = require('cartridge-cli');
+var cartridgeUtil = require('cartridge-module-util');
 var packageConfig = require('../package.json');
 var path          = require('path');
 
 var rcComplete            = false;
 var projectConfigComplete = false;
 var moduleConfigComplete  = false;
+
+cartridgeUtil.ensureCartridgeExists();
 
 function isComplete() {
 	return rcComplete && projectConfigComplete && moduleConfigComplete;
@@ -43,7 +45,7 @@ function startAddToRc() {
 
 	console.log('Adding ' + packageConfig.name + ' to .cartridgerc');
 
-	cartridge.addToRc(moduleConfig, function finishAddToRc(err) {
+	cartridgeUtil.addToRc(moduleConfig, function finishAddToRc(err) {
 		taskComplete(
 			rcComplete,
 			err,
@@ -77,7 +79,7 @@ function modifyProjectConfig(config) {
 function startProjectConfig() {
 	console.log('Modifying project config for ' + packageConfig.name);
 
-	cartridge.modifyProjectConfig(modifyProjectConfig, function finishProjectConfig(err) {
+	cartridgeUtil.modifyProjectConfig(modifyProjectConfig, function finishProjectConfig(err) {
 		taskComplete(
 			projectConfigComplete,
 			err,
@@ -89,7 +91,7 @@ function startProjectConfig() {
 function startModuleConfig() {
 	console.log('Copying files needed by ' + packageConfig.name + ' to _config');
 
-	cartridge.addModuleConfig(path.resolve('_config'), function finishModuleconfig(err){
+	cartridgeUtil.addModuleConfig(path.resolve('_config'), function finishModuleconfig(err){
 		taskComplete(
 			moduleConfigComplete,
 			err,
