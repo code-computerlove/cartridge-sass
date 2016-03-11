@@ -1,6 +1,0 @@
-{
-	"browsers": {
-		"normal": ["> 5%", "Android 3"],
-		"ie8":    ["IE 8"]
-	}
-}
