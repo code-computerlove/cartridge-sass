@@ -39,4 +39,4 @@ function getTaskConfig(projectConfig) {
 	return taskConfig;
 }
 
-module.exports = getTaskprojectConfig;
+module.exports = getTaskConfig;
