@@ -5,7 +5,7 @@
 
 // Gulp dependencies
 var sourcemaps = require('gulp-sourcemaps');
-var gulpif     = require('gulp-if')
+var gulpif     = require('gulp-if');
 var rename     = require('gulp-rename');
 var path       = require('path');
 
@@ -47,8 +47,8 @@ module.exports = function(gulp, projectConfig, tasks) {
 	* ---------------------*/
 
 	gulp.task('sass-generate-contents', function () {
-		return gulp.src(itcss)
-			.pipe(sgc(config.paths.src.styles + 'main.scss', creds))
+		return gulp.src(taskConfig.itcss)
+			.pipe(sgc(projectConfig.paths.src.styles + 'main.scss', projectConfig.creds))
 			.pipe(gulp.dest(projectConfig.paths.src.styles));
 	});
 
@@ -64,6 +64,8 @@ module.exports = function(gulp, projectConfig, tasks) {
 			.pipe(gulpif(!projectConfig.isProd, sourcemaps.write('.'))) //Default only
 			.pipe(gulp.dest(projectConfig.paths.dest.styles));
 	});
+	// Add the task to the default list
+	tasks.default.push('sass');
 
 	/* --------------------
 	*	WATCH TASKS
@@ -75,5 +77,6 @@ module.exports = function(gulp, projectConfig, tasks) {
 			['sass']
 		);
 	});
+	// Add the task to the watch list
 	tasks.watch.push('watch:sass');
 }
