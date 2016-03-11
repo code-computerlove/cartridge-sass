@@ -16,71 +16,51 @@ var sass = require('gulp-sass');
 // CSS dependencies
 var autoprefixer = require('autoprefixer');
 var postcss      = require('gulp-postcss');
-var pixrem       = require('pixrem');
 var cssNano      = require('cssnano');
+var pxToRem      = require('postcss-pxtorem');
 var mqPacker     = require('css-mqpacker');
 
-module.exports = function(gulp, config, tasks) {
-	var activeDir = path.resolve(process.cwd());
+module.exports = function(gulp, projectConfig, tasks) {
 
-	// Config
-	var itcss        = require(path.resolve(activeDir, config.dirs.config, 'itcss.js'))(config);
-	var stylesConfig = require(path.resolve(activeDir, config.dirs.config, 'styles-config.json'));
+	// Task Config
+	var taskConfig = require(path.resolve(process.cwd(), projectConfig.dirs.config, 'task.sass.js'))(projectConfig);
 
-	// config.cleanPaths.paths.push(co);
+	// Add the clean path for the generated styles
+	config.cleanPaths.paths.push(projectConfig.paths.dest.styles);
 
-	var sassConfig = {
-		errLogToConsole: true,
-		includePaths:    [config.paths.src.components],
-		outputStyle:     'compact'
-	};
+	var postCssPlugins = [
+		autoprefixer(taskConfig.autoprefixer),
+		pxToRem(taskConfig.pxtorem),
+		mqPacker(taskConfig.mqpacker)
+	];
 
-	function getPostCssPlugins(browsers) {
-		var plugins = [
-			autoprefixer({
-				browsers: browsers
-			}),
-			pixrem({
-				rootValue: config.pixelBase
-			}),
-			mqPacker({
-				sort: true
-			})
-		];
-
-		if(config.isProd) {
-			plugins.push(cssNano());
-		}
-
-		return plugins;
+	if(projectConfig.isProd) {
+		plugins.push(cssNano());
 	}
 
 	gulp.task('sass-generate-contents', function () {
 		return gulp.src(itcss)
 			.pipe(sgc(config.paths.src.styles + 'main.scss', creds))
-			.pipe(gulp.dest(config.paths.src.styles));
+			.pipe(gulp.dest(projectConfig.paths.src.styles));
 	});
 
 	gulp.task('sass', ['sass-generate-contents'], function () {
-		return gulp.src(config.paths.src.styles + 'main.scss')
-			.pipe(gulpif(!config.isProd, sourcemaps.init())) //Default only
-			.pipe(sass(sassConfig))
-			.pipe(postcss(getPostCssPlugins(stylesConfig.browsers.normal)))
-			.pipe(gulpif(!config.isProd, sourcemaps.write('.'))) //Default only
-			.pipe(gulp.dest(config.paths.dest.styles));
-	});
-
-	gulp.task('sass:legacy:ie8', function () {
-		return gulp.src(config.paths.src.styles + 'ie8.scss')
-			.pipe(sass(sassConfig))
-			.pipe(postcss(getPostCssPlugins(stylesConfig.browsers.ie8)))
-			.pipe(gulp.dest(config.paths.dest.styles));
+		return gulp.src(taskConfig.src)
+			.pipe(gulpif(!projectConfig.isProd, sourcemaps.init())) //Default only
+			.pipe(sass({
+				errLogToConsole: true,
+				includePaths:    [projectConfig.paths.src.components],
+				outputStyle:     'compact'
+			}))
+			.pipe(postcss(postCssPlugins))
+			.pipe(gulpif(!projectConfig.isProd, sourcemaps.write('.'))) //Default only
+			.pipe(gulp.dest(projectConfig.paths.dest.styles));
 	});
 
 	gulp.task('watch:sass', function () {
 		gulp.watch(
-			[config.paths.src.styles + '**/*.scss', config.paths.src.components + '**/*.scss', config.paths.src.partials + '**/*.scss'],
-			['sass', 'sass:legacy:ie8']
+			taskConfig.watch,
+			['sass']
 		);
 	});
 	tasks.watch.push('watch:sass');
