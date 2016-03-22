@@ -1,6 +1,6 @@
 {
 	"name": "cartridge-sass",
-	"version": "0.0.12",
+	"version": "0.1.0",
 	"description": "Sass module for the cartridge project",
 	"keywords": [
 		"gulp",
@@ -17,7 +17,7 @@
 		"url": "https://github.com/cartridge/cartridge-sass/issues"
 	},
 	"license": "MIT",
-	"author": "Barney Scott <barney@codecomputerlove.co.uk>",
+	"author": "Code ComputerLove <npm@codecomputerlove.co.uk>",
 	"main": "task.js",
 	"repository": {
 		"type": "git",
@@ -29,21 +29,15 @@
 	},
 	"dependencies": {
 		"autoprefixer": "^6.3.3",
-		"cartridge-module-util": "0.0.1",
-		"chai": "^3.5.0",
-		"chalk": "^1.1.1",
+		"cartridge-module-util": "0.1.0",
 		"css-mqpacker": "^4.0.0",
 		"cssnano": "^3.5.2",
-		"del": "^2.1.0",
-		"fs-extra": "^0.24.0",
 		"gulp-if": "^1.2.5",
 		"gulp-postcss": "^6.1.0",
 		"gulp-rename": "^1.2.2",
 		"gulp-sass": "1.3.3",
 		"gulp-sass-generate-contents": "^0.1.1",
 		"gulp-sourcemaps": "^1.6.0",
-		"mocha": "^2.4.5",
-		"postcss-pxtorem": "^3.3.1",
-		"proxyquire": "^1.7.4"
+		"postcss-pxtorem": "^3.3.1"
 	}
 }
