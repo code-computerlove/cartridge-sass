@@ -1,3 +1,3 @@
 # Cartridge sass
 
-Part of the [cartridge](https://github.com/cartridge) project
+> [Cartridge](https://github.com/cartridge/cartridge) Sass module
