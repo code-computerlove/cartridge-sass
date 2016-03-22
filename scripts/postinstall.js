@@ -7,10 +7,12 @@ var packageConfig = require('../package.json');
 var cartridgeUtil = require('cartridge-module-util')(packageConfig);
 var path          = require('path');
 
+var TASK_NAME = 'sass';
+
 // Transform function for adding paths
 function projectConfigAddPaths(config) {
-	config.paths.src.styles   = config.dirs.src  + '/styles/';
-	config.paths.dest.styles = config.dirs.dest + '/styles/';
+	config.paths.src[TASK_NAME]  = config.dirs.src  + '/styles/';
+	config.paths.dest[TASK_NAME] = config.dirs.dest + '/styles/';
 
 	return config;
 }
@@ -23,6 +25,6 @@ cartridgeUtil.addToRc()
 		return cartridgeUtil.modifyProjectConfig(projectConfigAddPaths);
 	})
 	.then(function(){
-		return cartridgeUtil.addModuleConfig(path.resolve('_config', 'task.sass.js'));
+		return cartridgeUtil.addModuleConfig(path.resolve('_config', 'task.' + TASK_NAME + '.js'));
 	})
 	.then(cartridgeUtil.finishInstall);

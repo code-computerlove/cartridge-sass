@@ -26,11 +26,10 @@ module.exports = function(gulp, projectConfig, tasks) {
 	*	CONFIGURATION
 	* ---------------------*/
 
-	// Task Config
-	var taskConfig = require(path.resolve(process.cwd(), projectConfig.dirs.config, 'task.sass.js'))(projectConfig);
+	var TASK_NAME = 'sass';
 
-	// Add the clean path for the generated styles
-	projectConfig.cleanPaths.push(projectConfig.paths.dest.styles);
+	// Task Config
+	var taskConfig = require(path.resolve(process.cwd(), projectConfig.dirs.config, 'task.' + TASK_NAME + '.js'))(projectConfig);
 
 	var postCssPlugins = [
 		autoprefixer(taskConfig.autoprefixer),
@@ -46,13 +45,13 @@ module.exports = function(gulp, projectConfig, tasks) {
 	*	MODULE TASKS
 	* ---------------------*/
 
-	gulp.task('sass-generate-contents', function () {
+	gulp.task(TASK_NAME + '-generate-contents', function () {
 		return gulp.src(taskConfig.itcss)
 			.pipe(sgc(projectConfig.paths.src.styles + 'main.scss', projectConfig.creds))
-			.pipe(gulp.dest(projectConfig.paths.src.styles));
+			.pipe(gulp.dest(projectConfig.paths.src[TASK_NAME]));
 	});
 
-	gulp.task('sass', ['sass-generate-contents'], function () {
+	gulp.task(TASK_NAME, [TASK_NAME + '-generate-contents'], function () {
 		return gulp.src(taskConfig.src)
 			.pipe(gulpif(!projectConfig.isProd, sourcemaps.init())) //Default only
 			.pipe(sass({
@@ -62,21 +61,28 @@ module.exports = function(gulp, projectConfig, tasks) {
 			}))
 			.pipe(postcss(postCssPlugins))
 			.pipe(gulpif(!projectConfig.isProd, sourcemaps.write('.'))) //Default only
-			.pipe(gulp.dest(projectConfig.paths.dest.styles));
+			.pipe(gulp.dest(projectConfig.paths.dest[TASK_NAME]));
 	});
-	// Add the task to the default list
-	tasks.default.push('sass');
 
 	/* --------------------
 	*	WATCH TASKS
 	* ---------------------*/
 
-	gulp.task('watch:sass', function () {
+	gulp.task('watch:' + TASK_NAME, function () {
 		gulp.watch(
 			taskConfig.watch,
-			['sass']
+			[TASK_NAME]
 		);
 	});
+
+	/* ----------------------------
+	*	CARTRIDGE TASK MANAGEMENT
+	* -----------------------------*/
+
+	// Add the clean path for the generated styles
+	projectConfig.cleanPaths.push(projectConfig.paths.dest[TASK_NAME]);
+	// Add the task to the default list
+	tasks.default.push(TASK_NAME);
 	// Add the task to the watch list
-	tasks.watch.push('watch:sass');
+	tasks.watch.push('watch:' + TASK_NAME);
 }
