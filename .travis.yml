@@ -1,8 +1,12 @@
 sudo: false
 language: node_js
 node_js:
-	- stable
-	- "0.12"
+    - stable
+    - '0.12'
+install:
+    - echo "@TODO CI things"
 cache:
   directories:
-	- node_modules
+    - node_modules
+git:
+  depth: 1
