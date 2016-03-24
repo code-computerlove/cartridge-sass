@@ -4,7 +4,7 @@ node_js:
     - stable
     - '0.12'
 install:
-    - echo "@TODO CI things"
+    - npm install --ignore-scripts
 cache:
   directories:
     - node_modules
