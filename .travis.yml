@@ -10,12 +10,14 @@ install:
     - cp _config/task.sass.js test/mock-project/_config/task.sass.js
     - cp package.json test/mock-project/package.json
     - cd test/mock-project
-    - npm install
+    - npm install --ignore-scripts
+    - npm rebuild node-sass
     - cd ..
 script:
     - mocha
 cache:
   directories:
     - node_modules
+    - test/mock-project/node_modules
 git:
   depth: 1
