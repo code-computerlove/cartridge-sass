@@ -12,7 +12,7 @@ install:
     - cd test/mock-project
     - npm install --ignore-scripts
     - npm rebuild node-sass
-    - cd ..
+    - cd ../..
 script:
     - mocha
 cache:
