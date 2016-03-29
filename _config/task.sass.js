@@ -15,24 +15,23 @@ function getTaskConfig(projectConfig) {
 			rootValue: 16
 		},
 		itcss: [
-			projectConfig.paths.src.styles + '/_settings/*.scss',
-			'!' + projectConfig.paths.src.styles + '/_settings/_settings.old-ie-8.scss',
-			projectConfig.paths.src.styles + '/_tools/_tools.mixins.scss',
-			projectConfig.paths.src.styles + '/_tools/_tools.functions.scss',
-			projectConfig.paths.src.styles + '/_tools/*.scss',
-			projectConfig.paths.src.styles + '/_scope/*.scss',
-			projectConfig.paths.src.styles + '/_generic/*.scss',
-			projectConfig.paths.src.styles + '/_elements/*.scss',
-			projectConfig.paths.src.styles + '/_objects/*.scss',
-			projectConfig.paths.src.styles + '/_components/*.scss',
-			'views/_partials/**/*.scss',
-			projectConfig.paths.src.styles + '/_trumps/*.scss'
-		],
-		src: projectConfig.paths.src.styles + 'main.scss',
-		watch: [
-			projectConfig.paths.src.styles + '**/*.scss',
+			projectConfig.paths.src.sass + '/_settings/*.scss',
+			'!' + projectConfig.paths.src.sass + '/_settings/_settings.old-ie-8.scss',
+			projectConfig.paths.src.sass + '/_tools/_tools.mixins.scss',
+			projectConfig.paths.src.sass + '/_tools/_tools.functions.scss',
+			projectConfig.paths.src.sass + '/_tools/*.scss',
+			projectConfig.paths.src.sass + '/_scope/*.scss',
+			projectConfig.paths.src.sass + '/_generic/*.scss',
+			projectConfig.paths.src.sass + '/_elements/*.scss',
+			projectConfig.paths.src.sass + '/_objects/*.scss',
+			projectConfig.paths.src.sass + '/_components/*.scss',
 			projectConfig.paths.src.components + '**/*.scss',
-			projectConfig.paths.src.partials + '**/*.scss'
+			projectConfig.paths.src.sass + '/_trumps/*.scss'
+		],
+		src: projectConfig.paths.src.sass + 'main.scss',
+		watch: [
+			projectConfig.paths.src.sass + '**/*.scss',
+			projectConfig.paths.src.components + '**/*.scss'
 		]
 	};
 
