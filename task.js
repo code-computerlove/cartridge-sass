@@ -38,7 +38,7 @@ module.exports = function(gulp, projectConfig, tasks) {
 	];
 
 	if(projectConfig.isProd) {
-		plugins.push(cssNano());
+		postCssPlugins.push(cssNano());
 	}
 
 	/* --------------------
