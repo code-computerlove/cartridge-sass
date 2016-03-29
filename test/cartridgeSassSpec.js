@@ -1,14 +1,16 @@
 var spawn = require('child_process').spawn;
 var path = require('path');
+var fs = require('fs-extra');
 var chai = require('chai');
 var expect = chai.expect;
 
 chai.use(require('chai-fs'));
 chai.should();
 
-const MOCK_PROJECT_DIR = path.join(process.cwd(), 'test', 'mock-project');
-const STYLE_SRC_DIR = path.join(MOCK_PROJECT_DIR, '_source', 'styles');
-const STYLE_DEST_DIR = path.join(MOCK_PROJECT_DIR, 'public', '_client', 'styles');
+var ROOT_DIR = process.cwd();
+var MOCK_PROJECT_DIR = path.join(process.cwd(), 'test', 'mock-project');
+var STYLE_SRC_DIR = path.join(MOCK_PROJECT_DIR, '_source', 'styles');
+var STYLE_DEST_DIR = path.join(MOCK_PROJECT_DIR, 'public', '_client', 'styles');
 
 process.chdir(MOCK_PROJECT_DIR);
 
@@ -22,9 +24,25 @@ function runGulpTask(options, callback) {
 
 }
 
+function preSetup() {
+	var packageJsonRoot = path.join(ROOT_DIR, 'package.json');
+	var packageJsonMockProject = path.join(MOCK_PROJECT_DIR, 'package.json');
+
+	var moduleConfigRoot = path.join(ROOT_DIR, '_config', 'task.sass.js');
+	var moduleConfigMockProject = path.join(MOCK_PROJECT_DIR, '_config', 'task.sass.js');
+
+	fs.copySync(packageJsonRoot, packageJsonMockProject);
+	fs.copySync(moduleConfigRoot, moduleConfigMockProject);
+}
+
 describe('As a user of the cartridge-sass module', function() {
 
 	this.timeout(10000);
+
+	before(function(done) {
+		preSetup();
+		done();
+	})
 
 	describe('when `gulp sass` is run', function() {
 
