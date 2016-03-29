@@ -41,7 +41,8 @@
     "postcss-pxtorem": "3.3.1"
   },
   "devDependencies": {
-    "chai": "^3.5.0",
+    "chai": "1.10.0",
+    "chai-fs": "^0.1.0",
     "mocha": "^2.4.5"
   }
 }
