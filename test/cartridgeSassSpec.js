@@ -44,8 +44,8 @@ describe('As a user of the cartridge-sass module', function() {
 			expect(mainCssFilePath).to.be.a.file();
 		})
 
-		it('should generate the the main.map.css sourcemap file in the public styles folder', function() {
-			var mainCssSourceMapFilePath = path.join(STYLE_DEST_DIR, 'main.map.css');
+		it('should generate the the main.css.map sourcemap file in the public styles folder', function() {
+			var mainCssSourceMapFilePath = path.join(STYLE_DEST_DIR, 'main.css.map');
 
 			expect(mainCssSourceMapFilePath).to.be.a.file();
 		})
