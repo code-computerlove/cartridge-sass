@@ -1,0 +1,89 @@
+//Font declarations and settings
+
+// Type Sizes & Styles
+
+
+// $element example would be Body
+@mixin setupTypes($element) {
+	@if (map-has-key($F-Sizes, $element)) {
+
+		@include typeStylesAtBreakpoint($element, Base);
+
+		// I want to loop through the breakpoints to see if my types have breakpoints
+		@each $breakpoint, $width in $MQ-Breakpoints {
+			// If I have a breakpoint withing my element example: Small
+			@if (map-has-key(map-get($F-Sizes, $element), $breakpoint)) {
+				// Output the media query
+				@include outputBreakpoints($element, $breakpoint);
+			}
+		}
+	} @else {
+		@warn 'Font size error: #{$element} is not a valid target';
+		font-size: 20px;
+	}
+}
+
+// Generate the breakpoints
+
+@mixin outputBreakpoints($element, $breakpoint) {
+	// Add the media query
+	@include respond-from($breakpoint) {
+		// Apply the styles
+		@include typeStylesAtBreakpoint($element, $breakpoint);
+	}
+}
+
+
+// Generate a font-size and baseline-compatible line-height.
+@mixin typeStylesAtBreakpoint($element, $breakpoint: 'Small') {
+	// try and get the properties needed
+	$fontSize: getFontProperty($element, $breakpoint, fontSize);
+	$lineHeight: getFontProperty($element, $breakpoint, lineHeight);
+	$fontFamily: getFontProperty($element, $breakpoint, fontFamily);
+
+	font-size:   $fontSize;
+
+	// If they dont have a fontFamily then font-family wont be set
+
+	@if($fontFamily) {
+		font-family: $fontFamily;
+	}
+
+	// If they dont have a lineHeight then line-height wont be set
+
+	@if($lineHeight) {
+		line-height: $lineHeight;
+	}
+}
+
+// Get font property
+@function getFontProperty($element, $breakpoint, $property) {
+	// Made the map get in a variable for reuse
+
+	$mapGet: map-get(map-get($F-Sizes, $element), $breakpoint);
+
+	// Check if the property exists within the map
+	@if(map-has-key($mapGet, $property)) {
+		@return map-get($mapGet, $property);
+	} @else {
+		@return false;
+	}
+}
+
+
+// Generate a font-size and baseline-compatible line-height.
+@mixin font-size($font-size, $line-height: auto) {
+	font-size: $font-size;
+
+	@if $line-height == auto {
+		line-height: ceil($font-size / $base-line-height) * ($base-line-height / $font-size);
+	} @else {
+
+		@if (type-of($line-height) == number or $line-height == inherit or $line-height == normal) {
+			line-height: $line-height;
+		} @elseif ($line-height != none and $line-height != false) {
+			@warn "D’oh! ‘#{$line-height}’ is not a valid value for `line-height`."
+		}
+
+	}
+}

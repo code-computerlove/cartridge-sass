@@ -1,0 +1,47 @@
+// Breakpoint tools
+
+@function adjustMaxBreakpoint($size) {
+	@return $size - .0625em;
+}
+
+@mixin respond-from($breakpoint) {
+	@if (map-has-key($MQ-Breakpoints, $breakpoint)) {
+		@media screen and (min-width: map-get($MQ-Breakpoints, $breakpoint)) {
+			@content;
+		}
+	} @else {
+		@warn 'respond-from error: "#{$breakpoint}" is not a valid breakpoint';
+	}
+}
+
+@mixin respond-until($breakpoint) {
+	@if (map-has-key($MQ-Breakpoints, $breakpoint)) {
+		@media screen and (max-width: adjustMaxBreakpoint(map-get($MQ-Breakpoints, $breakpoint))) {
+			@content;
+		}
+	} @else {
+		@warn 'respond-to error: "#{$breakpoint}" is not a valid breakpoint';
+	}
+}
+
+@mixin respond-between($from, $to) {
+	@if (map-has-key($MQ-Breakpoints, $from) and map-has-key($MQ-Breakpoints, $to)) {
+		@media screen and (min-width: map-get($MQ-Breakpoints, $from)) and (max-width: adjustMaxBreakpoint(map-get($MQ-Breakpoints, $to))) {
+			@content;
+		}
+	} @else {
+		@warn 'respond-from-to error: either "#{$from}" or "#{$to}" is not a valid breakpoint';
+	}
+}
+
+@mixin respond-retina {
+	@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+		@content;
+	}
+}
+
+@mixin iPadLandscape {
+	@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
+		@content;
+	}
+}

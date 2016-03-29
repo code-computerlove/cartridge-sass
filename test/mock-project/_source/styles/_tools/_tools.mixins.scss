@@ -1,0 +1,52 @@
+//Common Sass mixins
+
+// Mixin to drop micro clearfix into a selector.
+//
+// .simple-usage {
+//  @include clearfix();
+//
+// }
+//
+//.detailed-usage {
+//   @include clearfix(important);
+// }
+//
+
+@mixin clearfix($important: false) {
+	// Determine whether or not to make declarations important.
+	@if ($important == false) {
+		$important: null;
+	} @else {
+		$important: !important;
+	}
+
+	&::after {
+		clear:   both $important;
+		content: '' $important;
+		display: table $important;
+	}
+}
+
+$old-ie-9: false !default;
+
+@mixin old-ie-9 {
+	// Only use this content if we're dealing with old IE
+	@if $old-ie-9 {
+		@content;
+	}
+}
+
+@mixin verticalAlignMiddle() {
+	left: 0;
+	position: absolute;
+	top: 50%;
+	transform: translateY(-50%);
+	-ms-transform: translateY(-50%); // scss-lint:disable VendorPrefix
+}
+
+
+@mixin blur() {
+	-ms-filter: blur(3px); // scss-lint:disable VendorPrefix
+	filter: blur(3px);
+	filter:progid:DXImageTransform.Microsoft.Blur(PixelRadius='3'); // scss-lint:disable SpaceAfterPropertyColon
+}

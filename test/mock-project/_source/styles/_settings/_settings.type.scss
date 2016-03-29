@@ -1,0 +1,153 @@
+// Font Variables
+$F-Family: 'Arial Regular', Arial, sans-serif;
+$F-Thin: "HelveticaNeue-Ultralight", "Helvetica Neue Ultralight", "Helvetica Neue", Helvetica, Arial, "Lucida Grande", sans-serif;
+$F-Bold: "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif;
+
+$F-Sizes: (
+	Body: (
+			Base: (
+				fontSize: 15px,
+				fontFamily: $F-Family,
+				lineHeight: 1.5
+			)
+	),
+	h1: (
+		Base: (
+			fontSize: 38px,
+			lineHeight: 1.25
+		),
+		Small: (
+			fontSize: 48px
+		),
+		Med: (
+			fontSize: 70px,
+			lineHeight: 1
+		),
+		Large: (
+			fontSize: 80px,
+			lineHeight: 1
+		)
+	),
+	h2: (
+		Base: (
+			fontSize: 36px,
+			lineHeight: 1.05
+		),
+		Small: (
+			fontSize: 48px
+		),
+		Med: (
+			fontSize: 56px
+		),
+		Large: (
+			fontSize: 70px,
+			lineHeight: 1
+		)
+	),
+	h3: (
+		Base: (
+			fontSize: 24px,
+			lineHeight: 1.25
+		),
+		Small: (
+			fontSize: 36px
+		),
+		Med: (
+			fontSize: 48px
+		),
+		Large: (
+			fontSize: 56px,
+			lineHeight: 1
+		)
+	),
+	h4: (
+		Base: (
+			fontSize: 16px,
+			lineHeight: 1.5
+		)
+	),
+	header-links: (
+		Base: (
+			fontSize: 16px,
+			lineHeight: 1.5
+		),
+		Small: (
+			fontSize: 14px,
+			lineHeight: 1.5
+		)
+	),
+	banner: (
+		Base: (
+			fontSize: 100px,
+			lineHeight: 1
+		),
+		Med: (
+			fontSize: 100px,
+			lineHeight: 1
+		)
+	),
+	Work: (
+		Base: (
+			fontSize: 32px,
+			lineHeight: 1
+		),
+		Med: (
+			fontSize: 36px
+		)
+	),
+	ourServicesHeading: (
+		Base: (
+			fontSize: 21px,
+			lineHeight: 1.4
+		)
+	),
+	ourServicesLink: (
+		Base: (
+			fontSize: 36px,
+			lineHeight: 1.25
+		),
+		Large: (
+			fontSize: 48px
+		),
+		Max: (
+			fontSize: 56px,
+			lineHeight: 1
+		)
+	),
+	factsHeading: (
+		Base: (
+			fontSize: 36px,
+			lineHeight: 1.25
+		),
+		Small: (
+			fontSize: 48px
+		),
+		Large: (
+			fontSize: 56px,
+			lineHeight: 1
+		)
+	),
+	footerCountryHeading: (
+		Base: (
+			fontSize: 50px,
+			lineHeight: 1.1
+		)
+	),
+	OfficesHeading: (
+		Base: (
+			fontSize: 40px,
+			lineHeight: 1.25
+		),
+		Small: (
+			fontSize: 80px
+		),
+		Med: (
+			fontSize: 120px,
+			lineHeight: 1
+		),
+		Large: (
+			fontSize: 160px,
+			lineHeight: 1
+		)
+	)
+);

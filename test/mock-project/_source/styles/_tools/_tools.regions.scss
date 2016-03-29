@@ -1,0 +1,24 @@
+// Regions: Common areas within the grid
+
+// Main content block styles
+// Full width on small screens, 8 units on medium, 6 on large
+// Pass true if you want the left margin to be set
+
+$offset: false !default;
+
+@mixin regionMain($offsetVal) {
+
+	$offset: $offsetVal;
+
+	@include column(12);
+
+	display: block;
+
+	@include respond-from(Med) {
+		width: getColumnWidth(12);
+	}
+
+	@include respond-from(Large) {
+		width: getColumnWidth(10);
+	}
+}

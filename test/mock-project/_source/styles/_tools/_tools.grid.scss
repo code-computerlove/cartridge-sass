@@ -1,0 +1,41 @@
+// Grid tools: Mixins & functions used for displaying a grid
+
+@function getColumnWidth($units) {
+	@return ($units / $G-Units) * 100%;
+}
+
+@mixin column($cols) {
+	box-sizing:    border-box;
+	padding-left:  $G-Gutter;
+	padding-right: $G-Gutter;
+	width:         getColumnWidth($cols);
+}
+
+@mixin floatedColumn($cols) {
+	@include column($cols);
+
+	float: left;
+}
+
+@mixin inlineColumn($cols) {
+	@include column($cols);
+
+	display: inline-block;
+}
+
+@mixin flexColumn($cols) {
+	@include column($cols);
+
+	display: block;
+}
+
+@function calcBaselineOffset($offset: $G-Pixel, $multiplier: 1) {
+	@return ($F-Base-Line * $multiplier) - $offset;
+}
+
+@mixin scaleToGrid($width, $height, $gutterCount) {
+	$modifier: ($gutterCount * $G-Gutter) / $height;
+
+	height: $modifier * $height;
+	width:  $modifier * $width;
+}

@@ -1,0 +1,38 @@
+// Element Text
+
+body {
+	@include setupTypes(Body);
+}
+
+p {
+	margin: 0 0 $G-Gutter;
+}
+
+ol,
+ul {
+	margin: 0 0 $G-Gutter $G-Gutter;
+}
+
+ul ul,
+ol ol,
+ol ul,
+ul ol {
+	margin-bottom: 0;
+}
+
+li {
+	padding: $G-Gutter 0;
+}
+
+ul {
+	> li {
+		list-style-type: disc;
+		margin-bottom:   0;
+		padding:         0;
+		text-indent:     0;
+	}
+}
+
+address {
+	display: inline-block;
+}

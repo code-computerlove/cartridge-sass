@@ -1,0 +1,34 @@
+// Sidepanel link
+// This is the line on the right
+
+.sidepanel-link {
+	color: getColor(Side-Panel, Side-Panel-Link);
+	display: block;
+	padding: ($G-Gutter / 4) 0;
+	padding-left: $G-Gutter * 4;
+	position: relative;
+
+	&::after {
+		background-color: getColor(Side-Panel, Side-Panel-Link);
+		content: ' ';
+		height: 2px;
+		left: 0;
+		position: absolute;
+		top: 15px;
+		transition: all .3s ease;
+		width: $G-Gutter * 2;
+	}
+}
+
+
+// Active state
+
+.sidepanel-link--active {
+	color: getColor(Side-Panel, Side-Panel-Active);
+
+	&::after {
+		background-color: getColor(Side-Panel, Side-Panel-Active);
+		left: 0;
+		width: $G-Gutter * 3;
+	}
+}

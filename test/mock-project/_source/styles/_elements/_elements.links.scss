@@ -1,0 +1,58 @@
+//links - styles for links
+
+@mixin link-generic() {
+	color:           getColor(Body, Generic-Link);
+	text-decoration: none;
+}
+
+@mixin altLink {
+	color:       getColor(Body, Generic-Link-White);
+	font-weight: bold;
+}
+
+a,
+button {
+	@include link-generic;
+}
+
+
+// This is used for links that have the red arrow.
+
+.link-icon {
+
+	&::after {
+		@include svg($name: arrow-right);
+
+		content:     ' ';
+		font-size:   .6em;
+		margin-left: .5em;
+		transition:  transform .3s ease;
+	}
+
+	&:hover {
+		&::after {
+			transform: translateX(10px);
+		}
+	}
+}
+
+.link-icon--left {
+
+	&::after {
+		display: none;
+	}
+
+	&::before {
+		@include svg($name: play);
+
+		font-size:      .7em;
+		margin-right:   .25em;
+		vertical-align: middle;
+	}
+
+	&:hover {
+		&::after {
+			transform: none;
+		}
+	}
+}

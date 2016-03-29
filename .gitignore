@@ -10,3 +10,7 @@ logfile.txt
 
 # Dependencies
 node_modules
+
+#Tests
+public
+main.scss
