@@ -24,25 +24,9 @@ function runGulpTask(options, callback) {
 
 }
 
-function preSetup() {
-	var packageJsonRoot = path.join(ROOT_DIR, 'package.json');
-	var packageJsonMockProject = path.join(MOCK_PROJECT_DIR, 'package.json');
-
-	var moduleConfigRoot = path.join(ROOT_DIR, '_config', 'task.sass.js');
-	var moduleConfigMockProject = path.join(MOCK_PROJECT_DIR, '_config', 'task.sass.js');
-
-	fs.copySync(packageJsonRoot, packageJsonMockProject);
-	fs.copySync(moduleConfigRoot, moduleConfigMockProject);
-}
-
 describe('As a user of the cartridge-sass module', function() {
 
 	this.timeout(10000);
-
-	before(function(done) {
-		preSetup();
-		done();
-	})
 
 	describe('when `gulp sass` is run', function() {
 
@@ -56,13 +40,13 @@ describe('As a user of the cartridge-sass module', function() {
 			expect(mainScssFilePath).to.be.a.file();
 		})
 
-		it('should compile the main.css file in the public styles folder', function() {
+		it('should add the main.css file to the public styles folder', function() {
 			var mainCssFilePath = path.join(STYLE_DEST_DIR, 'main.css');
 
 			expect(mainCssFilePath).to.be.a.file();
 		})
 
-		it('should generate the the main.css.map sourcemap file in the public styles folder', function() {
+		it('should add the main.css.map sourcemap file to the public styles folder', function() {
 			var mainCssSourceMapFilePath = path.join(STYLE_DEST_DIR, 'main.css.map');
 
 			expect(mainCssSourceMapFilePath).to.be.a.file();
