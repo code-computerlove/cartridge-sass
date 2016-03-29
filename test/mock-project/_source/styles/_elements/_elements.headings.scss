@@ -1,0 +1,58 @@
+// headings - styles for generic headings
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+	color:       getColor(Body, Generic-Heading);
+	font-family: $F-Thin;
+	font-weight: 300;
+	margin:      0 0 $G-Gutter;
+
+	@include respond-from(Med) {
+		letter-spacing: .1em;
+	}
+}
+
+h1 {
+	@include setupTypes(h1);
+
+	margin: 0 0 $G-Gutter;
+}
+
+h2 {
+	@include setupTypes(h2);
+
+	margin: 0 0 $G-Gutter;
+
+	@include respond-from(Med) {
+		letter-spacing: -.02em;
+	}
+}
+
+h3 {
+	@include setupTypes(h3);
+}
+
+h4 {
+	@include setupTypes(h4);
+}
+
+
+// Section Heading
+
+.section-heading {
+
+	&::after {
+		color: getColor(Section-Heading, Colon);
+		content: ':';
+		display: inline-block;
+		font-family: $F-Bold;
+	}
+}
+
+.section-heading__bold {
+	font-family: $F-Bold;
+	letter-spacing: -.05em;
+}

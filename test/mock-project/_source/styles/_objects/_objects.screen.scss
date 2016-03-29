@@ -1,0 +1,12 @@
+// Screens
+
+@mixin ScreenSetup {
+	box-sizing:  border-box;
+	height:      100vh;
+	padding:     $G-Gutter;
+	width:       100%;
+}
+
+.screen {
+	@include ScreenSetup();
+}

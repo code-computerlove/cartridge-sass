@@ -1,0 +1,122 @@
+//Variables for colors
+
+$C-Sass-Error: #f00;
+
+// Colour palette definition
+$Palette:      (
+	White:           #fff,
+	Black:           #000,
+	Dark-Grey:       #333,
+	Grey:            #999,
+	Mid-Grey:        #bababa,
+	Light-Grey:      #dadada,
+	Lightest-Grey:   #f2f2f2,
+	Standard-Red:    #ee3a43,
+	Dark-Red:        #972127
+);
+
+//
+// Get Color Funciton
+// This will search for the global colours within the $Colors sass map
+// Notes Has to be above $Colors otherwise $Colors returns the function as a string
+///
+@function getPalette($color) {
+	@if (map-has-key($Palette, $color)) {
+		@return map-get($Palette, $color);
+	} @else {
+		@warn 'Colour: #{$color} is not a valid colour';
+		@return $C-Sass-Error;
+	}
+}
+
+// Colours used throughout the site
+$Colors:       (
+	Body: (
+		Generic-Container:          getPalette(White),
+		Generic-Body:               getPalette(Dark-Grey),
+		Generic-Body-Variation:     getPalette(White),
+		Generic-Link:               getPalette(Standard-Red),
+		Generic-Link-White:         getPalette(White),
+		Generic-Heading:            getPalette(Black)
+	),
+	Youtube: (
+		BG: getPalette(Black)
+	),
+	Styleguide: (
+		Border:               getPalette(Dark-Grey),
+		Grid-Item:            getPalette(Black),
+		Grid-Item-Text:       getPalette(White),
+		Section-Title-Border: getPalette(Black)
+	),
+	Containers: (
+		Variation-Container: getPalette(Lightest-Grey),
+	),
+	Header: (
+		Links:         getPalette(White),
+		ExternalLinks: getPalette(Standard-Red),
+		Links-Mobile:  getPalette(Black),
+		Border:        getPalette(Light-Grey),
+		NavBG:         getPalette(Standard-Red)
+	),
+	Hero: (
+		Title: getPalette(White)
+	),
+	About: (
+		Title: getPalette(Standard-Red),
+		BG:     getPalette(White),
+		Border: getPalette(Light-Grey)
+	),
+	Work: (
+		BG:             getPalette(Lightest-Grey),
+		Work-Items-BG:  getPalette(White),
+		PictureOverlay: getPalette(Black),
+		Text:           getPalette(White),
+		TextLarge:      getPalette(Standard-Red),
+		AudioBG:        getPalette(White),
+		AudioProgress:  getPalette(Standard-Red)
+	),
+	Our-Services: (
+		Our-Services-BG:          getPalette(Standard-Red),
+		Our-Services-Heading:     getPalette(White),
+		Our-Services-BlackOverlay:     getPalette(Black),
+		Our-Services-Link:        getPalette(Dark-Red),
+		Our-Services-Border:        getPalette(Dark-Red),
+		Our-Services-Link-Active: getPalette(White),
+		BG: getPalette(White)
+	),
+	Offices: (
+		CardBG:       getPalette(White),
+		HeadingColor: getPalette(Mid-Grey),
+		ActiveLink:   getPalette(White),
+		ActiveLinkBG: getPalette(Standard-Red),
+		NavBorder:    getPalette(Light-Grey)
+	),
+	Facts: (
+		BG: getPalette(White)
+	),
+	Footer: (
+		Footer-BG:     getPalette(Dark-Grey),
+		Primary-Links: getPalette(White),
+		Secondary-Links: getPalette(Standard-Red),
+		Copyright: getPalette(Grey)
+	),
+	Center-Line-Link: (
+		Center-Line:     getPalette(Standard-Red),
+		Center-Line-Alt: getPalette(White)
+	),
+	Side-Panel: (
+		Side-Panel-Link:   getPalette(Grey),
+		Side-Panel-Active: getPalette(Standard-Red)
+	),
+	Section-Heading: (
+		Section-Heading: getPalette(White),
+		Colon:           getPalette(Standard-Red)
+	),
+	Banner: (
+		Banner-Heading: getPalette(White)
+	),
+	Icons: (
+		Icon-Fill:       getPalette(Standard-Red),
+		Icon-Fill-White: getPalette(White)
+	)
+);

@@ -1,0 +1,18 @@
+{
+  "cartridgeVersion": "0.0.4",
+  "dateGenerated": "29/03/2016",
+  "modules": [
+    {
+      "name": "cartridge-images",
+      "version": "0.1.0",
+      "site": "https://github.com/cartridge/cartridge-images",
+      "task": "cartridge-images/task.js"
+    },
+    {
+      "name": "cartridge-sass",
+      "version": "0.1.1",
+      "site": "https://github.com/cartridge/cartridge-sass",
+      "task": "cartridge-sass/task.js"
+    }
+  ]
+}

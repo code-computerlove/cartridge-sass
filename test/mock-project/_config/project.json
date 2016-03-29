@@ -1,0 +1,29 @@
+{
+  "dirs": {
+    "build": "build/_client",
+    "config": "_config",
+    "dest": "public/_client",
+    "src": "_source"
+  },
+  "tests": {
+    "configFile": "karma.conf.js",
+    "reporters": {
+      "production": [
+        "teamcity"
+      ],
+      "dev": [
+        "mocha"
+      ]
+    }
+  },
+  "paths": {
+    "src": {
+      "images": "_source/images/",
+      "sass": "_source/styles/"
+    },
+    "dest": {
+      "images": "public/_client/images/",
+      "sass": "public/_client/styles/"
+    }
+  }
+}

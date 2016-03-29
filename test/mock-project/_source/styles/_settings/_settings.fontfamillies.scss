@@ -1,0 +1,44 @@
+// Font famillies
+// Variables
+$F-Families: (
+	HelveticaLight: (
+		fontName: 'helvetica_neueregular',
+		webFontName: 'helveticaneue-ultraligext-webfont'
+	),
+	HelveticaBoldRounded: (
+		fontName: 'helvetica_roundedbold',
+		webFontName: 'helveticarounded-bold-webfont'
+	)
+);
+
+
+// Mixin
+@mixin font($name, $file, $weight: normal, $fontUrl: '../fonts/') {
+
+	@font-face {
+		font-family: $name;
+		src: url($fontUrl + $file + '.eot');
+		src: url($fontUrl + $file + '.eot?#iefix') format('embedded-opentype'),
+				url($fontUrl + $file + '.woff') format('woff'),
+				url($fontUrl + $file + '.ttf') format('truetype'),
+				url($fontUrl + $file + '#' + $name) format('svg');
+		font-weight: $weight;
+		font-style: normal;
+	}
+}
+
+// Loop output.
+@function lookupFontName($F-Families, $key, $value) {
+	@if(map-has-key(map-get($F-Families, $key), $value)) {
+		@return map-get(map-get($F-Families, $key), $value);
+	} @else {
+		@warn 'Cannot find map';
+	}
+}
+
+
+// @each $key, $keys in $F-Families {
+// 	@if(map-has-key($F-Families, $key)){
+// 		@include font(lookupFontName($F-Families, $key, fontName), lookupFontName($F-Families, $key, webFontName), normal, '../fonts/');
+// 	}
+// }

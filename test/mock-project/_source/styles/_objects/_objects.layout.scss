@@ -1,0 +1,28 @@
+//Layout - styles for all layout and or grid system
+
+.wrapper {
+	transition: transform .3s ease;
+}
+
+.wrapper#MenuOpen:target { // scss-lint:disable IdSelector SelectorFormat
+	@include respond-until(Med) {
+		transform: translateX(-230px);
+	}
+}
+
+.main-content {
+	overflow: hidden;
+}
+
+@include respond-from(Med) {
+	@include widths(12);
+}
+
+
+.container {
+	@include clearfix;
+	@include regionMain(true);
+
+	margin: 0 auto;
+	max-width: 1200px;
+}

@@ -1,0 +1,8 @@
+//Layout these are 'em' widths based on default font size of 16px;
+$MQ-Breakpoints: (
+	Small:   28.75em,  //460px
+	Med:     45em,     //720px
+	Large:   60em,     //960px
+	Desktop: 63.75em,  //1020px
+	Max:     75em      //1200px
+);
