@@ -1,0 +1,12 @@
+sudo: false
+language: node_js
+node_js:
+    - stable
+    - '0.12'
+install:
+    - npm install --ignore-scripts
+cache:
+  directories:
+    - node_modules
+git:
+  depth: 1

@@ -1,10 +1,6 @@
 ## Description
 > A few sentences describing the overall goals of the pull request’s commits. If this PR is closing an issues, be sure to reference the issue number in the message.
 
-## Status
-- [ ] Ready for review
-- [ ] In development
-
 ## Todos
 > Make sure you’ve completed these:
 
