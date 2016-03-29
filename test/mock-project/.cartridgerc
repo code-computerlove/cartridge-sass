@@ -3,12 +3,6 @@
   "dateGenerated": "29/03/2016",
   "modules": [
     {
-      "name": "cartridge-images",
-      "version": "0.1.0",
-      "site": "https://github.com/cartridge/cartridge-images",
-      "task": "cartridge-images/task.js"
-    },
-    {
       "name": "cartridge-sass",
       "version": "0.1.1",
       "site": "https://github.com/cartridge/cartridge-sass",
