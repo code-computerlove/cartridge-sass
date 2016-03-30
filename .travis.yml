@@ -20,7 +20,6 @@ script:
     - mocha
 cache:
   directories:
-    - node_modules
     - test/mock-project/node_modules
 git:
   depth: 1
