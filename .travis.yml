@@ -4,18 +4,16 @@ node_js:
     - stable
     - '0.12'
 install:
+    # Only install dev dependencies
+    - npm install --dev
     # Copy over module config and package into mock project directory
     - cp _config/task.sass.js test/mock-project/_config/task.sass.js
     - cp package.json test/mock-project/package.json
     # Go into mock-project directory
     - cd test/mock-project
     # Get all module dependencies (don't run post install)
-    - npm install --ignore-scripts
+    - npm install --ignore-scripts --production
     # Manually build node-sass (--ignore-scripts cancels this)
-    - npm rebuild node-sass
-    - cd node_modules
-    - ls -l
-    - cd ..
     # Go back to the module root
     - cd ../..
     # Install mocha
@@ -25,6 +23,7 @@ script:
     - mocha
 cache:
   directories:
+    - node_modules
     - test/mock-project/node_modules
 git:
   depth: 1
