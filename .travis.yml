@@ -6,6 +6,10 @@ node_js:
 install:
     - export NODE_ENV=development
     - npm install
+    # Install specific gulp-sass version.
+    # Compromise between getting builds working for more recent NodeJS versions
+    - npm uninstall gulp-sass
+    - npm install gulp-sass@2
     - cp _config/task.sass.js test/mock-project/_config/task.sass.js
     - cp package.json test/mock-project/package.json
     - cd test/mock-project
