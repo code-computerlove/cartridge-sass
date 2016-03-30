@@ -7,11 +7,9 @@
   },
   "paths": {
     "src": {
-      "images": "_source/images/",
       "sass": "_source/styles/"
     },
     "dest": {
-      "images": "public/_client/images/",
       "sass": "public/_client/styles/"
     }
   }
