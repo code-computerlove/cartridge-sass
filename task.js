@@ -47,6 +47,8 @@ module.exports = function(gulp, projectConfig, tasks) {
 
 	console.log('---------');
 	console.log(projectConfig.paths.src[TASK_NAME]);
+	console.log(projectConfig);
+	console.log(taskConfig);
 	console.log('---------');
 
 	gulp.task(TASK_NAME + '-generate-contents', function () {
