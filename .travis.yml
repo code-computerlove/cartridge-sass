@@ -9,8 +9,10 @@ install:
     - cp package.json test/mock-project/package.json
     # Go into mock-project directory
     - cd test/mock-project
-    # Get all module dependencies
-    - npm install
+    # Get all module dependencies (don't run post install)
+    - npm install --ignore-scripts
+    # Manually build node-sass (--ignore-scripts cancels this)
+    - npm rebuild node-sass
     # Go back to the module root
     - cd ../..
 script:
