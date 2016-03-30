@@ -5,17 +5,6 @@
     "dest": "public/_client",
     "src": "_source"
   },
-  "tests": {
-    "configFile": "karma.conf.js",
-    "reporters": {
-      "production": [
-        "teamcity"
-      ],
-      "dev": [
-        "mocha"
-      ]
-    }
-  },
   "paths": {
     "src": {
       "images": "_source/images/",
