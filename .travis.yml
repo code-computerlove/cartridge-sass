@@ -6,6 +6,7 @@ node_js:
 install:
     # Only install dev dependencies
     - npm install --ignore-scripts
+    - npm rebuild node-sass
     # Copy over module config and package into mock project directory
     - cp _config/task.sass.js test/mock-project/_config/task.sass.js
     - cp package.json test/mock-project/package.json
