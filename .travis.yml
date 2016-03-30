@@ -4,14 +4,15 @@ node_js:
     - stable
     - '0.12'
 install:
-    - npm install --ignore-scripts
+    - export NODE_ENV=development
+    - npm install --dev
     - npm uninstall gulp-sass
     - npm install gulp-sass@2
     - npm rebuild node-sass
     - cp _config/task.sass.js test/mock-project/_config/task.sass.js
     - cp package.json test/mock-project/package.json
     - cd test/mock-project
-    - npm install --ignore-scripts
+    - npm install --production
     - npm uninstall gulp-sass
     - npm install gulp-sass@2
     - npm rebuild node-sass

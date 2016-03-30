@@ -1,5 +1,11 @@
 'use strict';
 
+if(process.env.NODE_ENV === 'development') {
+	console.log('NODE_ENV is development');
+	console.log('Skipping postinstall.js steps');
+	process.exit(0);
+}
+
 // Package config
 var packageConfig = require('../package.json');
 
