@@ -23,8 +23,7 @@ install:
     - npm install gulp
 script:
     # Run tests
-    # - mocha
-    - gulp sass
+    - mocha
 cache:
   directories:
     - node_modules
