@@ -13,6 +13,9 @@ install:
     - npm install --ignore-scripts
     # Manually build node-sass (--ignore-scripts cancels this)
     - npm rebuild node-sass
+    - cd node_modules
+    - ls -l
+    - cd ..
     # Go back to the module root
     - cd ../..
     # Install mocha
