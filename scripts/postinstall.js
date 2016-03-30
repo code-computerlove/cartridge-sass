@@ -18,7 +18,7 @@ function projectConfigAddPaths(config) {
 }
 
 // Make sure that the .cartridgerc file exists
-cartridgeUtil.ensureCartridgeExists();
+// cartridgeUtil.ensureCartridgeExists();
 // Run through the project setup
 cartridgeUtil.addToRc()
 	.then(function() {
