@@ -16,12 +16,12 @@ install:
     # - npm uninstall gulp-sass
     # - npm install gulp-sass@2
     # - npm rebuild node-sass
-    # - npm install mocha -g
-    # - npm install gulp-cli -g
-    # - npm install gulp
-    # - cd ../..
+    - npm install gulp
+    - cd ../..
+    - npm install mocha -g
+    - npm install gulp-cli -g
 script:
-    # - mocha
+    - mocha
 cache:
   directories:
     - node_modules
