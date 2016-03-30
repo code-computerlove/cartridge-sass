@@ -5,7 +5,7 @@ node_js:
     - '0.12'
 install:
     # Only install dev dependencies
-    - npm install --dev
+    - npm install --dev --ignore-scripts
     # Copy over module config and package into mock project directory
     - cp _config/task.sass.js test/mock-project/_config/task.sass.js
     - cp package.json test/mock-project/package.json
