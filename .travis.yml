@@ -4,16 +4,25 @@ node_js:
     - stable
     - '0.12'
 install:
+    # Do base install, ignoring npm scripts
+    # This doesn't check if cartridge is installed on post-install
     - npm install --ignore-scripts
+    # Ignore-scripts stops ALL npm scripts
+    # Manually build node-sass
     - npm rebuild node-sass
+    # Install mocha for testing
     - npm install -g mocha
+    # Copy over module config and package into mock project directory
     - cp _config/task.sass.js test/mock-project/_config/task.sass.js
     - cp package.json test/mock-project/package.json
+    # Go into test directory and do install steps as above
     - cd test/mock-project
     - npm install --ignore-scripts
     - npm rebuild node-sass
+    # Go back to the module root
     - cd ../..
 script:
+    # Run tests
     - mocha
 cache:
   directories:
