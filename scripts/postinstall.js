@@ -1,8 +1,8 @@
 'use strict';
 
 if(process.env.NODE_ENV === 'development') {
-	console.log('NODE_ENV is development');
-	console.log('Skipping postinstall.js steps');
+	console.log('NODE_ENV is set to development');
+	console.log('Skipping postinstall.js');
 	process.exit(0);
 }
 
