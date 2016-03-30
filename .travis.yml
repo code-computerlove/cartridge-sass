@@ -19,6 +19,7 @@ install:
     # - cd ../..
     - npm install mocha -g
     - npm install gulp-cli -g
+    - npm install gulp
 script:
     # Run tests
     # - mocha
