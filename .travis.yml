@@ -17,8 +17,8 @@ install:
     # Manually build node-sass (--ignore-scripts cancels this)
     # Go back to the module root
     # - cd ../..
-    # Install mocha
     - npm install mocha -g
+    - npm install gulp-cli -g
 script:
     # Run tests
     # - mocha
