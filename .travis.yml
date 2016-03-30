@@ -17,7 +17,7 @@ install:
     - npm rebuild node-sass
     # Manually build node-sass (--ignore-scripts cancels this)
     # Go back to the module root
-    # - cd ../..
+    - cd ../..
     - npm install mocha -g
     - npm install gulp-cli -g
     - npm install gulp
