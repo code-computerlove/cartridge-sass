@@ -18,11 +18,13 @@ var MAIN_CSS_SOURCEMAP_FILEPATH = path.join(STYLE_DEST_DIR, 'main.css.map');
 
 process.chdir(MOCK_PROJECT_DIR);
 
-function runGulpTask(options, callback) {
-
+function cleanUp() {
 	fs.remove(MAIN_SCSS_FILEPATH);
 	fs.remove(MAIN_CSS_FILEPATH);
 	fs.remove(MAIN_CSS_SOURCEMAP_FILEPATH);
+}
+
+function runGulpTask(options, callback) {
 
     var gulp = spawn('gulp', options)
 
@@ -40,6 +42,10 @@ describe('As a user of the cartridge-sass module', function() {
 
 		before(function(done) {
 			runGulpTask(['sass'], done)
+		})
+
+		after(function() {
+			cleanUp();
 		})
 
 		it('should generate the main.scss file in the _source dir', function() {
@@ -60,6 +66,10 @@ describe('As a user of the cartridge-sass module', function() {
 
 		before(function(done) {
 			runGulpTask(['sass', '--prod'], done)
+		})
+
+		after(function() {
+			cleanUp();
 		})
 
 		it('should generate the main.scss file in the _source dir', function() {
