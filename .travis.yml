@@ -5,14 +5,15 @@ node_js:
     - '0.12'
 install:
     # Only install dev dependencies
-    - npm install --dev --ignore-scripts
+    - npm install --ignore-scripts
     # Copy over module config and package into mock project directory
     - cp _config/task.sass.js test/mock-project/_config/task.sass.js
     - cp package.json test/mock-project/package.json
     # Go into mock-project directory
     - cd test/mock-project
     # Get all module dependencies (don't run post install)
-    - npm install --ignore-scripts --production
+    - npm install --ignore-scripts
+    - npm rebuild node-sass
     # Manually build node-sass (--ignore-scripts cancels this)
     # Go back to the module root
     - cd ../..
