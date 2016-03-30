@@ -45,6 +45,10 @@ module.exports = function(gulp, projectConfig, tasks) {
 	*	MODULE TASKS
 	* ---------------------*/
 
+	console.log('---------');
+	console.log(projectConfig.paths.src[TASK_NAME]);
+	console.log('---------');
+
 	gulp.task(TASK_NAME + '-generate-contents', function () {
 		return gulp.src(taskConfig.itcss)
 			.pipe(sgc(projectConfig.paths.src[TASK_NAME] + 'main.scss', projectConfig.creds))
