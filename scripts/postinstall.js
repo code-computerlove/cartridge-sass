@@ -1,11 +1,5 @@
 'use strict';
 
-if(process.env.NODE_ENV === 'development') {
-	console.log('NODE_ENV is set to development');
-	console.log('Skipping postinstall.js');
-	process.exit(0);
-}
-
 // Package config
 var packageConfig = require('../package.json');
 
@@ -23,6 +17,8 @@ function projectConfigAddPaths(config) {
 	return config;
 }
 
+// Exit is NODE_ENV is development
+cartridgeUtil.exitIfDevEnvironment();
 // Make sure that the .cartridgerc file exists
 cartridgeUtil.ensureCartridgeExists();
 // Run through the project setup
