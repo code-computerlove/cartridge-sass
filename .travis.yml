@@ -6,8 +6,8 @@ node_js:
 install:
     - export NODE_ENV=development
     - npm install
-    # - npm uninstall gulp-sass
-    # - npm install gulp-sass@2
+    - npm uninstall gulp-sass
+    - npm install gulp-sass@2
     # - npm rebuild node-sass
     # - cp _config/task.sass.js test/mock-project/_config/task.sass.js
     # - cp package.json test/mock-project/package.json
