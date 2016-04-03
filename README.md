@@ -1,5 +1,7 @@
 # Cartridge Sass [![Build Status](https://travis-ci.org/cartridge/cartridge-sass.svg?branch=master)](https://travis-ci.org/cartridge/cartridge-sass)
 
+**If you are using this module on windows, it is recommend to use the [cartridge-sass-legacy](https://github.com/cartridge/cartridge-sass-legacy) module instead to maximise comptability.**
+
 > Sass expansion pack for [Cartridge](https://github.com/cartridge/cartridge)
 
 To use this module, you will need [cartridge-cli](https://github.com/cartridge/cartridge-cli) installed and have a cartridge project setup.
