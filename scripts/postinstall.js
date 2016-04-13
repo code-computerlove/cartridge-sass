@@ -11,8 +11,13 @@ var TASK_NAME = 'sass';
 
 // Transform function for adding paths
 function projectConfigAddPaths(config) {
-	config.paths.src[TASK_NAME]  = config.dirs.src  + '/styles/';
-	config.paths.dest[TASK_NAME] = config.dirs.dest + '/styles/';
+	if(!config.paths.src.hasOwnProperty(TASK_NAME)) {
+		config.paths.src[TASK_NAME]  = config.dirs.src  + '/styles/';
+	}
+
+	if(!config.paths.dest.hasOwnProperty(TASK_NAME)) {
+		config.paths.dest[TASK_NAME]  = config.dirs.dest  + '/styles/';
+	}
 
 	return config;
 }
