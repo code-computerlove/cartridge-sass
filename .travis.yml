@@ -3,8 +3,9 @@ language: node_js
 node_js:
     - stable
     - '0.12'
+env:
+    - NODE_ENV=development
 install:
-    - export NODE_ENV=development
     - npm install
     # Install specific gulp-sass version.
     # Compromise between getting builds working for more recent NodeJS versions
