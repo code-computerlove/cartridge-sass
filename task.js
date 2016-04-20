@@ -21,7 +21,6 @@ var pxToRem      = require('postcss-pxtorem');
 var mqPacker     = require('css-mqpacker');
 
 module.exports = function(gulp, projectConfig, tasks) {
-
 	/* --------------------
 	*	CONFIGURATION
 	* ---------------------*/
