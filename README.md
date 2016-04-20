@@ -38,11 +38,9 @@ The [FrontEnd CSS guidelines](https://github.com/code-computerlove/frontend-guid
 * * *
 
 ## Development
-### Commit message standards
-Try and adhere as closely as possible to the [Angular commit messages guidelines](https://github.com/angular/angular.js/blob/master/CONTRIBUTING.md#-git-commit-guidelines).
+Please follow the instructions within the [base module development guide](https://github.com/cartridge/base-module/wiki/Development-guide) when working on this project.
 
-[Commitizen](https://github.com/commitizen/cz-cli) is a command line tool which can help with this:
-```sh
-npm install -g commitizen
-```
-Now, simply use `git cz` instead of `git commit` when committing.
+### Semantic Release
+In addition to the base module guide, this project uses Semantic release to manage releases to NPM. When making changes and following the required commit message format releases are managed for you.
+
+When the commit passes tests on [Travis](https://travis-ci.org/cartridge/cartridge-sass) a new version will be published based on the content of the commits since the last release. For more information please see the [Semantic release project on GitHub](https://github.com/semantic-release/semantic-release)
