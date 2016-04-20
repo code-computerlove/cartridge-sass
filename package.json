@@ -1,6 +1,6 @@
 {
   "name": "cartridge-sass",
-  "version": "0.2.3",
+  "version": "1.0.0",
   "description": "Sass module for the cartridge project",
   "keywords": [
     "gulp",
@@ -27,7 +27,8 @@
     "postinstall": "node scripts/postinstall.js",
     "preuninstall": "node scripts/preuninstall.js",
     "test": "npm run lint",
-    "lint": "eslint task.js _config/*.js scripts/*.js"
+    "lint": "eslint task.js _config/*.js scripts/*.js",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "dependencies": {
     "autoprefixer": "6.3.4",
@@ -49,7 +50,8 @@
     "fs-extra": "^0.26.7",
     "ghooks": "^1.2.1",
     "mocha": "^2.4.5",
-    "validate-commit-msg": "^2.6.0"
+    "validate-commit-msg": "^2.6.0",
+    "semantic-release": "^4.3.5"
   },
   "config": {
     "commitizen": {
