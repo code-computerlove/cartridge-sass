@@ -16,6 +16,10 @@ To use this module, you will need [cartridge-cli](https://github.com/cartridge/c
 npm install cartridge-sass --save-dev
 ```
 
+```shell
+npm uninstall cartridge-sass --save-dev
+```
+
 This module adds the following to a project:
 
 * Sass compilation using [gulp-sass](https://github.com/dlmanning/gulp-sass)
