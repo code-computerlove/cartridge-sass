@@ -21,7 +21,6 @@ var pxToRem      = require('postcss-pxtorem');
 var mqPacker     = require('css-mqpacker');
 
 module.exports = function(gulp, projectConfig, tasks) {
-
 	/* --------------------
 	*	CONFIGURATION
 	* ---------------------*/
@@ -47,7 +46,7 @@ module.exports = function(gulp, projectConfig, tasks) {
 
 	gulp.task(TASK_NAME + '-generate-contents', function () {
 		return gulp.src(taskConfig.itcss)
-			.pipe(sgc(projectConfig.paths.src[TASK_NAME] + 'main.scss', projectConfig.creds))
+			.pipe(sgc(taskConfig.src, projectConfig.creds))
 			.pipe(gulp.dest(projectConfig.paths.src[TASK_NAME]));
 	});
 

@@ -1,10 +1,8 @@
 sudo: false
 language: node_js
-node_js:
-    - stable
-    - '0.12'
+env:
+    - NODE_ENV=development
 install:
-    - export NODE_ENV=development
     - npm install
     # Install specific gulp-sass version.
     # Compromise between getting builds working for more recent NodeJS versions
@@ -20,9 +18,29 @@ install:
     - npm install gulp-cli -g
 script:
     - mocha
+    - npm run lint
 cache:
   directories:
     - node_modules
     - test/mock-project/node_modules
 git:
   depth: 1
+
+notifications:
+  email: false
+node_js:
+  - stable
+  - '4'
+  - '0.12'
+before_install:
+  - npm i -g npm@^2.0.0
+before_script:
+  - npm prune
+after_success:
+  - 'curl -Lo travis_after_all.py https://git.io/travis_after_all'
+  - python travis_after_all.py
+  - export $(cat .to_export_back) &> /dev/null
+  - npm run semantic-release
+branches:
+  except:
+    - /^v\d+\.\d+\.\d+$/

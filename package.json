@@ -1,6 +1,6 @@
 {
   "name": "cartridge-sass",
-  "version": "0.2.0",
+  "version": "1.0.0",
   "description": "Sass module for the cartridge project",
   "keywords": [
     "gulp",
@@ -25,25 +25,59 @@
   },
   "scripts": {
     "postinstall": "node scripts/postinstall.js",
-    "preuninstall": "node scripts/preuninstall.js"
+    "preuninstall": "node scripts/preuninstall.js",
+    "test": "npm run lint",
+    "lint": "eslint task.js _config/*.js scripts/*.js",
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "dependencies": {
-    "autoprefixer": "6.3.4",
-    "cartridge-module-util": "~0.2.1",
+    "autoprefixer": "6.3.6",
+    "cartridge-module-util": "0.4.1",
     "css-mqpacker": "4.0.1",
     "cssnano": "3.5.2",
     "gulp-if": "2.0.0",
     "gulp-postcss": "6.1.0",
     "gulp-rename": "1.2.2",
-    "gulp-sass": "1.3.3",
+    "gulp-sass": "2.2.0",
     "gulp-sass-generate-contents": "0.1.3",
-    "gulp-sourcemaps": "1.6.0",
+    "gulp-sourcemaps": "1.5.2",
     "postcss-pxtorem": "3.3.1"
   },
   "devDependencies": {
     "chai": "1.10.0",
-    "chai-fs": "^0.1.0",
-    "fs-extra": "^0.26.7",
-    "mocha": "^2.4.5"
+    "chai-fs": "0.1.0",
+    "cz-conventional-changelog": "1.1.5",
+    "eslint": "2.8.0",
+    "fs-extra": "0.28.0",
+    "ghooks": "1.2.1",
+    "mocha": "2.4.5",
+    "semantic-release": "4.3.5",
+    "validate-commit-msg": "2.6.1"
+  },
+  "config": {
+    "commitizen": {
+      "path": "./node_modules/cz-conventional-changelog"
+    },
+    "ghooks": {
+      "commit-msg": "validate-commit-msg"
+    },
+    "validate-commit-msg": {
+      "types": [
+        "feat",
+        "fix",
+        "docs",
+        "style",
+        "refactor",
+        "perf",
+        "test",
+        "chore",
+        "revert"
+      ],
+      "warnOnFail": false,
+      "maxSubjectLength": 100,
+      "subjectPattern": ".+",
+      "subjectPatternErrorMsg": "subject does not match subject pattern!",
+      "helpMessage": ""
+    }
   }
 }

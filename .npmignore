@@ -1,3 +1,5 @@
-test
+.git
 .github
 .travis.yml
+appveyor.yml
+test

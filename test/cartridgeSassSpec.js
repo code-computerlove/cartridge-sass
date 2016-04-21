@@ -26,12 +26,11 @@ function cleanUp() {
 
 function runGulpTask(options, callback) {
 
-    var gulp = spawn('gulp', options)
+	var gulp = spawn('gulp', options)
 
-    gulp.on('close', function() {
-        callback();
-    });
-
+	gulp.on('close', function() {
+		callback();
+	});
 }
 
 describe('As a user of the cartridge-sass module', function() {
