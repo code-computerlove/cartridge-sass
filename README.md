@@ -44,6 +44,9 @@ The [FrontEnd CSS guidelines](https://github.com/code-computerlove/frontend-guid
 ## Development
 Please follow the instructions within the [base module development guide](https://github.com/cartridge/base-module/wiki/Development-guide) when working on this project.
 
+### Branches
+New work should be commited to the `develop` branch and then merged in to master once complete. Documentation changes can be performed on the master branch.
+
 ### Semantic Release
 In addition to the base module guide, this project uses Semantic release to manage releases to NPM. When making changes and following the required commit message format releases are managed for you.
 
