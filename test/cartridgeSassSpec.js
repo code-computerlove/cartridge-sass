@@ -24,65 +24,123 @@ function cleanUp() {
 	fs.remove(MAIN_CSS_SOURCEMAP_FILEPATH);
 }
 
-function runGulpTask(options, callback) {
+function getConfig() {
+	var testPath      = path.resolve(process.cwd(), '_config');
+	var config        = require(path.resolve(testPath, 'project.json'));
+	config.creds      = require(path.resolve(testPath, 'creds.json'));
+	config.cleanPaths = [];
 
-	var gulp = spawn('gulp', options)
-
-	gulp.on('close', function() {
-		callback();
-	});
+	return config;
 }
 
+function getTasks() {
+	var tasks     = {};
+	tasks.default = [];
+	tasks.watch   = [];
+
+	return tasks;
+}
+
+describe('As a gulpfile', function() {
+	describe('when a task is included', function() {
+		var tasks;
+		var config;
+
+		before(function(done) {
+			config = getConfig();
+			config.dirs.config = config.dirs.config;
+
+			tasks = getTasks();
+
+			require(path.resolve(process.cwd(), '..', '..', 'task.js'))({task: function(){}}, config, tasks);
+
+			done();
+		});
+
+		it('should add one task to the default group', function() {
+			expect(tasks.default.length).to.equal(1);
+		});
+
+		it('should add the sass task to the default group', function() {
+			expect(tasks.default[0]).to.equal('sass');
+		});
+
+		it('should add one task to the watch group', function() {
+			expect(tasks.watch.length).to.equal(1);
+		});
+
+		it('should add the watch:sass task to the watch group', function() {
+			expect(tasks.watch[0]).to.equal('watch:sass');
+		});
+
+		it('should add one clean path to the clean config', function() {
+			expect(config.cleanPaths.length).to.equal(1);
+		});
+
+		it('should add the generated styles path to the clean config', function() {
+			expect(config.cleanPaths[0]).to.equal('public/_client/styles/');
+		});
+	});
+})
+
 describe('As a user of the cartridge-sass module', function() {
+	var gulprunner = require(path.resolve(process.cwd(), 'gulprunner.js'));
 
 	this.timeout(10000);
 
 	describe('when `gulp sass` is run WITHOUT production flag', function() {
 
 		before(function(done) {
-			runGulpTask(['sass'], done)
-		})
+			gulprunner.setDev();
+			gulprunner.run(function(){
+				done();
+			});
+		});
 
 		after(function() {
 			cleanUp();
-		})
+		});
 
 		it('should generate the main.scss file in the _source dir', function() {
 			expect(MAIN_SCSS_FILEPATH).to.be.a.file();
-		})
+		});
 
 		it('should add the main.css file to the public styles folder', function() {
 			expect(MAIN_CSS_FILEPATH).to.be.a.file();
-		})
+		});
 
 		it('should add the main.css.map sourcemap file to the public styles folder', function() {
 			expect(MAIN_CSS_SOURCEMAP_FILEPATH).to.be.a.file();
-		})
+		});
 
 	})
 
 	describe('when `gulp sass` is run WITH production flag', function() {
 
 		before(function(done) {
-			runGulpTask(['sass', '--prod'], done)
-		})
+			gulprunner.setProd();
+			gulprunner.run(function(){
+				done();
+			});
+		});
 
 		after(function() {
 			cleanUp();
-		})
+		});
 
 		it('should generate the main.scss file in the _source dir', function() {
 			expect(MAIN_SCSS_FILEPATH).to.be.a.file();
-		})
+		});
 
 		it('should add the main.css file to the public styles folder', function() {
 			expect(MAIN_CSS_FILEPATH).to.be.a.file();
-		})
+		});
 
-		it('should add the main.css.map sourcemap file to the public styles folder', function() {
-			expect(MAIN_CSS_SOURCEMAP_FILEPATH).to.be.a.file();
-		})
+		it('should not add the main.css.map sourcemap file to the public styles folder', function() {
+			console.log('before test');
+			expect(MAIN_CSS_SOURCEMAP_FILEPATH).to.not.be.a.file();
+		});
 
-	})
+	});
 
-})
+});

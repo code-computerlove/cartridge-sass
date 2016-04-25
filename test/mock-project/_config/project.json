@@ -1,16 +1,17 @@
 {
-  "dirs": {
-    "build": "build/_client",
-    "config": "_config",
-    "dest": "public/_client",
-    "src": "_source"
-  },
-  "paths": {
-    "src": {
-      "sass": "_source/styles/"
-    },
-    "dest": {
-      "sass": "public/_client/styles/"
-    }
-  }
+	"dirs": {
+		"build": "build/_client/",
+		"config": "_config/",
+		"dest": "public/_client/",
+		"src": "_source/"
+	},
+	"paths": {
+		"src": {
+			"components": "components/",
+			"sass": "_source/styles/"
+		},
+		"dest": {
+			"sass": "public/_client/styles/"
+		}
+	}
 }
