@@ -26,8 +26,12 @@ cache:
 notifications:
   email: false
 node_js:
-  - stable
-  - '4'
+  - '5'
+  - '5.1'
+  - '4.2'
+  - '4.1'
+  - '4.0''
+  - '4''
   - '0.12'
 before_install:
   - npm i -g npm@^2.0.0
