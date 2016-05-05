@@ -3,7 +3,7 @@
 'use strict';
 
 function getTaskConfig(projectConfig) {
-	console.log(projectConfig.paths.src.sass);
+
 	var taskConfig = {
 		autoprefixer: {
 			browsers: ['>5%']
