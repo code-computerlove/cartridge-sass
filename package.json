@@ -26,7 +26,7 @@
   "scripts": {
     "postinstall": "node scripts/postinstall.js",
     "preuninstall": "node scripts/preuninstall.js",
-    "test": "npm run lint",
+    "test": "mocha && npm run lint",
     "lint": "eslint task.js _config/*.js scripts/*.js",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
