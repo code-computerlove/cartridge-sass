@@ -12,19 +12,19 @@ cache:
     - node_modules
     - test/mock-project/node_modules
 notifications:
-  email: false
+    email: false
 node_js:
-  - '5'
-  - '5.1'
-  - '4.2'
-  - '4.1'
-  - '4.0''
-  - '4''
-  - '0.12'
+    - '5'
+    - '5.1'
+    - '4.2'
+    - '4.1'
+    - '4.0'
+    - '4'
+    - '0.12'
 before_install:
-  - npm i -g npm@^2.0.0
+    - npm i -g npm@^2.0.0
 before_script:
-  - npm prune
+    - npm prune
 after_success:
   - 'curl -Lo travis_after_all.py https://git.io/travis_after_all'
   - python travis_after_all.py
