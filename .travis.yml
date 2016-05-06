@@ -4,9 +4,6 @@ env:
     - NODE_ENV=development
 install:
     - npm install
-    - cd test/mock-project
-    - npm install
-    - cd ../..
 script:
     - mocha
     - npm run lint
