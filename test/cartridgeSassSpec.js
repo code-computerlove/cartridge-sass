@@ -28,7 +28,6 @@ describe('As a gulpfile', function() {
 	describe('when a task is included', function() {
 		var basicrunner;
 
-
 		before(function(done) {
 			basicrunner = require(path.resolve(process.cwd(), 'basicrunner.js'));
 
@@ -71,9 +70,7 @@ describe('As a user of the cartridge-sass module', function() {
 
 		before(function(done) {
 			gulprunner.setDev();
-			gulprunner.run(function(){
-				done();
-			});
+			gulprunner.run(done);
 		});
 
 		after(function() {
@@ -98,9 +95,7 @@ describe('As a user of the cartridge-sass module', function() {
 
 		before(function(done) {
 			gulprunner.setProd();
-			gulprunner.run(function(){
-				done();
-			});
+			gulprunner.run(done);
 		});
 
 		after(function() {
@@ -116,9 +111,10 @@ describe('As a user of the cartridge-sass module', function() {
 		});
 
 		// Disabled pending this issue being resolved: https://github.com/chaijs/chai-fs/issues/9
-		// it('should not add the main.css.map sourcemap file to the public styles folder', function() {
-		// 	expect(MAIN_CSS_SOURCEMAP_FILEPATH).not.to.be.a.file();
-		// });
+		// .not.to.be.a.file(); ALWAYS returns TRUE
+		it('should not add the main.css.map sourcemap file to the public styles folder', function() {
+			expect(MAIN_CSS_SOURCEMAP_FILEPATH).to.not.be.a.path();
+		});
 
 	});
 
