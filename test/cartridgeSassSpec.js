@@ -56,7 +56,7 @@ describe('As a gulpfile', function() {
 
 		it('should add the generated styles path to the clean config', function() {
 			var relative = path.relative(process.cwd(), basicrunner.config.cleanPaths[0]);
-			expect(relative).to.equal('public/_client/styles');
+			expect(relative).to.equal(path.join('public', '_client', 'styles'));
 		});
 	});
 })
