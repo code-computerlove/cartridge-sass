@@ -28,10 +28,10 @@ cartridgeUtil.exitIfDevEnvironment();
 cartridgeUtil.ensureCartridgeExists();
 // Run through the project setup
 cartridgeUtil.addToRc()
-	.then(function() {
+	.then(function runModifyProjectConfig() {
 		return cartridgeUtil.modifyProjectConfig(projectConfigAddPaths);
 	})
-	.then(function(){
+	.then(function runAddModuleConfig(){
 		return cartridgeUtil.addModuleConfig(path.resolve('_config', 'task.' + TASK_NAME + '.js'));
 	})
 	.then(cartridgeUtil.finishInstall);
