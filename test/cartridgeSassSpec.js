@@ -24,65 +24,98 @@ function cleanUp() {
 	fs.remove(MAIN_CSS_SOURCEMAP_FILEPATH);
 }
 
-function runGulpTask(options, callback) {
+describe('As a gulpfile', function() {
+	describe('when a task is included', function() {
+		var basicrunner;
 
-	var gulp = spawn('gulp', options)
+		before(function(done) {
+			basicrunner = require(path.resolve(process.cwd(), 'basicrunner.js'));
 
-	gulp.on('close', function() {
-		callback();
+			done();
+		});
+
+		it('should add one task to the default group', function() {
+			expect(basicrunner.tasks.default.length).to.equal(1);
+		});
+
+		it('should add the sass task to the default group', function() {
+			expect(basicrunner.tasks.default[0]).to.equal('sass');
+		});
+
+		it('should add one task to the watch group', function() {
+			expect(basicrunner.tasks.watch.length).to.equal(1);
+		});
+
+		it('should add the watch:sass task to the watch group', function() {
+			expect(basicrunner.tasks.watch[0]).to.equal('watch:sass');
+		});
+
+		it('should add one clean path to the clean config', function() {
+			expect(basicrunner.config.cleanPaths.length).to.equal(1);
+		});
+
+		it('should add the generated styles path to the clean config', function() {
+			var relative = path.relative(process.cwd(), basicrunner.config.cleanPaths[0]);
+			expect(relative).to.equal('public/_client/styles');
+		});
 	});
-}
+})
 
 describe('As a user of the cartridge-sass module', function() {
+	var gulprunner = require(path.resolve(process.cwd(), 'gulprunner.js'));
 
 	this.timeout(10000);
 
 	describe('when `gulp sass` is run WITHOUT production flag', function() {
 
 		before(function(done) {
-			runGulpTask(['sass'], done)
-		})
+			gulprunner.setDev();
+			gulprunner.run(done);
+		});
 
 		after(function() {
 			cleanUp();
-		})
+		});
 
 		it('should generate the main.scss file in the _source dir', function() {
 			expect(MAIN_SCSS_FILEPATH).to.be.a.file();
-		})
+		});
 
 		it('should add the main.css file to the public styles folder', function() {
 			expect(MAIN_CSS_FILEPATH).to.be.a.file();
-		})
+		});
 
 		it('should add the main.css.map sourcemap file to the public styles folder', function() {
 			expect(MAIN_CSS_SOURCEMAP_FILEPATH).to.be.a.file();
-		})
+		});
 
 	})
 
 	describe('when `gulp sass` is run WITH production flag', function() {
 
 		before(function(done) {
-			runGulpTask(['sass', '--prod'], done)
-		})
+			gulprunner.setProd();
+			gulprunner.run(done);
+		});
 
 		after(function() {
 			cleanUp();
-		})
+		});
 
 		it('should generate the main.scss file in the _source dir', function() {
 			expect(MAIN_SCSS_FILEPATH).to.be.a.file();
-		})
+		});
 
 		it('should add the main.css file to the public styles folder', function() {
 			expect(MAIN_CSS_FILEPATH).to.be.a.file();
-		})
+		});
 
-		it('should add the main.css.map sourcemap file to the public styles folder', function() {
-			expect(MAIN_CSS_SOURCEMAP_FILEPATH).to.be.a.file();
-		})
+		// Disabled pending this issue being resolved: https://github.com/chaijs/chai-fs/issues/9
+		// .not.to.be.a.file(); ALWAYS returns TRUE
+		it('should not add the main.css.map sourcemap file to the public styles folder', function() {
+			expect(MAIN_CSS_SOURCEMAP_FILEPATH).to.not.be.a.path();
+		});
 
-	})
+	});
 
-})
+});

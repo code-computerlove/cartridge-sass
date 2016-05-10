@@ -3,6 +3,7 @@
 'use strict';
 
 function getTaskConfig(projectConfig) {
+
 	var taskConfig = {
 		autoprefixer: {
 			browsers: ['>5%']
@@ -28,7 +29,7 @@ function getTaskConfig(projectConfig) {
 			projectConfig.paths.src.components + '**/*.scss',
 			projectConfig.paths.src.sass + '/_trumps/*.scss'
 		],
-		src: projectConfig.paths.src.sass + 'main.scss',
+		src: projectConfig.paths.src.sass + '/main.scss',
 		watch: [
 			projectConfig.paths.src.sass + '**/*.scss',
 			projectConfig.paths.src.components + '**/*.scss'

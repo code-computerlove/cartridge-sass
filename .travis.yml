@@ -4,18 +4,6 @@ env:
     - NODE_ENV=development
 install:
     - npm install
-    # Install specific gulp-sass version.
-    # Compromise between getting builds working for more recent NodeJS versions
-    - npm uninstall gulp-sass
-    - npm install gulp-sass@2
-    - cp _config/task.sass.js test/mock-project/_config/task.sass.js
-    - cp package.json test/mock-project/package.json
-    - cd test/mock-project
-    - npm install
-    - npm install gulp
-    - cd ../..
-    - npm install mocha -g
-    - npm install gulp-cli -g
 script:
     - mocha
     - npm run lint
@@ -24,19 +12,15 @@ cache:
     - node_modules
     - test/mock-project/node_modules
 notifications:
-  email: false
+    email: false
 node_js:
-  - '5'
-  - '5.1'
-  - '4.2'
-  - '4.1'
-  - '4.0''
-  - '4''
-  - '0.12'
+    - '5.1'
+    - '4.4'
+    - '0.12'
 before_install:
-  - npm i -g npm@^2.0.0
+    - npm i -g npm@^2.0.0
 before_script:
-  - npm prune
+    - npm prune
 after_success:
   - 'curl -Lo travis_after_all.py https://git.io/travis_after_all'
   - python travis_after_all.py
