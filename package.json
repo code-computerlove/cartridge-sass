@@ -47,7 +47,7 @@
     "chai": "1.10.0",
     "chai-fs": "0.1.0",
     "cz-conventional-changelog": "1.1.6",
-    "eslint": "2.8.0",
+    "eslint": "2.9.0",
     "fs-extra": "0.29.0",
     "ghooks": "1.2.1",
     "gulp": "^3.9.1",
