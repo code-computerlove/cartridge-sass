@@ -1,5 +1,6 @@
 # Cartridge Sass
 [![Build Status](https://img.shields.io/travis/cartridge/cartridge-sass.svg?branch=master&style=flat-square)](https://travis-ci.org/cartridge/cartridge-sass)
+[![Appveyor status](https://ci.appveyor.com/api/projects/status/github/cartridge/cartridge-sass?branch=master&svg=true)](https://travis-ci.org/cartridge/cartridge-sass)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)](http://commitizen.github.io/cz-cli/)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat-square)](https://github.com/semantic-release/semantic-release)
 
@@ -12,6 +13,14 @@
 
 To use this module, you will need [cartridge-cli](https://github.com/cartridge/cartridge-cli) installed and have a cartridge project setup.
 
+## Maintainers
+
+| Name          | Github Profile                  |
+| ------------- |---------------------------------|
+| Barney Scott  | [bmds](https://github.com/bmds) |
+
+## Installation
+
 ```sh
 npm install cartridge-sass --save-dev
 ```
@@ -19,6 +28,8 @@ npm install cartridge-sass --save-dev
 ```shell
 npm uninstall cartridge-sass --save-dev
 ```
+
+## Dependencies
 
 This module adds the following to a project:
 
