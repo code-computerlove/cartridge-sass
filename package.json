@@ -28,6 +28,7 @@
     "preuninstall": "node scripts/preuninstall.js",
     "test": "mocha && npm run lint",
     "lint": "eslint task.js _config/*.js scripts/*.js",
+    "cover": "istanbul cover _mocha && open coverage/lcov-report/index.html",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
   "dependencies": {
@@ -50,7 +51,8 @@
     "eslint": "2.9.0",
     "fs-extra": "0.30.0",
     "ghooks": "1.2.1",
-    "gulp": "^3.9.1",
+    "gulp": "3.9.1",
+    "istanbul": "0.4.3",
     "mocha": "2.4.5",
     "semantic-release": "4.3.5",
     "validate-commit-msg": "2.6.1"

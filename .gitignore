@@ -13,4 +13,5 @@ node_modules
 
 #Tests
 public
+coverage
 main.scss
