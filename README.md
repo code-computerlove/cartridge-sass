@@ -39,7 +39,7 @@ This module adds the following to a project:
 * CSS manipulation using [gulp-postcss](https://github.com/postcss/gulp-postcss)
 * Automatic CSS vender prefixes using [autoprefixer](https://github.com/postcss/autoprefixer)
 * Media query merging using [css-mqpacker](https://github.com/hail2u/node-css-mqpacker)
-* CSS minification using [cssnano](https://github.com/ben-eb/cssnano) (`prod only`)
+* CSS minification using [cssnano](https://github.com/ben-eb/cssnano) (`--prod flag only`)
 * Conversion of pixels to rems using [postcss-pxtorem](https://github.com/cuth/postcss-pxtorem)
 
 ## Config
