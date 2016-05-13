@@ -27,7 +27,7 @@
     "postinstall": "node scripts/postinstall.js",
     "preuninstall": "node scripts/preuninstall.js",
     "test": "mocha && npm run lint",
-    "lint": "eslint task.js _config/*.js scripts/*.js",
+    "lint": "eslint *.js **/*.js",
     "cover": "istanbul cover _mocha && open coverage/lcov-report/index.html",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
