@@ -1,19 +1,19 @@
-var spawn = require('child_process').spawn;
-var path = require('path');
-var fs = require('fs-extra');
-var chai = require('chai');
+/*eslint-env node, mocha */
+
+var path   = require('path');
+var fs     = require('fs-extra');
+var chai   = require('chai');
 var expect = chai.expect;
 
 chai.use(require('chai-fs'));
 chai.should();
 
-var ROOT_DIR = process.cwd();
 var MOCK_PROJECT_DIR = path.join(process.cwd(), 'test', 'mock-project');
-var STYLE_SRC_DIR = path.join(MOCK_PROJECT_DIR, '_source', 'styles');
-var STYLE_DEST_DIR = path.join(MOCK_PROJECT_DIR, 'public', '_client', 'styles');
+var STYLE_SRC_DIR    = path.join(MOCK_PROJECT_DIR, '_source', 'styles');
+var STYLE_DEST_DIR   = path.join(MOCK_PROJECT_DIR, 'public', '_client', 'styles');
 
-var MAIN_SCSS_FILEPATH = path.join(STYLE_SRC_DIR, 'main.scss');
-var MAIN_CSS_FILEPATH = path.join(STYLE_DEST_DIR, 'main.css');
+var MAIN_SCSS_FILEPATH          = path.join(STYLE_SRC_DIR, 'main.scss');
+var MAIN_CSS_FILEPATH           = path.join(STYLE_DEST_DIR, 'main.css');
 var MAIN_CSS_SOURCEMAP_FILEPATH = path.join(STYLE_DEST_DIR, 'main.css.map');
 
 process.chdir(MOCK_PROJECT_DIR);
