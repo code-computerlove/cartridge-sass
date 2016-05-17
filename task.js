@@ -6,7 +6,6 @@
 // Gulp dependencies
 var sourcemaps = require('gulp-sourcemaps');
 var gulpif     = require('gulp-if');
-var rename     = require('gulp-rename');
 var path       = require('path');
 
 // Sass dependencies

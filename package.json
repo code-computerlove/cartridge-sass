@@ -27,7 +27,7 @@
     "postinstall": "node scripts/postinstall.js",
     "preuninstall": "node scripts/preuninstall.js",
     "test": "mocha && npm run lint",
-    "lint": "eslint task.js _config/*.js scripts/*.js",
+    "lint": "eslint *.js **/*.js",
     "cover": "istanbul cover _mocha && open coverage/lcov-report/index.html",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post"
   },
@@ -38,7 +38,6 @@
     "cssnano": "3.5.2",
     "gulp-if": "2.0.1",
     "gulp-postcss": "6.1.1",
-    "gulp-rename": "1.2.2",
     "gulp-sass": "2.3.1",
     "gulp-sass-generate-contents": "0.2.2",
     "gulp-sourcemaps": "1.5.2",
@@ -62,7 +61,8 @@
       "path": "./node_modules/cz-conventional-changelog"
     },
     "ghooks": {
-      "commit-msg": "validate-commit-msg"
+      "commit-msg": "validate-commit-msg",
+      "pre-push":   "npm t"
     },
     "validate-commit-msg": {
       "types": [
