@@ -46,6 +46,36 @@ This module adds the following to a project:
 
 Once installed, the config file `task.sass.js` is created and stored in the `_config` directory in the root of your cartridge project.
 
+The following settings are configured by default:
+
+### autoprefixer
+Configuration for [autoprefixer](https://github.com/postcss/autoprefixer) is set on this property. By default we set the browsers option to browsers with more than 5% usage.
+
+```javascript
+{
+	autoprefixer: {
+		browsers: ['>5%']
+	}
+}
+```
+For more options see the [autoprefixer options](https://github.com/postcss/autoprefixer#options)
+
+### mqpacker
+> TODO: Add basic info
+
+### pxtorem
+> TODO: Add basic info
+
+### itcss
+> TODO: Add basic info
+
+### src
+> TODO: Add basic info
+
+### watch
+> TODO: Add basic info
+
+
 ## Usage
 
 The [FrontEnd CSS guidelines](https://github.com/code-computerlove/frontend-guidelines/blob/master/FE-guidelines-CSS.md) are a good place to start when beginning your project
