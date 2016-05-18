@@ -21,8 +21,6 @@ button {
 .link-icon {
 
 	&::after {
-		@include svg($name: arrow-right);
-
 		content:     ' ';
 		font-size:   .6em;
 		margin-left: .5em;
@@ -43,8 +41,6 @@ button {
 	}
 
 	&::before {
-		@include svg($name: play);
-
 		font-size:      .7em;
 		margin-right:   .25em;
 		vertical-align: middle;

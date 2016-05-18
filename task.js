@@ -35,8 +35,15 @@ module.exports = function(gulp, projectConfig, tasks) {
 		mqPacker(taskConfig.mqpacker)
 	];
 
-	if(projectConfig.isProd) {
-		postCssPlugins.push(cssNano());
+	function getPostCssPlugins() {
+		var basic = postCssPlugins;
+
+		if(projectConfig.isProd) {
+			console.log('use nano');
+			basic.push(cssNano());
+		}
+
+		return basic;
 	}
 
 	/* --------------------
@@ -57,7 +64,7 @@ module.exports = function(gulp, projectConfig, tasks) {
 				includePaths:    [projectConfig.paths.src.components],
 				outputStyle:     'compact'
 			}))
-			.pipe(postcss(postCssPlugins))
+			.pipe(postcss(getPostCssPlugins()))
 			.pipe(gulpif(!projectConfig.isProd, sourcemaps.write('.'))) //Default only
 			.pipe(gulp.dest(projectConfig.paths.dest[TASK_NAME]));
 	});
