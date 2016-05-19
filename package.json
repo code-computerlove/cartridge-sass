@@ -34,7 +34,7 @@
   "dependencies": {
     "autoprefixer": "~6.3.6",
     "cartridge-module-util": "~0.5.1",
-    "css-mqpacker": "~4.0.1",
+    "css-mqpacker": "~5.0.1",
     "cssnano": "~3.5.2",
     "gulp-if": "~2.0.1",
     "gulp-postcss": "~6.1.1",
@@ -47,7 +47,7 @@
     "chai": "~1.10.0",
     "chai-fs": "~0.1.0",
     "cz-conventional-changelog": "~1.1.6",
-    "eslint": "~2.9.0",
+    "eslint": "~2.10.2",
     "fs-extra": "~0.30.0",
     "ghooks": "~1.2.1",
     "gulp": "~3.9.1",
