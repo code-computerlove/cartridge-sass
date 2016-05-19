@@ -29,7 +29,8 @@
     "test": "mocha && npm run lint",
     "lint": "eslint task.js \"**/*.js\"",
     "cover": "istanbul cover _mocha && open coverage/lcov-report/index.html",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post"
+    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "semantic-test": "semantic-release pre"
   },
   "dependencies": {
     "autoprefixer": "~6.3.6",
@@ -56,6 +57,9 @@
     "mocha": "~2.4.5",
     "semantic-release": "~4.3.5",
     "validate-commit-msg": "~2.6.1"
+  },
+  "release": {
+      "branch": "master"
   },
   "config": {
     "commitizen": {
