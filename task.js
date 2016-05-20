@@ -13,11 +13,12 @@ var sgc  = require('gulp-sass-generate-contents');
 var sass = require('gulp-sass');
 
 // CSS dependencies
-var autoprefixer = require('autoprefixer');
-var postcss      = require('gulp-postcss');
-var cssNano      = require('cssnano');
-var pxToRem      = require('postcss-pxtorem');
-var mqPacker     = require('css-mqpacker');
+var autoprefixer    = require('autoprefixer');
+var postcss         = require('gulp-postcss');
+var cssNano         = require('cssnano');
+var pxToRem         = require('postcss-pxtorem');
+var mqPacker        = require('css-mqpacker');
+var minifySelectors = require('postcss-minify-selectors');
 
 module.exports = function(gulp, projectConfig, tasks) {
 	/* --------------------
@@ -32,7 +33,8 @@ module.exports = function(gulp, projectConfig, tasks) {
 	var postCssPlugins = [
 		autoprefixer(taskConfig.autoprefixer),
 		pxToRem(taskConfig.pxtorem),
-		mqPacker(taskConfig.mqpacker)
+		mqPacker(taskConfig.mqpacker),
+		minifySelectors()
 	];
 
 	function getPostCssPlugins() {
