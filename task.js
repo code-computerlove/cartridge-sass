@@ -7,6 +7,7 @@
 var sourcemaps = require('gulp-sourcemaps');
 var gulpif     = require('gulp-if');
 var path       = require('path');
+var merge = require('merge');
 
 // Sass dependencies
 var sgc  = require('gulp-sass-generate-contents');
@@ -29,19 +30,8 @@ module.exports = function(gulp, projectConfig, tasks) {
 
 	// Task Config
 	var taskConfig = require(path.resolve(process.cwd(), projectConfig.dirs.config, 'task.' + TASK_NAME + '.js'))(projectConfig);
-
-	var postCssPlugins = [
-		autoprefixer(taskConfig.config.autoprefixer),
-		pxToRem(taskConfig.config.pxtorem),
-		mqPacker(taskConfig.config.mqpacker),
-		minifySelectors()
-	];
-
+	var postCssPlugins;
 	var sassTasksArr = [];
-
-	if(projectConfig.isProd) {
-		postCssPlugins.push(cssNano());
-	}
 
 	/* --------------------
 	*	MODULE TASKS
@@ -59,6 +49,25 @@ module.exports = function(gulp, projectConfig, tasks) {
 		});
 
 		gulp.task(sassCompileTaskName, [generateContentsTaskName], function () {
+			//Copy defaultConfig object
+			var defaultConfig = merge(true, taskConfig.defaultConfig);
+			var postCssConfig = merge(defaultConfig, taskConfig.files[key].config || {});
+
+			postCssPlugins = [
+				autoprefixer(postCssConfig.autoprefixer),
+				pxToRem(postCssConfig.pxtorem),
+				mqPacker(postCssConfig.mqpacker),
+				minifySelectors()
+			];
+
+			if(projectConfig.isProd) {
+				if(postCssConfig.cssNano) {
+					postCssPlugins.push(cssNano(postCssConfig.cssNano));
+				} else {
+					postCssPlugins.push();
+				}
+			}
+
 			return gulp.src(taskConfig.files[key].src)
 				.pipe(gulpif(!projectConfig.isProd, sourcemaps.init())) //Default only
 				.pipe(sass({

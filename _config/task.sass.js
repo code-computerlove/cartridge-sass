@@ -24,7 +24,7 @@ function getTaskConfig(projectConfig) {
 				],
 			}
 		},
-		config: {
+		defaultConfig: {
 			autoprefixer: {
 				browsers: ['>5%']
 			},
