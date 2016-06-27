@@ -54,7 +54,7 @@
     "ghooks": "~1.2.1",
     "gulp": "~3.9.1",
     "istanbul": "~0.4.3",
-    "mocha": "~2.4.5",
+    "mocha": "~2.5.3",
     "semantic-release": "~4.3.5",
     "validate-commit-msg": "~2.6.1"
   },
