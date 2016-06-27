@@ -68,18 +68,10 @@ describe('As a user of the cartridge-sass module', function() {
 	this.timeout(10000);
 
 	describe('when `gulp sass` is run WITHOUT production flag', function() {
-		var goldMaster;
 
 		before(function(done) {
-			var goldMsaterPath = path.resolve(path.join('../', 'gold-master', 'dev.css'));
-
-			fs.readFile(goldMsaterPath, 'utf8', function(err, data) {
-				if (err) throw err;
-				goldMaster = data;
-
-				gulprunner.setDev();
-				gulprunner.run(done);
-			});
+			gulprunner.setDev();
+			gulprunner.run(done);
 		});
 
 		after(function() {
@@ -99,24 +91,20 @@ describe('As a user of the cartridge-sass module', function() {
 		});
 
 		it('should generate the correct css', function() {
-			expect(MAIN_CSS_FILEPATH).to.have.content(goldMaster);
+			var goldMasterPath = path.resolve(path.join('../', 'gold-master', 'dev.css'));
+			var goldMaster     = fs.readFileSync(goldMasterPath, {encoding: 'utf8'});
+			var generated      = fs.readFileSync(MAIN_CSS_FILEPATH, {encoding: 'utf8'});
+
+			expect(goldMaster).to.equal(generated);
 		});
 
 	});
 
 	describe('when `gulp sass` is run WITH production flag', function() {
-		var goldMaster;
 
 		before(function(done) {
-			var goldMsaterPath = path.resolve(path.join('../', 'gold-master', 'prod.css'));
-
-			fs.readFile(goldMsaterPath, 'utf8', function(err, data) {
-				if (err) throw err;
-				goldMaster = data;
-
-				gulprunner.setProd();
-				gulprunner.run(done);
-			});
+			gulprunner.setProd();
+			gulprunner.run(done);
 		});
 
 		after(function() {
@@ -138,7 +126,11 @@ describe('As a user of the cartridge-sass module', function() {
 		});
 
 		it('should generate the correct css', function() {
-			expect(MAIN_CSS_FILEPATH).to.have.content(goldMaster);
+			var goldMasterPath = path.resolve(path.join('../', 'gold-master', 'prod.css'));
+			var goldMaster     = fs.readFileSync(goldMasterPath, {encoding: 'utf8'});
+			var generated      = fs.readFileSync(MAIN_CSS_FILEPATH, {encoding: 'utf8'});
+
+			expect(goldMaster).to.equal(generated);
 		});
 
 	});
