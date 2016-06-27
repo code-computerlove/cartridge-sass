@@ -26,6 +26,14 @@ function cleanUp() {
 	fs.remove(MAIN_CSS_SOURCEMAP_FILEPATH);
 }
 
+function assertGoldMaster(master) {
+	var goldMasterPath = path.resolve(path.join('../', 'gold-master', master));
+	var goldMaster     = fs.readFileSync(goldMasterPath, {encoding: 'utf8'});
+	var generated      = fs.readFileSync(MAIN_CSS_FILEPATH, {encoding: 'utf8'});
+
+	expect(goldMaster).to.equal(generated);
+}
+
 describe('As a gulpfile', function() {
 	describe('when a task is included', function() {
 		var basicrunner;
@@ -91,11 +99,7 @@ describe('As a user of the cartridge-sass module', function() {
 		});
 
 		it('should generate the correct css', function() {
-			var goldMasterPath = path.resolve(path.join('../', 'gold-master', 'dev.css'));
-			var goldMaster     = fs.readFileSync(goldMasterPath, {encoding: 'utf8'});
-			var generated      = fs.readFileSync(MAIN_CSS_FILEPATH, {encoding: 'utf8'});
-
-			expect(goldMaster).to.equal(generated);
+			assertGoldMaster('dev.css');
 		});
 
 	});
@@ -126,11 +130,7 @@ describe('As a user of the cartridge-sass module', function() {
 		});
 
 		it('should generate the correct css', function() {
-			var goldMasterPath = path.resolve(path.join('../', 'gold-master', 'prod.css'));
-			var goldMaster     = fs.readFileSync(goldMasterPath, {encoding: 'utf8'});
-			var generated      = fs.readFileSync(MAIN_CSS_FILEPATH, {encoding: 'utf8'});
-
-			expect(goldMaster).to.equal(generated);
+			assertGoldMaster('prod.css');
 		});
 
 	});
