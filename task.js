@@ -31,11 +31,13 @@ module.exports = function(gulp, projectConfig, tasks) {
 	var taskConfig = require(path.resolve(process.cwd(), projectConfig.dirs.config, 'task.' + TASK_NAME + '.js'))(projectConfig);
 
 	var postCssPlugins = [
-		autoprefixer(taskConfig.autoprefixer),
-		pxToRem(taskConfig.pxtorem),
-		mqPacker(taskConfig.mqpacker),
+		autoprefixer(taskConfig.config.autoprefixer),
+		pxToRem(taskConfig.config.pxtorem),
+		mqPacker(taskConfig.config.mqpacker),
 		minifySelectors()
 	];
+
+	var sassTasksArr = [];
 
 	if(projectConfig.isProd) {
 		postCssPlugins.push(cssNano());
@@ -45,24 +47,34 @@ module.exports = function(gulp, projectConfig, tasks) {
 	*	MODULE TASKS
 	* ---------------------*/
 
-	gulp.task(TASK_NAME + '-generate-contents', function () {
-		return gulp.src(taskConfig.itcss)
-			.pipe(sgc(taskConfig.src, projectConfig.creds))
-			.pipe(gulp.dest(projectConfig.paths.src[TASK_NAME]));
+	Object.keys(taskConfig.files).forEach(function(key) {
+
+		var generateContentsTaskName = TASK_NAME + ':generate-contents:' + key;
+		var sassCompileTaskName = TASK_NAME + ':' + key;
+
+		gulp.task(generateContentsTaskName, function () {
+			return gulp.src(taskConfig.files[key].partials)
+				.pipe(sgc(taskConfig.files[key].src, projectConfig.creds))
+				.pipe(gulp.dest(projectConfig.paths.src[TASK_NAME]));
+		});
+
+		gulp.task(sassCompileTaskName, [generateContentsTaskName], function () {
+			return gulp.src(taskConfig.files[key].src)
+				.pipe(gulpif(!projectConfig.isProd, sourcemaps.init())) //Default only
+				.pipe(sass({
+					errLogToConsole: true,
+					includePaths:    [projectConfig.paths.src.components],
+					outputStyle:     'compact'
+				}))
+				.pipe(postcss(postCssPlugins))
+				.pipe(gulpif(!projectConfig.isProd, sourcemaps.write('.'))) //Default only
+				.pipe(gulp.dest(projectConfig.paths.dest[TASK_NAME]));
+		});
+
+		sassTasksArr.push(sassCompileTaskName);
 	});
 
-	gulp.task(TASK_NAME, [TASK_NAME + '-generate-contents'], function () {
-		return gulp.src(taskConfig.src)
-			.pipe(gulpif(!projectConfig.isProd, sourcemaps.init())) //Default only
-			.pipe(sass({
-				errLogToConsole: true,
-				includePaths:    [projectConfig.paths.src.components],
-				outputStyle:     'compact'
-			}))
-			.pipe(postcss(postCssPlugins))
-			.pipe(gulpif(!projectConfig.isProd, sourcemaps.write('.'))) //Default only
-			.pipe(gulp.dest(projectConfig.paths.dest[TASK_NAME]));
-	});
+	gulp.task(TASK_NAME, sassTasksArr);
 
 	/* --------------------
 	*	WATCH TASKS
@@ -70,7 +82,7 @@ module.exports = function(gulp, projectConfig, tasks) {
 
 	gulp.task('watch:' + TASK_NAME, function () {
 		gulp.watch(
-			taskConfig.watch,
+			taskConfig.config.watch,
 			[TASK_NAME]
 		);
 	});
