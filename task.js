@@ -64,7 +64,7 @@ module.exports = function(gulp, projectConfig, tasks) {
 				if(postCssConfig.cssNano) {
 					postCssPlugins.push(cssNano(postCssConfig.cssNano));
 				} else {
-					postCssPlugins.push();
+					postCssPlugins.push(cssNano());
 				}
 			}
 
