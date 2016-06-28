@@ -28,9 +28,10 @@
     "preuninstall": "node scripts/preuninstall.js",
     "test": "mocha && npm run lint",
     "lint": "eslint task.js \"**/*.js\"",
-    "cover": "istanbul cover _mocha && open coverage/lcov-report/index.html",
+    "cover": "npm run check-coverage && open coverage/lcov-report/index.html",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
-    "semantic-test": "semantic-release pre"
+    "report-coverage": "cat ./coverage/lcov.info | codecov",
+    "check-coverage": "istanbul cover _mocha"
   },
   "dependencies": {
     "autoprefixer": "~6.3.6",
@@ -48,6 +49,7 @@
   "devDependencies": {
     "chai": "~1.10.0",
     "chai-fs": "~0.1.0",
+    "codecov.io": "~0.1.6",
     "cz-conventional-changelog": "~1.1.6",
     "eslint": "~2.13.1",
     "fs-extra": "~0.30.0",
