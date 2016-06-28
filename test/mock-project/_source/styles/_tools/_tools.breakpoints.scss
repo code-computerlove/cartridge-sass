@@ -33,15 +33,3 @@
 		@warn 'respond-from-to error: either "#{$from}" or "#{$to}" is not a valid breakpoint';
 	}
 }
-
-@mixin respond-retina {
-	@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
-		@content;
-	}
-}
-
-@mixin iPadLandscape {
-	@media only screen and (min-device-width : 768px) and (max-device-width : 1024px) and (orientation : landscape) {
-		@content;
-	}
-}

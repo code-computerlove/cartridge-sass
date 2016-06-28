@@ -92,3 +92,6 @@ New work should be commited to the `develop` branch and then merged in to master
 In addition to the base module guide, this project uses Semantic release to manage releases to NPM. When making changes and following the required commit message format releases are managed for you.
 
 When the commit passes tests on [Travis](https://travis-ci.org/cartridge/cartridge-sass) a new version will be published based on the content of the commits since the last release. For more information please see the [Semantic release project on GitHub](https://github.com/semantic-release/semantic-release)
+
+### Gold master
+The project uses gold master files to determine if the generated CSS changes after updates to the module. If you are adding new PostCSS plugins or modifying versions then expect that this could change. Verify that the new CSS is correct and then update the gold masters.

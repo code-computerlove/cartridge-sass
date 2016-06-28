@@ -32,6 +32,14 @@ module.exports = function(gulp, projectConfig, tasks) {
 	var taskConfig = require(path.resolve(process.cwd(), projectConfig.dirs.config, 'task.' + TASK_NAME + '.js'))(projectConfig);
 	var postCssPlugins;
 	var sassTasksArr = [];
+	function getPostCssPlugins() {
+		var basic = postCssPlugins;
+
+			console.log('use nano');
+		postCssPlugins.push(cssNano());
+		}
+
+		return basic;
 
 	/* --------------------
 	*	MODULE TASKS
@@ -75,7 +83,7 @@ module.exports = function(gulp, projectConfig, tasks) {
 					includePaths:    [projectConfig.paths.src.components],
 					outputStyle:     'compact'
 				}))
-				.pipe(postcss(postCssPlugins))
+			.pipe(postcss(getPostCssPlugins()))
 				.pipe(gulpif(!projectConfig.isProd, sourcemaps.write('.'))) //Default only
 				.pipe(gulp.dest(projectConfig.paths.dest[TASK_NAME]));
 		});
