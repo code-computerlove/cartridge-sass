@@ -18,10 +18,20 @@ var MAIN_CSS_SOURCEMAP_FILEPATH = path.join(STYLE_DEST_DIR, 'main.css.map');
 
 process.chdir(MOCK_PROJECT_DIR);
 
+var gulprunner = require(path.resolve(process.cwd(), 'gulprunner.js'));
+
 function cleanUp() {
 	fs.remove(MAIN_SCSS_FILEPATH);
 	fs.remove(MAIN_CSS_FILEPATH);
 	fs.remove(MAIN_CSS_SOURCEMAP_FILEPATH);
+}
+
+function assertGoldMaster(master) {
+	var goldMasterPath = path.resolve(path.join('../', 'gold-master', master));
+	var goldMaster     = fs.readFileSync(goldMasterPath, {encoding: 'utf8'});
+	var generated      = fs.readFileSync(MAIN_CSS_FILEPATH, {encoding: 'utf8'});
+
+	expect(goldMaster).to.equal(generated);
 }
 
 describe('As a gulpfile', function() {
@@ -62,7 +72,6 @@ describe('As a gulpfile', function() {
 })
 
 describe('As a user of the cartridge-sass module', function() {
-	var gulprunner = require(path.resolve(process.cwd(), 'gulprunner.js'));
 
 	this.timeout(10000);
 
@@ -89,7 +98,11 @@ describe('As a user of the cartridge-sass module', function() {
 			expect(MAIN_CSS_SOURCEMAP_FILEPATH).to.be.a.file();
 		});
 
-	})
+		it('should generate the correct css', function() {
+			assertGoldMaster('dev.css');
+		});
+
+	});
 
 	describe('when `gulp sass` is run WITH production flag', function() {
 
@@ -114,6 +127,10 @@ describe('As a user of the cartridge-sass module', function() {
 		// .not.to.be.a.file(); ALWAYS returns TRUE
 		it('should not add the main.css.map sourcemap file to the public styles folder', function() {
 			expect(MAIN_CSS_SOURCEMAP_FILEPATH).to.not.be.a.path();
+		});
+
+		it('should generate the correct css', function() {
+			assertGoldMaster('prod.css');
 		});
 
 	});

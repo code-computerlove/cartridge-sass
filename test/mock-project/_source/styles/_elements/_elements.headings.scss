@@ -21,31 +21,13 @@ h1 {
 	margin: 0 0 $G-Gutter;
 }
 
-h2 {
-	@include setupTypes(h2);
-
-	margin: 0 0 $G-Gutter;
-
-	@include respond-from(Med) {
-		letter-spacing: -.02em;
-	}
-}
-
-h3 {
-	@include setupTypes(h3);
-}
-
-h4 {
-	@include setupTypes(h4);
-}
-
 
 // Section Heading
 
 .section-heading {
 
 	&::after {
-		color: getColor(Section-Heading, Colon);
+		color: getColor(Body, Generic-Heading);
 		content: ':';
 		display: inline-block;
 		font-family: $F-Bold;
