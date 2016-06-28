@@ -2,7 +2,9 @@ var path = require('path');
 
 var config        = require(path.resolve(process.cwd(), '_config/project.json'));
 var mockGulp = {
-	task: function(){}
+	task: function(){
+		return;
+	}
 };
 
 config.cleanPaths  = [];

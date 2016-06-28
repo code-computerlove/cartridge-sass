@@ -13,11 +13,12 @@ var sgc  = require('gulp-sass-generate-contents');
 var sass = require('gulp-sass');
 
 // CSS dependencies
-var autoprefixer = require('autoprefixer');
-var postcss      = require('gulp-postcss');
-var cssNano      = require('cssnano');
-var pxToRem      = require('postcss-pxtorem');
-var mqPacker     = require('css-mqpacker');
+var autoprefixer    = require('autoprefixer');
+var postcss         = require('gulp-postcss');
+var cssNano         = require('cssnano');
+var pxToRem         = require('postcss-pxtorem');
+var mqPacker        = require('css-mqpacker');
+var minifySelectors = require('postcss-minify-selectors');
 
 module.exports = function(gulp, projectConfig, tasks) {
 	/* --------------------
@@ -32,11 +33,19 @@ module.exports = function(gulp, projectConfig, tasks) {
 	var postCssPlugins = [
 		autoprefixer(taskConfig.autoprefixer),
 		pxToRem(taskConfig.pxtorem),
-		mqPacker(taskConfig.mqpacker)
+		mqPacker(taskConfig.mqpacker),
+		minifySelectors()
 	];
 
-	if(projectConfig.isProd) {
-		postCssPlugins.push(cssNano());
+	function getPostCssPlugins() {
+		var basic = postCssPlugins;
+
+		if(projectConfig.isProd) {
+			console.log('use nano');
+			basic.push(cssNano());
+		}
+
+		return basic;
 	}
 
 	/* --------------------
@@ -57,7 +66,7 @@ module.exports = function(gulp, projectConfig, tasks) {
 				includePaths:    [projectConfig.paths.src.components],
 				outputStyle:     'compact'
 			}))
-			.pipe(postcss(postCssPlugins))
+			.pipe(postcss(getPostCssPlugins()))
 			.pipe(gulpif(!projectConfig.isProd, sourcemaps.write('.'))) //Default only
 			.pipe(gulp.dest(projectConfig.paths.dest[TASK_NAME]));
 	});

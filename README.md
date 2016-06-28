@@ -1,6 +1,6 @@
 # Cartridge Sass
 [![Build Status](https://img.shields.io/travis/cartridge/cartridge-sass.svg?branch=master&style=flat-square)](https://travis-ci.org/cartridge/cartridge-sass)
-[![Appveyor status](https://ci.appveyor.com/api/projects/status/github/cartridge/cartridge-sass?branch=master&svg=true)](https://travis-ci.org/cartridge/cartridge-sass)
+[![Appveyor status](https://ci.appveyor.com/api/projects/status/github/cartridge/cartridge-sass?branch=master&svg=true)](https://ci.appveyor.com/project/bmds/cartridge-sass)
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)](http://commitizen.github.io/cz-cli/)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat-square)](https://github.com/semantic-release/semantic-release)
 
@@ -46,6 +46,36 @@ This module adds the following to a project:
 
 Once installed, the config file `task.sass.js` is created and stored in the `_config` directory in the root of your cartridge project.
 
+The following settings are configured by default:
+
+### autoprefixer
+Configuration for [autoprefixer](https://github.com/postcss/autoprefixer) is set on this property. By default we set the browsers option to browsers with more than 5% usage.
+
+```javascript
+{
+	autoprefixer: {
+		browsers: ['>5%']
+	}
+}
+```
+For more options see the [autoprefixer options](https://github.com/postcss/autoprefixer#options)
+
+### mqpacker
+> TODO: Add basic info
+
+### pxtorem
+> TODO: Add basic info
+
+### itcss
+> TODO: Add basic info
+
+### src
+> TODO: Add basic info
+
+### watch
+> TODO: Add basic info
+
+
 ## Usage
 
 The [FrontEnd CSS guidelines](https://github.com/code-computerlove/frontend-guidelines/blob/master/FE-guidelines-CSS.md) are a good place to start when beginning your project
@@ -62,3 +92,6 @@ New work should be commited to the `develop` branch and then merged in to master
 In addition to the base module guide, this project uses Semantic release to manage releases to NPM. When making changes and following the required commit message format releases are managed for you.
 
 When the commit passes tests on [Travis](https://travis-ci.org/cartridge/cartridge-sass) a new version will be published based on the content of the commits since the last release. For more information please see the [Semantic release project on GitHub](https://github.com/semantic-release/semantic-release)
+
+### Gold master
+The project uses gold master files to determine if the generated CSS changes after updates to the module. If you are adding new PostCSS plugins or modifying versions then expect that this could change. Verify that the new CSS is correct and then update the gold masters.
