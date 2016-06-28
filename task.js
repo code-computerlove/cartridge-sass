@@ -30,20 +30,30 @@ module.exports = function(gulp, projectConfig, tasks) {
 
 	// Task Config
 	var taskConfig = require(path.resolve(process.cwd(), projectConfig.dirs.config, 'task.' + TASK_NAME + '.js'))(projectConfig);
-	var postCssPlugins;
 	var sassTasksArr = [];
-	function getPostCssPlugins() {
-		var basic = postCssPlugins;
 
-			console.log('use nano');
-		postCssPlugins.push(cssNano());
+	function getPostCssPlugins(fileConfig) {
+		//Copy defaultConfig object
+		var defaultConfig = merge(true, taskConfig.defaultConfig);
+		var postCssConfig = merge(defaultConfig, fileConfig || {});
+		var postCssPlugins = [
+			autoprefixer(postCssConfig.autoprefixer),
+			pxToRem(postCssConfig.pxtorem),
+			mqPacker(postCssConfig.mqpacker),
+			minifySelectors()
+		];
+
+		if(projectConfig.isProd) {
+			if(postCssConfig.cssNano) {
+				postCssPlugins.push(cssNano(postCssConfig.cssNano));
+			} else {
+				postCssPlugins.push(cssNano());
+			}
 		}
 
-		return basic;
+		return postCssPlugins;
+	}
 
-	/* --------------------
-	*	MODULE TASKS
-	* ---------------------*/
 
 	Object.keys(taskConfig.files).forEach(function(key) {
 
@@ -57,25 +67,6 @@ module.exports = function(gulp, projectConfig, tasks) {
 		});
 
 		gulp.task(sassCompileTaskName, [generateContentsTaskName], function () {
-			//Copy defaultConfig object
-			var defaultConfig = merge(true, taskConfig.defaultConfig);
-			var postCssConfig = merge(defaultConfig, taskConfig.files[key].config || {});
-
-			postCssPlugins = [
-				autoprefixer(postCssConfig.autoprefixer),
-				pxToRem(postCssConfig.pxtorem),
-				mqPacker(postCssConfig.mqpacker),
-				minifySelectors()
-			];
-
-			if(projectConfig.isProd) {
-				if(postCssConfig.cssNano) {
-					postCssPlugins.push(cssNano(postCssConfig.cssNano));
-				} else {
-					postCssPlugins.push(cssNano());
-				}
-			}
-
 			return gulp.src(taskConfig.files[key].src)
 				.pipe(gulpif(!projectConfig.isProd, sourcemaps.init())) //Default only
 				.pipe(sass({
@@ -83,7 +74,7 @@ module.exports = function(gulp, projectConfig, tasks) {
 					includePaths:    [projectConfig.paths.src.components],
 					outputStyle:     'compact'
 				}))
-			.pipe(postcss(getPostCssPlugins()))
+				.pipe(postcss(getPostCssPlugins(taskConfig.files[key].config)))
 				.pipe(gulpif(!projectConfig.isProd, sourcemaps.write('.'))) //Default only
 				.pipe(gulp.dest(projectConfig.paths.dest[TASK_NAME]));
 		});
@@ -91,7 +82,31 @@ module.exports = function(gulp, projectConfig, tasks) {
 		sassTasksArr.push(sassCompileTaskName);
 	});
 
+
 	gulp.task(TASK_NAME, sassTasksArr);
+
+	/* --------------------
+	*	MODULE TASKS
+	* ---------------------*/
+
+	// gulp.task(TASK_NAME + '-generate-contents', function () {
+	// 	return gulp.src(taskConfig.itcss)
+	// 		.pipe(sgc(taskConfig.src, projectConfig.creds))
+	// 		.pipe(gulp.dest(projectConfig.paths.src[TASK_NAME]));
+	// });
+	//
+	// gulp.task(TASK_NAME, [TASK_NAME + '-generate-contents'], function () {
+	// 	return gulp.src(taskConfig.src)
+	// 		.pipe(gulpif(!projectConfig.isProd, sourcemaps.init())) //Default only
+	// 		.pipe(sass({
+	// 			errLogToConsole: true,
+	// 			includePaths:    [projectConfig.paths.src.components],
+	// 			outputStyle:     'compact'
+	// 		}))
+	// 		.pipe(postcss(getPostCssPlugins()))
+	// 		.pipe(gulpif(!projectConfig.isProd, sourcemaps.write('.'))) //Default only
+	// 		.pipe(gulp.dest(projectConfig.paths.dest[TASK_NAME]));
+	// });
 
 	/* --------------------
 	*	WATCH TASKS
@@ -99,7 +114,7 @@ module.exports = function(gulp, projectConfig, tasks) {
 
 	gulp.task('watch:' + TASK_NAME, function () {
 		gulp.watch(
-			taskConfig.defaultConfig.watch,
+			taskConfig.watch,
 			[TASK_NAME]
 		);
 	});
