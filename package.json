@@ -40,7 +40,7 @@
     "gulp-if": "~2.0.1",
     "gulp-postcss": "~6.1.1",
     "gulp-sass": "~2.3.2",
-    "gulp-sass-generate-contents": "~0.2.2",
+    "gulp-sass-generate-contents": "~0.3.2",
     "gulp-sourcemaps": "~1.5.2",
     "postcss-minify-selectors": "^2.0.5",
     "postcss-pxtorem": "~3.3.1"
