@@ -16,6 +16,10 @@ var MAIN_SCSS_FILEPATH          = path.join(STYLE_SRC_DIR, 'main.scss');
 var MAIN_CSS_FILEPATH           = path.join(STYLE_DEST_DIR, 'main.css');
 var MAIN_CSS_SOURCEMAP_FILEPATH = path.join(STYLE_DEST_DIR, 'main.css.map');
 
+var IE8_SCSS_FILEPATH          = path.join(STYLE_SRC_DIR, 'ie8.scss');
+var IE8_CSS_FILEPATH           = path.join(STYLE_DEST_DIR, 'ie8.css');
+var IE8_CSS_SOURCEMAP_FILEPATH = path.join(STYLE_DEST_DIR, 'ie8.css.map');
+
 process.chdir(MOCK_PROJECT_DIR);
 
 var gulprunner = require(path.resolve(process.cwd(), 'gulprunner.js'));
@@ -24,6 +28,10 @@ function cleanUp() {
 	fs.remove(MAIN_SCSS_FILEPATH);
 	fs.remove(MAIN_CSS_FILEPATH);
 	fs.remove(MAIN_CSS_SOURCEMAP_FILEPATH);
+
+	fs.remove(IE8_SCSS_FILEPATH);
+	fs.remove(IE8_CSS_FILEPATH);
+	fs.remove(IE8_CSS_SOURCEMAP_FILEPATH);
 }
 
 function assertGoldMaster(master) {
@@ -98,6 +106,19 @@ describe('As a user of the cartridge-sass module', function() {
 			expect(MAIN_CSS_SOURCEMAP_FILEPATH).to.be.a.file();
 		});
 
+		it('should generate the ie8.scss file in the _source dir', function() {
+			expect(IE8_SCSS_FILEPATH).to.be.a.file();
+		});
+
+		it('should add the ie8.css file to the public styles folder', function() {
+			expect(IE8_CSS_FILEPATH).to.be.a.file();
+		});
+
+		it('should add the ie8.css.map sourcemap file to the public styles folder', function() {
+			expect(IE8_CSS_SOURCEMAP_FILEPATH).to.be.a.file();
+		});
+
+
 		it('should generate the correct css', function() {
 			assertGoldMaster('dev.css');
 		});
@@ -123,10 +144,20 @@ describe('As a user of the cartridge-sass module', function() {
 			expect(MAIN_CSS_FILEPATH).to.be.a.file();
 		});
 
-		// Disabled pending this issue being resolved: https://github.com/chaijs/chai-fs/issues/9
-		// .not.to.be.a.file(); ALWAYS returns TRUE
 		it('should not add the main.css.map sourcemap file to the public styles folder', function() {
 			expect(MAIN_CSS_SOURCEMAP_FILEPATH).to.not.be.a.path();
+		});
+
+		it('should generate the main.scss file in the _source dir', function() {
+			expect(IE8_SCSS_FILEPATH).to.be.a.file();
+		});
+
+		it('should add the main.css file to the public styles folder', function() {
+			expect(IE8_CSS_FILEPATH).to.be.a.file();
+		});
+
+		it('should not add the main.css.map sourcemap file to the public styles folder', function() {
+			expect(IE8_CSS_SOURCEMAP_FILEPATH).to.not.be.a.path();
 		});
 
 		it('should generate the correct css', function() {
