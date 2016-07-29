@@ -34,10 +34,10 @@ function cleanUp() {
 	fs.remove(IE8_CSS_SOURCEMAP_FILEPATH);
 }
 
-function assertGoldMaster(master) {
+function assertGoldMaster(generatedPath, master) {
 	var goldMasterPath = path.resolve(path.join('../', 'gold-master', master));
 	var goldMaster     = fs.readFileSync(goldMasterPath, {encoding: 'utf8'});
-	var generated      = fs.readFileSync(MAIN_CSS_FILEPATH, {encoding: 'utf8'});
+	var generated      = fs.readFileSync(generatedPath, {encoding: 'utf8'});
 
 	expect(goldMaster).to.equal(generated);
 }
@@ -118,9 +118,9 @@ describe('As a user of the cartridge-sass module', function() {
 			expect(IE8_CSS_SOURCEMAP_FILEPATH).to.be.a.file();
 		});
 
-
 		it('should generate the correct css', function() {
-			assertGoldMaster('dev.css');
+			assertGoldMaster(MAIN_CSS_FILEPATH, 'dev.css');
+			assertGoldMaster(IE8_CSS_FILEPATH, 'ie8-dev.css');
 		});
 
 	});
@@ -161,7 +161,8 @@ describe('As a user of the cartridge-sass module', function() {
 		});
 
 		it('should generate the correct css', function() {
-			assertGoldMaster('prod.css');
+			assertGoldMaster(MAIN_CSS_FILEPATH, 'prod.css');
+			assertGoldMaster(IE8_CSS_FILEPATH, 'ie8-prod.css');
 		});
 
 	});
