@@ -54,6 +54,9 @@ module.exports = function(gulp, projectConfig, tasks) {
 		return postCssPlugins;
 	}
 
+	/* --------------------
+	*	MODULE TASKS
+	* ---------------------*/
 
 	Object.keys(taskConfig.files).forEach(function(key) {
 
@@ -84,29 +87,6 @@ module.exports = function(gulp, projectConfig, tasks) {
 
 
 	gulp.task(TASK_NAME, sassTasksArr);
-
-	/* --------------------
-	*	MODULE TASKS
-	* ---------------------*/
-
-	// gulp.task(TASK_NAME + '-generate-contents', function () {
-	// 	return gulp.src(taskConfig.itcss)
-	// 		.pipe(sgc(taskConfig.src, projectConfig.creds))
-	// 		.pipe(gulp.dest(projectConfig.paths.src[TASK_NAME]));
-	// });
-	//
-	// gulp.task(TASK_NAME, [TASK_NAME + '-generate-contents'], function () {
-	// 	return gulp.src(taskConfig.src)
-	// 		.pipe(gulpif(!projectConfig.isProd, sourcemaps.init())) //Default only
-	// 		.pipe(sass({
-	// 			errLogToConsole: true,
-	// 			includePaths:    [projectConfig.paths.src.components],
-	// 			outputStyle:     'compact'
-	// 		}))
-	// 		.pipe(postcss(getPostCssPlugins()))
-	// 		.pipe(gulpif(!projectConfig.isProd, sourcemaps.write('.'))) //Default only
-	// 		.pipe(gulp.dest(projectConfig.paths.dest[TASK_NAME]));
-	// });
 
 	/* --------------------
 	*	WATCH TASKS
