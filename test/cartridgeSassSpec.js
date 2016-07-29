@@ -36,8 +36,8 @@ function cleanUp() {
 
 function assertGoldMaster(generatedPath, master) {
 	var goldMasterPath = path.resolve(path.join('../', 'gold-master', master));
-	var goldMaster     = fs.readFileSync(goldMasterPath, {encoding: 'utf8'});
-	var generated      = fs.readFileSync(generatedPath, {encoding: 'utf8'});
+	var goldMaster     = fs.readFileSync(goldMasterPath, 'utf8');
+	var generated      = fs.readFileSync(generatedPath, 'utf8');
 
 	expect(goldMaster).to.equal(generated);
 }
@@ -90,9 +90,7 @@ describe('As a user of the cartridge-sass module', function() {
 			gulprunner.run(done);
 		});
 
-		after(function() {
-			cleanUp();
-		});
+		after(cleanUp);
 
 		it('should generate the main.scss file in the _source dir', function() {
 			expect(MAIN_SCSS_FILEPATH).to.be.a.file();
@@ -132,9 +130,7 @@ describe('As a user of the cartridge-sass module', function() {
 			gulprunner.run(done);
 		});
 
-		after(function() {
-			cleanUp();
-		});
+		after(cleanUp);
 
 		it('should generate the main.scss file in the _source dir', function() {
 			expect(MAIN_SCSS_FILEPATH).to.be.a.file();
