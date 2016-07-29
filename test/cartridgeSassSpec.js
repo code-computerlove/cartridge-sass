@@ -76,6 +76,20 @@ describe('As a gulpfile', function() {
 			var relative = path.relative(process.cwd(), basicrunner.config.cleanPaths[0]);
 			expect(relative).to.equal(path.join('public', '_client', 'styles'));
 		});
+
+		it('should correctly register all tasks with the gulp instance', function() {
+			expect(basicrunner.gulpTasks.length).to.equal(6);
+		})
+
+		it('shoud correctly register generate-contents task for each CSS file', function() {
+			expect(basicrunner.gulpTasks).to.include('sass:generate-contents:main');
+			expect(basicrunner.gulpTasks).to.include('sass:generate-contents:ie8');
+		})
+
+		it('shoud correctly register base task for each CSS file', function() {
+			expect(basicrunner.gulpTasks).to.include('sass:main');
+			expect(basicrunner.gulpTasks).to.include('sass:ie8');
+		})
 	});
 })
 
