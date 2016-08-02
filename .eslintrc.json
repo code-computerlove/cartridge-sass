@@ -1,60 +1,16 @@
 {
 	"parserOptions": {
-		"ecmaVersion": 5,
-		"sourceType": "script"
+		"ecmaVersion":  6
 	},
 	"env": {
-		"node": true
+		"node":    true
 	},
+	"extends": "eslint:recommended",
 	"rules": {
-		"no-cond-assign": 2,
-		"no-constant-condition": "error",
-		"no-dupe-args": "error",
-		"no-dupe-keys": "error",
-		"no-duplicate-case": "error",
-		"no-empty": "error",
-		"no-empty-character-class": "error",
-		"no-ex-assign": "error",
-		"no-extra-boolean-cast": "error",
-		"no-func-assign": "error",
-		"no-invalid-regexp": "error",
-		"no-irregular-whitespace": "error",
-		"no-negated-in-lhs": "error",
-		"no-obj-calls": "error",
-		"no-regex-spaces": "error",
-		"no-sparse-arrays": "error",
-		"no-unexpected-multiline": "error",
-		"no-unreachable": "error",
-		"use-isnan": "error",
-		"valid-typeof": "error",
-		"no-case-declarations": "error",
-		"no-empty-pattern": "error",
-		"no-fallthrough": "error",
-		"no-octal": "error",
-		"no-redeclare": "error",
-		"no-self-assign": "error",
-		"no-delete-var": "error",
-		"no-undef": "error",
-		"no-unused-vars": "error",
-		"array-callback-return": "error",
-		"block-scoped-var": "error",
-		"dot-location": ["error", "property"],
-		"dot-notation": ["error"],
-		"eqeqeq": "error",
-		"guard-for-in": "error",
-		"no-alert": "error",
-		"no-caller": "error",
-		"no-else-return": "error",
-		"no-empty-function": "error",
-		"no-eq-null": "error",
-		"no-eval": "error",
-		"no-extra-bind": "error",
-		"no-implicit-globals": "error",
-		"no-implied-eval": "error",
-		"no-iterator": "error",
-		"no-lone-blocks": "error",
-		"no-loop-func": "error",
-		"consistent-return": "error",
-		"no-extend-native": "error"
+		"eqeqeq":     "error",
+		"strict":     "error",
+		"camelcase":  "error",
+		"func-names": ["error", "always"],
+		"quotes":     ["error", "single"]
 	}
 }
