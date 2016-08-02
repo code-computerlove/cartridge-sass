@@ -20,7 +20,7 @@ var pxToRem         = require('postcss-pxtorem');
 var mqPacker        = require('css-mqpacker');
 var minifySelectors = require('postcss-minify-selectors');
 
-module.exports = function(gulp, projectConfig, tasks) {
+module.exports = function task(gulp, projectConfig, tasks) {
 	/* --------------------
 	*	CONFIGURATION
 	* ---------------------*/
@@ -41,7 +41,6 @@ module.exports = function(gulp, projectConfig, tasks) {
 		var basic = postCssPlugins;
 
 		if(projectConfig.isProd) {
-			console.log('use nano');
 			basic.push(cssNano());
 		}
 
@@ -52,13 +51,13 @@ module.exports = function(gulp, projectConfig, tasks) {
 	*	MODULE TASKS
 	* ---------------------*/
 
-	gulp.task(TASK_NAME + '-generate-contents', function () {
+	gulp.task(TASK_NAME + '-generate-contents', function generateContentsTask() {
 		return gulp.src(taskConfig.itcss)
 			.pipe(sgc(taskConfig.src, projectConfig.creds))
 			.pipe(gulp.dest(projectConfig.paths.src[TASK_NAME]));
 	});
 
-	gulp.task(TASK_NAME, [TASK_NAME + '-generate-contents'], function () {
+	gulp.task(TASK_NAME, [TASK_NAME + '-generate-contents'], function sassTask() {
 		return gulp.src(taskConfig.src)
 			.pipe(gulpif(!projectConfig.isProd, sourcemaps.init())) //Default only
 			.pipe(sass({
@@ -75,7 +74,7 @@ module.exports = function(gulp, projectConfig, tasks) {
 	*	WATCH TASKS
 	* ---------------------*/
 
-	gulp.task('watch:' + TASK_NAME, function () {
+	gulp.task('watch:' + TASK_NAME, function watchTask() {
 		gulp.watch(
 			taskConfig.watch,
 			[TASK_NAME]

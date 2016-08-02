@@ -1,4 +1,6 @@
 // Gulp
+'use strict';
+
 var gulp = require('gulp');
 var path = require('path');
 
@@ -25,14 +27,14 @@ config.paths.dest.sass      = path.resolve(process.cwd(), config.paths.dest.sass
 require(path.resolve(process.cwd(), '..', '..', 'task.js'))(gulp, config, tasks);
 
 module.exports = {
-	setProd: function(){
+	setProd: function setProd(){
 		config.isProd = true;
 	},
-	setDev: function(){
+	setDev: function setDev(){
 		config.isProd = false;
 	},
-	run: function(callback) {
-		gulp.start('sass', function(){
+	run: function run(callback) {
+		gulp.start('sass', function runGulpStart(){
 			callback();
 		});
 	}
