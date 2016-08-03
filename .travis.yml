@@ -2,11 +2,6 @@ sudo: false
 language: node_js
 env:
     - NODE_ENV=development
-install:
-    - npm install
-script:
-    - mocha
-    - npm run lint
 cache:
   directories:
     - node_modules
@@ -17,15 +12,21 @@ node_js:
     - '5.1'
     - '4.4'
     - '0.12.2'
+install:
+    - npm install
 before_install:
     - npm i -g npm@^2.0.0
 before_script:
     - npm prune
+script:
+    - npm t
+    - npm run check-coverage
 after_success:
-  - 'curl -Lo travis_after_all.py https://git.io/travis_after_all'
-  - python travis_after_all.py
-  - export $(cat .to_export_back) &> /dev/null
-  - npm run semantic-release
+    - 'curl -Lo travis_after_all.py https://git.io/travis_after_all'
+    - python travis_after_all.py
+    - export $(cat .to_export_back) &> /dev/null
+    - npm run semantic-release
+    - npm run report-coverage
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
