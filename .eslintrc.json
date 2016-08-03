@@ -7,10 +7,13 @@
 	},
 	"extends": "eslint:recommended",
 	"rules": {
-		"eqeqeq":     "error",
-		"strict":     "error",
-		"camelcase":  "error",
-		"func-names": ["error", "always"],
-		"quotes":     ["error", "single"]
+		"eqeqeq":       "error",
+		"strict":       "error",
+		"camelcase":    "error",
+		"comma-dangle": ["error", "never"],
+		"func-names":   ["error", "always"],
+		"quotes":       ["error", "single"],
+		"quote-props":  ["error", "as-needed"],
+		"yoda":         "error"
 	}
 }
