@@ -4,7 +4,9 @@ var path = require('path');
 
 var config        = require(path.resolve(process.cwd(), '_config/project.json'));
 var mockGulp = {
-	task: function mockTask(){
+	registeredTasks: [],
+	task: function mockTask(taskName){
+		this.registeredTasks.push(taskName);
 		return;
 	}
 };
@@ -21,6 +23,7 @@ tasks.watch   = [];
 require(path.resolve(process.cwd(), '..', '..', 'task.js'))(mockGulp, config, tasks);
 
 module.exports = {
+	gulpTasks: mockGulp.registeredTasks,
 	tasks:  tasks,
 	config: config
 };
