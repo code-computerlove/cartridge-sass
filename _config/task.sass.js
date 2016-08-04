@@ -21,7 +21,7 @@ function getTaskConfig(projectConfig) {
 					projectConfig.paths.src.sass + '/_components/*.scss',
 					projectConfig.paths.src.components + '**/*.scss',
 					projectConfig.paths.src.sass + '/_trumps/*.scss'
-				],
+				]
 			},
 			ie8: {
 				src: projectConfig.paths.src.sass + '/ie8.scss',
@@ -38,7 +38,7 @@ function getTaskConfig(projectConfig) {
 					projectConfig.paths.src.sass + '/_components/*.scss',
 					projectConfig.paths.src.components + '**/*.scss',
 					projectConfig.paths.src.sass + '/_trumps/*.scss'
-				],
+				]
 			}
 		},
 		defaultConfig: {

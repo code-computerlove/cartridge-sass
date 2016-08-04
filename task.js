@@ -21,7 +21,7 @@ var pxToRem         = require('postcss-pxtorem');
 var mqPacker        = require('css-mqpacker');
 var minifySelectors = require('postcss-minify-selectors');
 
-module.exports = function(gulp, projectConfig, tasks) {
+module.exports = function task(gulp, projectConfig, tasks) {
 	/* --------------------
 	*	CONFIGURATION
 	* ---------------------*/
@@ -58,18 +58,18 @@ module.exports = function(gulp, projectConfig, tasks) {
 	*	MODULE TASKS
 	* ---------------------*/
 
-	Object.keys(taskConfig.files).forEach(function(key) {
+	Object.keys(taskConfig.files).forEach(function setupTasksFromConfig(key) {
 
 		var generateContentsTaskName = TASK_NAME + ':generate-contents:' + key;
 		var sassCompileTaskName = TASK_NAME + ':' + key;
 
-		gulp.task(generateContentsTaskName, function () {
+		gulp.task(generateContentsTaskName, function generateContentsTask() {
 			return gulp.src(taskConfig.files[key].partials)
 				.pipe(sgc(taskConfig.files[key].src, projectConfig.creds))
 				.pipe(gulp.dest(projectConfig.paths.src[TASK_NAME]));
 		});
 
-		gulp.task(sassCompileTaskName, [generateContentsTaskName], function () {
+		gulp.task(sassCompileTaskName, [generateContentsTaskName], function sassTask() {
 			return gulp.src(taskConfig.files[key].src)
 				.pipe(gulpif(!projectConfig.isProd, sourcemaps.init())) //Default only
 				.pipe(sass({
@@ -92,7 +92,7 @@ module.exports = function(gulp, projectConfig, tasks) {
 	*	WATCH TASKS
 	* ---------------------*/
 
-	gulp.task('watch:' + TASK_NAME, function () {
+	gulp.task('watch:' + TASK_NAME, function watchTask() {
 		gulp.watch(
 			taskConfig.watch,
 			[TASK_NAME]

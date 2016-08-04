@@ -1,9 +1,11 @@
+'use strict';
+
 var path = require('path');
 
 var config        = require(path.resolve(process.cwd(), '_config/project.json'));
 var mockGulp = {
 	registeredTasks: [],
-	task: function(taskName){
+	task: function mockTask(taskName){
 		this.registeredTasks.push(taskName);
 		return;
 	}
