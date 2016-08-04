@@ -34,14 +34,14 @@
     "check-coverage": "istanbul cover _mocha"
   },
   "dependencies": {
-    "autoprefixer": "~6.3.6",
+    "autoprefixer": "~6.4.0",
     "cartridge-module-util": "~0.5.1",
     "css-mqpacker": "~5.0.1",
     "cssnano": "~3.7.3",
     "gulp-if": "~2.0.1",
     "gulp-postcss": "~6.1.1",
     "gulp-sass": "~2.3.2",
-    "gulp-sass-generate-contents": "~0.2.2",
+    "gulp-sass-generate-contents": "~0.3.2",
     "gulp-sourcemaps": "~1.5.2",
     "merge": "^1.2.0",
     "postcss-minify-selectors": "^2.0.5",
