@@ -29,7 +29,7 @@
     "test": "mocha && npm run lint",
     "lint": "eslint task.js \"**/*.js\"",
     "cover": "npm run check-coverage && open coverage/lcov-report/index.html",
-    "report": "plato -r -e .eslintrc.json -d report task.js",
+    "report": "plato -r -e .eslintrc.json -d report task.js \"_config/*.js\" \"test/**/*.js\"",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
     "report-coverage": "cat ./coverage/lcov.info | codecov",
     "check-coverage": "istanbul cover _mocha"
