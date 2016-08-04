@@ -42,16 +42,16 @@ describe('As a gulpfile', function asAGulpfile() {
 
 		it('should correctly register all tasks with the gulp instance', function shouldRegisterTasksWithGulp() {
 			expect(basicrunner.gulpTasks.length).to.equal(6);
-		})
+		});
 
 		it('shoud correctly register generate-contents task for each CSS file', function shoudRegisterGenerateTask() {
 			expect(basicrunner.gulpTasks).to.include('sass:generate-contents:main');
 			expect(basicrunner.gulpTasks).to.include('sass:generate-contents:ie8');
-		})
+		});
 
 		it('shoud correctly register base task for each CSS file', function shoudRegisterBaseTask() {
 			expect(basicrunner.gulpTasks).to.include('sass:main');
 			expect(basicrunner.gulpTasks).to.include('sass:ie8');
-		})
+		});
 	});
-})
+});
