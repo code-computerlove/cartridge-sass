@@ -39,7 +39,7 @@
     "css-mqpacker": "~5.0.1",
     "cssnano": "~3.7.3",
     "gulp-if": "~2.0.1",
-    "gulp-postcss": "~6.1.1",
+    "gulp-postcss": "~6.2.0",
     "gulp-sass": "~2.3.2",
     "gulp-sass-generate-contents": "~0.3.2",
     "gulp-sourcemaps": "~1.5.2",
