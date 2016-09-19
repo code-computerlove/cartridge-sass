@@ -2,6 +2,9 @@
   "name": "cartridge-sass",
   "version": "1.0.0",
   "description": "Sass module for the cartridge project",
+  "engines" : {
+    "node" : ">=4.4.*"
+  },
   "keywords": [
     "gulp",
     "dependency",
