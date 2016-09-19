@@ -9,6 +9,7 @@ cache:
 notifications:
     email: false
 node_js:
+    - '6.6'
     - '5.1'
     - '4.4'
 install:
