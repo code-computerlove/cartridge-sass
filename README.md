@@ -4,8 +4,8 @@
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)](http://commitizen.github.io/cz-cli/)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat-square)](https://github.com/semantic-release/semantic-release)
 
-[![Dependency Status](https://david-dm.org/cartridge/cartridge-sass.svg?style=flat-square)](https://david-dm.org/cartridge/cartridge-sass/caribou)
-[![devDependency Status](https://david-dm.org/cartridge/cartridge-sass/dev-status.svg?style=flat-square)](https://david-dm.org/cartridge/cartridge-sass/caribou#info=devDependencies)
+[![Dependency Status](https://david-dm.org/cartridge/cartridge-sass.svg?style=flat-square)](https://david-dm.org/cartridge/cartridge-sass/)
+[![devDependency Status](https://david-dm.org/cartridge/cartridge-sass/dev-status.svg?style=flat-square)](https://david-dm.org/cartridge/cartridge-sass?type=dev)
 
 **If you are using this module on windows, it is recommend to use the [cartridge-sass-legacy](https://github.com/cartridge/cartridge-sass-legacy) module instead to maximise comptability.**
 
