@@ -20,6 +20,7 @@ To use this module, you will need [cartridge-cli](https://github.com/cartridge/c
 | Barney Scott  | [bmds](https://github.com/bmds) |
 
 ## Installation
+This module requires node version 4.4.x at a minimum.
 
 ```sh
 npm install cartridge-sass --save-dev
