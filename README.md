@@ -95,3 +95,6 @@ When the commit passes tests on [Travis](https://travis-ci.org/cartridge/cartrid
 
 ### Gold master
 The project uses gold master files to determine if the generated CSS changes after updates to the module. If you are adding new PostCSS plugins or modifying versions then expect that this could change. Verify that the new CSS is correct and then update the gold masters.
+
+### Plato
+The project has [Plato](https://github.com/es-analysis/plato) configured to generate reports on the Javascript complexity of the project. You can run the report locally with `npm run report`. This will run Plato and open a browser tab with the generated report. If you wish to simply generate the report use `npm run report-complexity`.
