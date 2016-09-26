@@ -9,9 +9,9 @@ cache:
 notifications:
     email: false
 node_js:
+    - '6.6'
     - '5.1'
     - '4.4'
-    - '0.12.2'
 install:
     - npm install
 before_install:

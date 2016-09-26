@@ -4,8 +4,8 @@
 [![Commitizen friendly](https://img.shields.io/badge/commitizen-friendly-brightgreen.svg?style=flat-square)](http://commitizen.github.io/cz-cli/)
 [![semantic-release](https://img.shields.io/badge/%20%20%F0%9F%93%A6%F0%9F%9A%80-semantic--release-e10079.svg?style=flat-square)](https://github.com/semantic-release/semantic-release)
 
-[![Dependency Status](https://david-dm.org/cartridge/cartridge-sass.svg?style=flat-square)](https://david-dm.org/cartridge/cartridge-sass/caribou)
-[![devDependency Status](https://david-dm.org/cartridge/cartridge-sass/dev-status.svg?style=flat-square)](https://david-dm.org/cartridge/cartridge-sass/caribou#info=devDependencies)
+[![Dependency Status](https://david-dm.org/cartridge/cartridge-sass.svg?style=flat-square)](https://david-dm.org/cartridge/cartridge-sass/)
+[![devDependency Status](https://david-dm.org/cartridge/cartridge-sass/dev-status.svg?style=flat-square)](https://david-dm.org/cartridge/cartridge-sass?type=dev)
 
 **If you are using this module on windows, it is recommend to use the [cartridge-sass-legacy](https://github.com/cartridge/cartridge-sass-legacy) module instead to maximise comptability.**
 
@@ -20,6 +20,7 @@ To use this module, you will need [cartridge-cli](https://github.com/cartridge/c
 | Barney Scott  | [bmds](https://github.com/bmds) |
 
 ## Installation
+This module requires node version 4.4.x at a minimum.
 
 ```sh
 npm install cartridge-sass --save-dev
@@ -95,3 +96,6 @@ When the commit passes tests on [Travis](https://travis-ci.org/cartridge/cartrid
 
 ### Gold master
 The project uses gold master files to determine if the generated CSS changes after updates to the module. If you are adding new PostCSS plugins or modifying versions then expect that this could change. Verify that the new CSS is correct and then update the gold masters.
+
+### Plato
+The project has [Plato](https://github.com/es-analysis/plato) configured to generate reports on the Javascript complexity of the project. You can run the report locally with `npm run report`. This will run Plato and open a browser tab with the generated report. If you wish to simply generate the report use `npm run report-complexity`.
