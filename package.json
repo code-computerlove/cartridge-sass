@@ -2,6 +2,9 @@
   "name": "cartridge-sass",
   "version": "1.0.0",
   "description": "Sass module for the cartridge project",
+  "engines" : {
+    "node" : ">=4.4.*"
+  },
   "keywords": [
     "gulp",
     "dependency",
@@ -29,17 +32,19 @@
     "test": "mocha && npm run lint",
     "lint": "eslint task.js \"**/*.js\"",
     "cover": "npm run check-coverage && open coverage/lcov-report/index.html",
+    "report": "npm run report-complexity && open report/index.html",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "report-complexity": "plato -r -e .eslintrc.json -d report task.js \"_config/*.js\" \"test/**/*.js\"",
     "report-coverage": "cat ./coverage/lcov.info | codecov",
     "check-coverage": "istanbul cover _mocha"
   },
   "dependencies": {
-    "autoprefixer": "~6.4.0",
+    "autoprefixer": "~6.4.1",
     "cartridge-module-util": "~0.5.1",
     "css-mqpacker": "~5.0.1",
     "cssnano": "~3.7.3",
     "gulp-if": "~2.0.1",
-    "gulp-postcss": "~6.1.1",
+    "gulp-postcss": "~6.2.0",
     "gulp-sass": "~2.3.2",
     "gulp-sass-generate-contents": "~0.3.2",
     "gulp-sourcemaps": "~1.5.2",
@@ -51,15 +56,16 @@
     "chai": "~1.10.0",
     "chai-fs": "~0.1.0",
     "codecov.io": "~0.1.6",
-    "cz-conventional-changelog": "~1.1.6",
-    "eslint": "~2.13.1",
+    "cz-conventional-changelog": "~1.2.0",
+    "eslint": "~3.5.0",
     "fs-extra": "~0.30.0",
     "ghooks": "~1.3.2",
     "gulp": "~3.9.1",
     "istanbul": "~0.4.3",
-    "mocha": "~2.5.3",
+    "mocha": "~3.0.2",
+    "plato": "~1.6.0",
     "semantic-release": "~4.3.5",
-    "validate-commit-msg": "~2.6.1"
+    "validate-commit-msg": "~2.8.0"
   },
   "release": {
     "branch": "master"

@@ -41,6 +41,10 @@ function getTaskConfig(projectConfig) {
 				]
 			}
 		},
+		watch: [
+			projectConfig.paths.src.sass + '**/*.scss',
+			projectConfig.paths.src.components + '**/*.scss'
+		],
 		defaultConfig: {
 			autoprefixer: {
 				browsers: ['>5%']
@@ -51,11 +55,7 @@ function getTaskConfig(projectConfig) {
 			pxtorem: {
 				replace:   false,
 				rootValue: 16
-			},
-			watch: [
-				projectConfig.paths.src.sass + '**/*.scss',
-				projectConfig.paths.src.components + '**/*.scss'
-			]
+			}
 		}
 
 	};
