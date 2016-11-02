@@ -54,7 +54,7 @@
   },
   "devDependencies": {
     "chai": "~1.10.0",
-    "chai-fs": "~0.1.0",
+    "chai-fs": "~1.0.0",
     "codecov.io": "~0.1.6",
     "cz-conventional-changelog": "~1.2.0",
     "eslint": "~3.9.1",
