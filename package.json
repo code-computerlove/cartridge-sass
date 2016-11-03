@@ -53,7 +53,7 @@
     "postcss-pxtorem": "~3.3.1"
   },
   "devDependencies": {
-    "chai": "~1.10.0",
+    "chai": "~3.5.0",
     "chai-fs": "~1.0.0",
     "codecov.io": "~0.1.6",
     "cz-conventional-changelog": "~1.2.0",
