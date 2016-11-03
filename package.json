@@ -65,7 +65,7 @@
     "mocha": "~3.1.1",
     "plato": "~1.6.0",
     "semantic-release": "~4.3.5",
-    "validate-commit-msg": "~2.8.0"
+    "validate-commit-msg": "~2.8.2"
   },
   "release": {
     "branch": "master"
