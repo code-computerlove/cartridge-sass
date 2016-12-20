@@ -76,7 +76,7 @@ module.exports = function task(gulp, projectConfig, tasks) {
 					errLogToConsole: true,
 					includePaths:    [projectConfig.paths.src.components],
 					outputStyle:     'compact'
-				}))
+				}).on('error', sass.logError))
 				.pipe(postcss(getPostCssPlugins(taskConfig.files[key].config)))
 				.pipe(gulpif(!projectConfig.isProd, sourcemaps.write('.'))) //Default only
 				.pipe(gulp.dest(projectConfig.paths.dest[TASK_NAME]));
