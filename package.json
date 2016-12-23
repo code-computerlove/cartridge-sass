@@ -39,7 +39,7 @@
     "check-coverage": "istanbul cover _mocha"
   },
   "dependencies": {
-    "autoprefixer": "~6.5.1",
+    "autoprefixer": "~6.6.0",
     "cartridge-module-util": "~0.5.1",
     "css-mqpacker": "~5.0.1",
     "cssnano": "~3.8.2",
