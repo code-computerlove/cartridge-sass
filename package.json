@@ -45,7 +45,7 @@
     "cssnano": "~3.8.2",
     "gulp-if": "~2.0.1",
     "gulp-postcss": "~6.2.0",
-    "gulp-sass": "~3.0.0",
+    "gulp-sass": "~3.1.0",
     "gulp-sass-generate-contents": "~0.3.2",
     "gulp-sourcemaps": "~2.2.1",
     "merge": "^1.2.0",
