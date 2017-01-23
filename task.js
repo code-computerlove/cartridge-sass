@@ -108,8 +108,12 @@ module.exports = function task(gulp, projectConfig, tasks) {
 	*	WATCH TASKS
 	* ---------------------*/
 
+	Object.keys(taskConfig.files).forEach(function setupTasksFromConfig(key) {
+		taskConfig.watch.push('!' + taskConfig.files[key].src);
+	});
+
 	gulp.task('watch:' + TASK_NAME, function watchTask() {
-		gulp.watch(
+		gulp.watch (
 			taskConfig.watch,
 			[TASK_NAME]
 		);
