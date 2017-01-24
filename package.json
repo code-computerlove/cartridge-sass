@@ -57,7 +57,7 @@
     "chai-fs": "~1.0.0",
     "codecov.io": "~0.1.6",
     "cz-conventional-changelog": "~1.2.0",
-    "eslint": "~3.13.1",
+    "eslint": "~3.14.0",
     "fs-extra": "~2.0.0",
     "ghooks": "~2.0.0",
     "gulp": "~3.9.1",
