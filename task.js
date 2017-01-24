@@ -1,4 +1,7 @@
-'use strict';
+/* jshint node: true */
+
+'use strict'; // jshint ignore:line
+
 /* ============================================================ *\
 	 STYLES / SCSS
 \* ============================================================ */
@@ -7,7 +10,7 @@
 var sourcemaps = require('gulp-sourcemaps');
 var gulpif     = require('gulp-if');
 var path       = require('path');
-var merge = require('merge');
+var merge      = require('merge');
 
 // Sass dependencies
 var sgc  = require('gulp-sass-generate-contents');
@@ -109,4 +112,4 @@ module.exports = function task(gulp, projectConfig, tasks) {
 	tasks.default.push(TASK_NAME);
 	// Add the task to the watch list
 	tasks.watch.push('watch:' + TASK_NAME);
-}
+};
