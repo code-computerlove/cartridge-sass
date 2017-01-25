@@ -55,6 +55,14 @@ function getTaskConfig(projectConfig) {
 			pxtorem: {
 				replace:   false,
 				rootValue: 16
+			},
+			stylelint: {
+				reporters: [
+					{
+						formatter: 'string',
+						console: true
+					}
+				]
 			}
 		}
 

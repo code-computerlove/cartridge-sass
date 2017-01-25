@@ -41,7 +41,7 @@ describe('As a gulpfile', function asAGulpfile() {
 		});
 
 		it('should correctly register all tasks with the gulp instance', function shouldRegisterTasksWithGulp() {
-			expect(basicrunner.gulpTasks.length).to.equal(6);
+			expect(basicrunner.gulpTasks.length).to.equal(8);
 		});
 
 		it('shoud correctly register generate-contents task for each CSS file', function shoudRegisterGenerateTask() {

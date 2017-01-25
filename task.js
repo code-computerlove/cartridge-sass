@@ -6,6 +6,8 @@
 	 STYLES / SCSS
 \* ============================================================ */
 
+var fs = require('fs-extra');
+
 // Gulp dependencies
 var sourcemaps = require('gulp-sourcemaps');
 var gulpif     = require('gulp-if');
@@ -23,6 +25,12 @@ var cssNano         = require('cssnano');
 var pxToRem         = require('postcss-pxtorem');
 var mqPacker        = require('css-mqpacker');
 var minifySelectors = require('postcss-minify-selectors');
+var stylelint       = require('gulp-stylelint');
+
+var modulePath = path.resolve('node_modules', 'stylelint-config-standard');
+var projectPath = path.resolve(__dirname, 'node_modules', 'stylelint-config-standard');
+
+fs.ensureSymlinkSync(modulePath, projectPath, 'dir');
 
 module.exports = function task(gulp, projectConfig, tasks) {
 	/* --------------------
@@ -36,7 +44,7 @@ module.exports = function task(gulp, projectConfig, tasks) {
 	var sassTasksArr = [];
 
 	function getPostCssPlugins(fileConfig) {
-		//Copy defaultConfig object
+		// Copy defaultConfig object
 		var defaultConfig = merge(true, taskConfig.defaultConfig);
 		var postCssConfig = merge(defaultConfig, fileConfig || {});
 		var postCssPlugins = [
@@ -64,7 +72,13 @@ module.exports = function task(gulp, projectConfig, tasks) {
 	Object.keys(taskConfig.files).forEach(function setupTasksFromConfig(key) {
 
 		var generateContentsTaskName = TASK_NAME + ':generate-contents:' + key;
+		var stylelintTaskName = TASK_NAME + ':lint:' + key;
 		var sassCompileTaskName = TASK_NAME + ':' + key;
+
+		gulp.task(stylelintTaskName, function stylelintTask() {
+			return gulp.src(taskConfig.files[key].src)
+				.pipe(stylelint(taskConfig.defaultConfig.stylelint));
+		});
 
 		gulp.task(generateContentsTaskName, function generateContentsTask() {
 			return gulp.src(taskConfig.files[key].partials)
@@ -72,7 +86,7 @@ module.exports = function task(gulp, projectConfig, tasks) {
 				.pipe(gulp.dest(projectConfig.paths.src[TASK_NAME]));
 		});
 
-		gulp.task(sassCompileTaskName, [generateContentsTaskName], function sassTask() {
+		gulp.task(sassCompileTaskName, [stylelintTaskName, generateContentsTaskName], function sassTask() {
 			return gulp.src(taskConfig.files[key].src)
 				.pipe(gulpif(!projectConfig.isProd, sourcemaps.init())) //Default only
 				.pipe(sass({
@@ -87,7 +101,6 @@ module.exports = function task(gulp, projectConfig, tasks) {
 
 		sassTasksArr.push(sassCompileTaskName);
 	});
-
 
 	gulp.task(TASK_NAME, sassTasksArr);
 
