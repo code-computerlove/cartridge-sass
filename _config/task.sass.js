@@ -57,6 +57,7 @@ function getTaskConfig(projectConfig) {
 				rootValue: 16
 			},
 			stylelint: {
+				failAfterError: false,
 				reporters: [
 					{
 						formatter: 'string',
