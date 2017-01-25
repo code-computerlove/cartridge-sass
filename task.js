@@ -76,7 +76,7 @@ module.exports = function task(gulp, projectConfig, tasks) {
 		var sassCompileTaskName = TASK_NAME + ':' + key;
 
 		gulp.task(stylelintTaskName, function stylelintTask() {
-			return gulp.src(taskConfig.files[key].src)
+			return gulp.src(taskConfig.files[key].partials)
 				.pipe(stylelint(taskConfig.defaultConfig.stylelint));
 		});
 
