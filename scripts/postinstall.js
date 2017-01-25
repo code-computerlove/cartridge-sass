@@ -34,4 +34,7 @@ cartridgeUtil.addToRc()
 	.then(function runAddModuleConfig(){
 		return cartridgeUtil.addModuleConfig(path.resolve('_config', 'task.' + TASK_NAME + '.js'));
 	})
+	.then(function runAddStylelintRc(){
+		return cartridgeUtil.copyToProjectDir([{ copyPath: '.stylelintrc' }]);
+	})
 	.then(cartridgeUtil.finishInstall);
