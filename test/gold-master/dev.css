@@ -59,17 +59,17 @@ h1 { font-size: 38px; font-size: 2.375rem; line-height: 1.25; margin: 0 0 22px; 
 
 .section-heading:after { color: #000; content: ':'; display: inline-block; font-family: "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif; }
 
-.section-heading__bold { font-family: "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif; letter-spacing: -.05em; }
+.section-heading__bold { font-family: "Helvetica Neue", "Segoe UI", Helvetica, Arial, sans-serif; letter-spacing: -0.05em; }
 
 a,button { color: #ee3a43; text-decoration: none; }
 
-.link-icon:after { content: ' '; font-size: .6em; margin-left: .5em; -webkit-transition: -webkit-transform .3s ease; transition: -webkit-transform .3s ease; transition: transform .3s ease; transition: transform .3s ease, -webkit-transform .3s ease; }
+.link-icon:after { content: ' '; font-size: 0.6em; margin-left: 0.5em; -webkit-transition: -webkit-transform 0.3s ease; transition: -webkit-transform 0.3s ease; transition: transform 0.3s ease; transition: transform 0.3s ease, -webkit-transform 0.3s ease; }
 
 .link-icon:hover:after { -webkit-transform: translateX(10px); transform: translateX(10px); }
 
 .link-icon--left:after { display: none; }
 
-.link-icon--left:before { font-size: .7em; margin-right: .25em; vertical-align: middle; }
+.link-icon--left:before { font-size: 0.7em; margin-right: 0.25em; vertical-align: middle; }
 
 .link-icon--left:hover:after { -webkit-transform: none; transform: none; }
 
@@ -87,7 +87,7 @@ ul>li { list-style-type: disc; margin-bottom: 0; padding: 0; text-indent: 0; }
 
 address { display: inline-block; }
 
-.wrapper { -webkit-transition: -webkit-transform .3s ease; transition: -webkit-transform .3s ease; transition: transform .3s ease; transition: transform .3s ease, -webkit-transform .3s ease; }
+.wrapper { -webkit-transition: -webkit-transform 0.3s ease; transition: -webkit-transform 0.3s ease; transition: transform 0.3s ease; transition: transform 0.3s ease, -webkit-transform 0.3s ease; }
 
 .main-content { overflow: hidden; }
 
@@ -101,7 +101,7 @@ address { display: inline-block; }
  h1 { font-size: 48px; font-size: 3rem; } }
 
 @media screen and (min-width: 45em) {
- h1,h2,h3,h4,h5,h6 { letter-spacing: .1em; }
+ h1,h2,h3,h4,h5,h6 { letter-spacing: 0.1em; }
  h1 { font-size: 70px; font-size: 4.375rem; line-height: 1; }
  .col--1\/12 { width: 8.33333%; }
  .col--1\/6 { width: 16.66667%; }

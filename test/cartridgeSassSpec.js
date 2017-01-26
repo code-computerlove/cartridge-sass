@@ -13,6 +13,8 @@ var MOCK_PROJECT_DIR = path.join(process.cwd(), 'test', 'mock-project');
 var STYLE_SRC_DIR    = path.join(MOCK_PROJECT_DIR, '_source', 'styles');
 var STYLE_DEST_DIR   = path.join(MOCK_PROJECT_DIR, 'public', '_client', 'styles');
 
+var SCSS_LINTER_FILEPATH = path.join(MOCK_PROJECT_DIR, '_source', 'stylelint.log');
+
 var MAIN_SCSS_FILEPATH          = path.join(STYLE_SRC_DIR, 'main.scss');
 var MAIN_CSS_FILEPATH           = path.join(STYLE_DEST_DIR, 'main.css');
 var MAIN_CSS_SOURCEMAP_FILEPATH = path.join(STYLE_DEST_DIR, 'main.css.map');
@@ -80,6 +82,10 @@ describe('As a user of the cartridge-sass module', function AsCartridgeSassUser(
 			expect(IE8_CSS_SOURCEMAP_FILEPATH).to.be.a.file();
 		});
 
+		it('should generate valid css that passes the linter', function shouldGenerateValidCss() {
+			expect(SCSS_LINTER_FILEPATH).to.be.a.file().and.empty;
+		});
+
 		it('should generate the correct css', function shouldGenerateTheCorrectCss() {
 			assertGoldMaster(MAIN_CSS_FILEPATH, 'dev.css');
 			assertGoldMaster(IE8_CSS_FILEPATH, 'ie8-dev.css');
@@ -118,6 +124,10 @@ describe('As a user of the cartridge-sass module', function AsCartridgeSassUser(
 
 		it('should not add the IE8.css.map sourcemap file to the public styles folder', function shouldNotAddIE8Sourcemap() {
 			expect(IE8_CSS_SOURCEMAP_FILEPATH).to.not.be.a.path();
+		});
+
+		it('should generate valid css that passes the linter', function shouldGenerateValidCss() {
+			expect(SCSS_LINTER_FILEPATH).to.be.a.file().and.empty;
 		});
 
 		it('should generate the correct css', function shouldGenerateCorrectCss() {
