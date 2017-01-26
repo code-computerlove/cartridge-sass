@@ -1,8 +1,22 @@
 // Polyfil code pending autoprefixer support
 
+// Linter doesn't understand prefixes
+// stylelint-disable
 @mixin placeholder {
-	::-webkit-input-placeholder {@content;}
-	:-moz-placeholder {@content;}
-	::-moz-placeholder {@content;}
-	:-ms-input-placeholder {@content;}
+	::-webkit-input-placeholder {
+		@content;
+	}
+
+	:-moz-placeholder {
+		@content;
+	}
+
+	::-moz-placeholder {
+		@content;
+	}
+
+	:-ms-input-placeholder {
+		@content;
+	}
 }
+// stylelint-enable
