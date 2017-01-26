@@ -13,10 +13,10 @@ ul {
 	margin: 0 0 $G-Gutter $G-Gutter;
 }
 
-ul ul,
 ol ol,
 ol ul,
-ul ol {
+ul ol,
+ul ul {
 	margin-bottom: 0;
 }
 
@@ -27,9 +27,9 @@ li {
 ul {
 	> li {
 		list-style-type: disc;
-		margin-bottom:   0;
-		padding:         0;
-		text-indent:     0;
+		margin-bottom: 0;
+		padding: 0;
+		text-indent: 0;
 	}
 }
 

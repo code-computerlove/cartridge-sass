@@ -28,9 +28,9 @@
 // This will look for an atom in the color palete and then search for the color variation
 
 @function getColor($atom, $color) {
-	@if(map-has-key($Colors, $atom)) {
+	@if (map-has-key($Colors, $atom)) {
 		$mapGet: map-get($Colors, $atom);
-		@if(map-has-key($mapGet, $color)) {
+		@if (map-has-key($mapGet, $color)) {
 			@return map-get($mapGet, $color);
 		} @else {
 			@warn 'getColor: #{$color} is not a valid colour';
