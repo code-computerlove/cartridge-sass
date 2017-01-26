@@ -8,21 +8,13 @@
 				"ignoreAtRules": ["include"]
 			}
 		],
-
 		"declaration-block-no-ignored-properties": true,
 		"declaration-no-important": true,
 		"selector-max-compound-selectors": 2,
-		"selector-class-pattern": [
-			"^(_)?[a-z]+-[a-z0-9-]+((_{2}|-{2})?[a-z0-9-]+)?(-{2}[a-z0-9-]+)?[a-z0-9]$",
-			{
-				"resolveNestedSelectors": true
-			}
-		],
-
 		"at-rule-empty-line-before": [
 			"always",
 			{
-				"except": ["blockless-after-same-name-blockless", "first-nested"],
+				"except": ["blockless-after-same-name-blockless", "all-nested"],
 				"ignore": ["after-comment"],
 				"ignoreAtRules": ["import", "return", "warn", "elseif", "else"]
 			}
@@ -37,13 +29,19 @@
 		"declaration-block-semicolon-newline-after": "always",
 		"declaration-block-semicolon-newline-before": "never-multi-line",
 		"declaration-colon-space-after": "always-single-line",
+		"declaration-empty-line-before": "never",
 		"function-comma-newline-before": "never-multi-line",
 		"function-comma-space-after": "always",
+		"function-name-case": [
+			"lower",
+			{
+				"ignoreFunctions": ["/^get.*$/"]
+			}
+		],
 		"function-url-quotes": "always",
 		"selector-attribute-quotes": "always",
 		"string-quotes": "single",
 		"stylelint-disable-reason": "always-before",
-
 		"at-rule-no-vendor-prefix": true,
 		"media-feature-name-no-vendor-prefix": true,
 		"property-no-vendor-prefix": true,

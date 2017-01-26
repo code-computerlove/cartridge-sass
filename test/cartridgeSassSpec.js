@@ -54,7 +54,7 @@ describe('As a user of the cartridge-sass module', function AsCartridgeSassUser(
 			gulprunner.run(done);
 		});
 
-		after(cleanUp);
+		// after(cleanUp);
 
 		it('should generate the main.scss file in the _source dir', function shouldGenerateMainScssFile() {
 			expect(MAIN_SCSS_FILEPATH).to.be.a.file();
@@ -94,7 +94,7 @@ describe('As a user of the cartridge-sass module', function AsCartridgeSassUser(
 			gulprunner.run(done);
 		});
 
-		after(cleanUp);
+		// after(cleanUp);
 
 		it('should generate the main.scss file in the _source dir', function shouldGenerateMainScssFile() {
 			expect(MAIN_SCSS_FILEPATH).to.be.a.file();
