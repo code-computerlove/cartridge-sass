@@ -1,12 +1,11 @@
 //links - styles for links
-
 @mixin link-generic() {
-	color:           getColor(Body, Generic-Link);
+	color: getColor(Body, Generic-Link);
 	text-decoration: none;
 }
 
 @mixin altLink {
-	color:       getColor(Body, Generic-Link-White);
+	color: getColor(Body, Generic-Link-White);
 	font-weight: bold;
 }
 
@@ -14,17 +13,13 @@ a,
 button {
 	@include link-generic;
 }
-
-
 // This is used for links that have the red arrow.
-
 .link-icon {
-
 	&::after {
-		content:     ' ';
-		font-size:   .6em;
-		margin-left: .5em;
-		transition:  transform .3s ease;
+		content: ' ';
+		font-size: 0.6em;
+		margin-left: 0.5em;
+		transition: transform 0.3s ease;
 	}
 
 	&:hover {
@@ -35,14 +30,13 @@ button {
 }
 
 .link-icon--left {
-
 	&::after {
 		display: none;
 	}
 
 	&::before {
-		font-size:      .7em;
-		margin-right:   .25em;
+		font-size: 0.7em;
+		margin-right: 0.25em;
 		vertical-align: middle;
 	}
 
