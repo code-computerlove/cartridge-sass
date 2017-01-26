@@ -2,9 +2,8 @@
 
 @mixin blockPadding {
 	padding: $G-Gutter;
-
 	@include respond-from(Large) {
-		padding-left:  $G-Gutter * 2;
+		padding-left: $G-Gutter * 2;
 		padding-right: $G-Gutter * 2;
 	}
 }
@@ -12,9 +11,8 @@
 @mixin blockMargin {
 	margin-left: $G-Gutter;
 	margin-right: $G-Gutter;
-
 	@include respond-from(Large) {
-		margin-left:  $G-Gutter * 2;
+		margin-left: $G-Gutter * 2;
 		margin-right: $G-Gutter * 2;
 	}
 }
