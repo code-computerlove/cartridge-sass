@@ -1,4 +1,0 @@
-; core variables
-[core]
-	; Don't change line endings
-	autocrlf = false
