@@ -15,6 +15,9 @@ cartridgeUtil.removeFromRc(packageConfig.name)
 		return cartridgeUtil.removeModuleConfig(path.resolve('_config', 'task.' + TASK_NAME + '.js'));
 	})
 	.then(function runRemoveStylelintRc() {
-		return cartridgeUtil.removeFromProjectDir(['.stylelintrc']);
+		return cartridgeUtil.removeFromProjectDir([
+			'.stylelintrc',
+			'_source/styles'
+		]);
 	})
 	.then(cartridgeUtil.finishUninstall)
