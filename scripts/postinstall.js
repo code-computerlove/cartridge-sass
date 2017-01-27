@@ -34,7 +34,15 @@ cartridgeUtil.addToRc()
 	.then(function runAddModuleConfig(){
 		return cartridgeUtil.addModuleConfig(path.resolve('_config', 'task.' + TASK_NAME + '.js'));
 	})
+	.then(function runMigrateSassFiles(){
+		return cartridgeUtil.copyToProjectDir([{
+			copyPath: '_source/styles',
+			destinationPath: '_source'
+		}]);
+	})
 	.then(function runAddStylelintRc(){
-		return cartridgeUtil.copyToProjectDir([{ copyPath: '.stylelintrc' }]);
+		return cartridgeUtil.copyToProjectDir([{
+			copyPath: '.stylelintrc'
+		}]);
 	})
 	.then(cartridgeUtil.finishInstall);
