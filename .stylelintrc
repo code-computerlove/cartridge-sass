@@ -8,13 +8,19 @@
 				"ignoreAtRules": ["include"]
 			}
 		],
+		"declaration-block-no-duplicate-properties": [
+			true,
+			{
+				"ignore": ["consecutive-duplicates"]
+			}
+		],
 		"declaration-block-no-ignored-properties": true,
 		"declaration-no-important": true,
 		"selector-max-compound-selectors": 2,
 		"at-rule-empty-line-before": [
 			"always",
 			{
-				"except": ["blockless-after-same-name-blockless", "all-nested"],
+				"except": ["blockless-after-same-name-blockless", "first-nested"],
 				"ignore": ["after-comment"],
 				"ignoreAtRules": ["import", "return", "warn", "elseif", "else"]
 			}
