@@ -14,7 +14,6 @@
 				"ignore": ["consecutive-duplicates"]
 			}
 		],
-		"declaration-block-no-ignored-properties": true,
 		"declaration-no-important": true,
 		"selector-max-compound-selectors": 2,
 		"at-rule-empty-line-before": [
@@ -46,7 +45,6 @@
 		"function-url-quotes": "always",
 		"selector-attribute-quotes": "always",
 		"string-quotes": "single",
-		"stylelint-disable-reason": "always-before",
 		"at-rule-no-vendor-prefix": true,
 		"media-feature-name-no-vendor-prefix": true,
 		"property-no-vendor-prefix": true,
