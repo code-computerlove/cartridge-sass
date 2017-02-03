@@ -40,7 +40,7 @@
 		"function-name-case": [
 			"lower",
 			{
-				"ignoreFunctions": ["/^get.*$/"]
+				"ignoreFunctions": ["/^get.*$/", "/^calculate.*$/"]
 			}
 		],
 		"function-url-quotes": "always",
