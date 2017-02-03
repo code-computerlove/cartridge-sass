@@ -31,7 +31,6 @@
 				"ignoreAtRules": ["if", "else", "elseif"]
 			}
 		],
-		"declaration-block-properties-order": "alphabetical",
 		"declaration-block-semicolon-newline-after": "always",
 		"declaration-block-semicolon-newline-before": "never-multi-line",
 		"declaration-colon-space-after": "always-single-line",
