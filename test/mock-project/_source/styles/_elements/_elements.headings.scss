@@ -10,6 +10,7 @@ h6 {
 	font-family: $F-Thin;
 	font-weight: 300;
 	margin: 0 0 $G-Gutter;
+
 	@include respond-from(Med) {
 		letter-spacing: 0.1em;
 	}
