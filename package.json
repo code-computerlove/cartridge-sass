@@ -42,10 +42,10 @@
     "check-coverage": "istanbul cover _mocha"
   },
   "dependencies": {
-    "autoprefixer": "~6.7.0",
+    "autoprefixer": "~6.7.4",
     "cartridge-module-util": "~0.5.1",
     "css-mqpacker": "~5.0.1",
-    "cssnano": "~3.8.2",
+    "cssnano": "~3.10.0",
     "fs-extra": "~2.0.0",
     "gulp-if": "~2.0.1",
     "gulp-postcss": "~6.3.0",
