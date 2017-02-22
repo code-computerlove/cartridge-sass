@@ -13,7 +13,7 @@ var MOCK_PROJECT_DIR = path.join(process.cwd(), 'test', 'mock-project');
 var STYLE_SRC_DIR    = path.join(MOCK_PROJECT_DIR, '_source', 'styles');
 var STYLE_DEST_DIR   = path.join(MOCK_PROJECT_DIR, 'public', '_client', 'styles');
 
-var SCSS_LINTER_FILEPATH = path.join(MOCK_PROJECT_DIR, '_source', 'stylelint.log');
+var SCSS_LINTER_FILEPATH = path.join(process.cwd(), '.stylelint.log');
 
 var MAIN_SCSS_FILEPATH          = path.join(STYLE_SRC_DIR, 'main.scss');
 var MAIN_CSS_FILEPATH           = path.join(STYLE_DEST_DIR, 'main.css');

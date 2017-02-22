@@ -49,11 +49,11 @@
     "gulp-sass": "~3.1.0",
     "gulp-sass-generate-contents": "~0.3.2",
     "gulp-sourcemaps": "~2.4.1",
-    "gulp-stylelint": "^3.7.0",
+    "gulp-stylelint": "^3.8.0",
     "merge": "^1.2.0",
     "postcss-minify-selectors": "^2.0.5",
     "postcss-pxtorem": "~4.0.0",
-    "stylelint-config-standard": "^15.0.1"
+    "stylelint-config-standard": "^16.0.0"
   },
   "devDependencies": {
     "chai": "~3.5.0",
@@ -89,6 +89,8 @@
         "refactor",
         "perf",
         "test",
+        "build",
+        "ci",
         "chore",
         "revert"
       ],

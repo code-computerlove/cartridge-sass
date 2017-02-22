@@ -8,13 +8,18 @@
 				"ignoreAtRules": ["include"]
 			}
 		],
-		"declaration-block-no-ignored-properties": true,
+		"declaration-block-no-duplicate-properties": [
+			true,
+			{
+				"ignore": ["consecutive-duplicates"]
+			}
+		],
 		"declaration-no-important": true,
 		"selector-max-compound-selectors": 2,
 		"at-rule-empty-line-before": [
 			"always",
 			{
-				"except": ["blockless-after-same-name-blockless", "all-nested"],
+				"except": ["blockless-after-same-name-blockless", "first-nested"],
 				"ignore": ["after-comment"],
 				"ignoreAtRules": ["import", "return", "warn", "elseif", "else"]
 			}
@@ -25,7 +30,6 @@
 				"ignoreAtRules": ["if", "else", "elseif"]
 			}
 		],
-		"declaration-block-properties-order": "alphabetical",
 		"declaration-block-semicolon-newline-after": "always",
 		"declaration-block-semicolon-newline-before": "never-multi-line",
 		"declaration-colon-space-after": "always-single-line",
@@ -35,13 +39,12 @@
 		"function-name-case": [
 			"lower",
 			{
-				"ignoreFunctions": ["/^get.*$/"]
+				"ignoreFunctions": ["/^get.*$/", "/^calculate.*$/"]
 			}
 		],
 		"function-url-quotes": "always",
 		"selector-attribute-quotes": "always",
 		"string-quotes": "single",
-		"stylelint-disable-reason": "always-before",
 		"at-rule-no-vendor-prefix": true,
 		"media-feature-name-no-vendor-prefix": true,
 		"property-no-vendor-prefix": true,
