@@ -8,11 +8,14 @@ $offset: false !default;
 
 @mixin regionMain($offsetVal) {
 	$offset: $offsetVal;
+
 	@include column(12);
 	display: block;
+
 	@include respond-from(Med) {
 		width: getColumnWidth(12);
 	}
+
 	@include respond-from(Large) {
 		width: getColumnWidth(10);
 	}

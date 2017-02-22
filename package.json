@@ -34,6 +34,9 @@
     "cover": "npm run check-coverage && open coverage/lcov-report/index.html",
     "report": "npm run report-complexity && open report/index.html",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "semantic-test": "semantic-release pre",
+    "regengold:prod": "USE_PROD=1 node scripts/goldmaster.js",
+    "regengold:dev": "USE_PROD=0 node scripts/goldmaster.js",
     "report-complexity": "plato -r -e .eslintrc.json -d report task.js \"_config/*.js\" \"test/**/*.js\"",
     "report-coverage": "cat ./coverage/lcov.info | codecov",
     "check-coverage": "istanbul cover _mocha"
@@ -48,12 +51,12 @@
     "gulp-postcss": "~6.3.0",
     "gulp-sass": "~3.1.0",
     "gulp-sass-generate-contents": "~0.3.2",
-    "gulp-sourcemaps": "~2.4.0",
-    "gulp-stylelint": "^3.7.0",
+    "gulp-sourcemaps": "~2.4.1",
+    "gulp-stylelint": "^3.8.0",
     "merge": "^1.2.0",
     "postcss-minify-selectors": "^2.0.5",
     "postcss-pxtorem": "~4.0.0",
-    "stylelint-config-standard": "^15.0.1"
+    "stylelint-config-standard": "^16.0.0"
   },
   "devDependencies": {
     "chai": "~3.5.0",
@@ -89,6 +92,8 @@
         "refactor",
         "perf",
         "test",
+        "build",
+        "ci",
         "chore",
         "revert"
       ],
