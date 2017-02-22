@@ -1,7 +1,7 @@
 // Breakpoint tools
 
 @function adjustMaxBreakpoint($size) {
-	@return $size - .0625em;
+	@return $size - 0.0625em;
 }
 
 @mixin respond-from($breakpoint) {

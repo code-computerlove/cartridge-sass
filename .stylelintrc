@@ -1,0 +1,54 @@
+{
+	"extends": "stylelint-config-standard",
+	"rules": {
+		"indentation": "tab",
+		"max-nesting-depth": [
+			2,
+			{
+				"ignoreAtRules": ["include"]
+			}
+		],
+		"declaration-block-no-duplicate-properties": [
+			true,
+			{
+				"ignore": ["consecutive-duplicates"]
+			}
+		],
+		"declaration-no-important": true,
+		"selector-max-compound-selectors": 2,
+		"at-rule-empty-line-before": [
+			"always",
+			{
+				"except": ["blockless-after-same-name-blockless", "first-nested"],
+				"ignore": ["after-comment"],
+				"ignoreAtRules": ["import", "return", "warn", "elseif", "else"]
+			}
+		],
+		"block-closing-brace-newline-after": [
+			"always",
+			{
+				"ignoreAtRules": ["if", "else", "elseif"]
+			}
+		],
+		"declaration-block-semicolon-newline-after": "always",
+		"declaration-block-semicolon-newline-before": "never-multi-line",
+		"declaration-colon-space-after": "always-single-line",
+		"declaration-empty-line-before": "never",
+		"function-comma-newline-before": "never-multi-line",
+		"function-comma-space-after": "always",
+		"function-name-case": [
+			"lower",
+			{
+				"ignoreFunctions": ["/^get.*$/", "/^calculate.*$/"]
+			}
+		],
+		"function-url-quotes": "always",
+		"selector-attribute-quotes": "always",
+		"string-quotes": "single",
+		"at-rule-no-vendor-prefix": true,
+		"media-feature-name-no-vendor-prefix": true,
+		"property-no-vendor-prefix": true,
+		"selector-no-vendor-prefix": true,
+		"value-no-vendor-prefix": true
+	}
+}
