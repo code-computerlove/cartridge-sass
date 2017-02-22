@@ -1,3 +1,5 @@
+'use strict';
+
 var path = require('path');
 var fs   = require('fs');
 
@@ -12,7 +14,7 @@ process.chdir(MOCK_PROJECT_DIR);
 var gulprunner = require(path.resolve(process.cwd(), 'gulprunner.js'));
 
 function copyOverMaster(target) {
-	return new Promise(function(resolve, reject) {
+	return new Promise((resolve, reject) => {
 		var rd = fs.createReadStream(GENERATED_CSS_FILE);
 		rd.on('error', rejectCleanup);
 		var wr = fs.createWriteStream(target);
