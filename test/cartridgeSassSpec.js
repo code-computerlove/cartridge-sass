@@ -52,6 +52,7 @@ describe('As a user of the cartridge-sass module', function AsCartridgeSassUser(
 	describe('when `gulp sass` is run WITHOUT production flag', function whenRunWithoutProdFlag() {
 
 		before(function beforeTests(done) {
+			cleanUp();
 			gulprunner.setDev();
 			gulprunner.run(done);
 		});
@@ -96,6 +97,7 @@ describe('As a user of the cartridge-sass module', function AsCartridgeSassUser(
 	describe('when `gulp sass` is run WITH production flag', function whenRunWithProdFLag() {
 
 		before(function beforeTests(done) {
+			cleanUp();
 			gulprunner.setProd();
 			gulprunner.run(done);
 		});
