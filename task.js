@@ -41,7 +41,6 @@ module.exports = function(gulp, projectConfig, tasks) {
 		var basic = postCssPlugins;
 
 		if(projectConfig.isProd) {
-			console.log('use nano');
 			basic.push(cssNano());
 		}
 

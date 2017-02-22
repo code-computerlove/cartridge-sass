@@ -30,7 +30,9 @@
     "lint": "eslint task.js \"**/*.js\"",
     "cover": "istanbul cover _mocha && open coverage/lcov-report/index.html",
     "semantic-release": "semantic-release pre && npm publish && semantic-release post",
-    "semantic-test": "semantic-release pre"
+    "semantic-test": "semantic-release pre",
+    "regengold:prod": "USE_PROD=1 node scripts/goldmaster.js",
+    "regengold:dev": "USE_PROD=0 node scripts/goldmaster.js"
   },
   "dependencies": {
     "autoprefixer": "~6.3.6",
