@@ -113,7 +113,7 @@ module.exports = function task(gulp, projectConfig, tasks) {
 	});
 
 	gulp.task('watch:' + TASK_NAME, function watchTask() {
-		gulp.watch (
+		gulp.watch(
 			taskConfig.watch,
 			[TASK_NAME]
 		);
