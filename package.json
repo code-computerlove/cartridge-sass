@@ -63,7 +63,7 @@
     "chai-fs": "~1.0.0",
     "codecov.io": "~0.1.6",
     "cz-conventional-changelog": "~2.0.0",
-    "eslint": "~3.18.0",
+    "eslint": "~3.19.0",
     "ghooks": "~2.0.0",
     "gulp": "~3.9.1",
     "istanbul": "~0.4.3",
