@@ -46,7 +46,7 @@
     "cartridge-module-util": "~0.5.1",
     "css-mqpacker": "~5.0.1",
     "cssnano": "~3.10.0",
-    "fs-extra": "~2.1.2",
+    "fs-extra": "~3.0.1",
     "gulp-if": "~2.0.1",
     "gulp-postcss": "~6.4.0",
     "gulp-sass": "~3.1.0",
