@@ -69,7 +69,7 @@
     "istanbul": "~0.4.3",
     "mocha": "~3.4.2",
     "plato": "~1.6.0",
-    "semantic-release": "~6.3.2",
+    "semantic-release": "~6.3.6",
     "validate-commit-msg": "~2.12.1"
   },
   "release": {
