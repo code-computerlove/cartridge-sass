@@ -59,7 +59,7 @@
     "stylelint-config-standard": "^16.0.0"
   },
   "devDependencies": {
-    "chai": "~3.5.0",
+    "chai": "~4.0.1",
     "chai-fs": "~1.0.0",
     "codecov.io": "~0.1.6",
     "cz-conventional-changelog": "~2.0.0",
