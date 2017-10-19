@@ -42,35 +42,35 @@
     "check-coverage": "istanbul cover _mocha"
   },
   "dependencies": {
-    "autoprefixer": "~6.7.4",
+    "autoprefixer": "~7.1.5",
     "cartridge-module-util": "~0.5.1",
-    "css-mqpacker": "~5.0.1",
+    "css-mqpacker": "~6.0.1",
     "cssnano": "~3.10.0",
-    "fs-extra": "~2.1.2",
+    "fs-extra": "~4.0.2",
     "gulp-if": "~2.0.1",
-    "gulp-postcss": "~6.4.0",
+    "gulp-postcss": "~7.0.0",
     "gulp-sass": "~3.1.0",
     "gulp-sass-generate-contents": "~0.3.2",
     "gulp-sourcemaps": "~2.6.0",
-    "gulp-stylelint": "^3.8.0",
+    "gulp-stylelint": "^5.0.0",
     "merge": "^1.2.0",
     "postcss-minify-selectors": "^2.0.5",
     "postcss-pxtorem": "~4.0.0",
-    "stylelint-config-standard": "^16.0.0"
+    "stylelint-config-standard": "^17.0.0"
   },
   "devDependencies": {
-    "chai": "~3.5.0",
+    "chai": "~4.1.2",
     "chai-fs": "~1.0.0",
     "codecov.io": "~0.1.6",
     "cz-conventional-changelog": "~2.0.0",
-    "eslint": "~3.19.0",
+    "eslint": "~4.9.0",
     "ghooks": "~2.0.0",
     "gulp": "~3.9.1",
     "istanbul": "~0.4.3",
-    "mocha": "~3.2.0",
-    "plato": "~1.6.0",
-    "semantic-release": "~6.3.2",
-    "validate-commit-msg": "~2.12.1"
+    "mocha": "~4.0.1",
+    "plato": "~1.7.0",
+    "semantic-release": "~8.2.0",
+    "validate-commit-msg": "~2.14.0"
   },
   "release": {
     "branch": "master"
