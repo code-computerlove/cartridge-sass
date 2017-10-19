@@ -39,7 +39,9 @@
     "regengold:dev": "USE_PROD=0 node scripts/goldmaster.js",
     "report-complexity": "plato -r -e .eslintrc.json -d report task.js \"_config/*.js\" \"test/**/*.js\"",
     "report-coverage": "cat ./coverage/lcov.info | codecov",
-    "check-coverage": "istanbul cover _mocha"
+    "check-coverage": "istanbul cover _mocha",
+    "commitmsg": "validate-commit-msg",
+    "prepush": "npm t"
   },
   "dependencies": {
     "autoprefixer": "~7.1.1",
@@ -64,8 +66,8 @@
     "codecov.io": "~0.1.6",
     "cz-conventional-changelog": "~2.0.0",
     "eslint": "~3.19.0",
-    "ghooks": "~2.0.0",
     "gulp": "~3.9.1",
+    "husky": "^0.14.3",
     "istanbul": "~0.4.3",
     "mocha": "~3.4.2",
     "plato": "~1.6.0",
@@ -78,10 +80,6 @@
   "config": {
     "commitizen": {
       "path": "./node_modules/cz-conventional-changelog"
-    },
-    "ghooks": {
-      "commit-msg": "validate-commit-msg",
-      "pre-push": "npm t"
     },
     "validate-commit-msg": {
       "types": [
