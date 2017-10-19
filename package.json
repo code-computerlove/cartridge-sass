@@ -67,7 +67,7 @@
     "ghooks": "~2.0.0",
     "gulp": "~3.9.1",
     "istanbul": "~0.4.3",
-    "mocha": "~3.2.0",
+    "mocha": "~3.3.0",
     "plato": "~1.6.0",
     "semantic-release": "~6.3.2",
     "validate-commit-msg": "~2.12.1"
