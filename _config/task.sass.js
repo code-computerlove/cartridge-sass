@@ -40,6 +40,7 @@ function getTaskConfig(projectConfig) {
 				rootValue: 16
 			},
 			stylelint: {
+				syntax: 'scss',
 				failAfterError: false,
 				reporters: [
 					{
