@@ -45,7 +45,7 @@ function getTaskConfig(projectConfig) {
 				reporters: [
 					{
 						formatter: 'string',
-						save: '../../.stylelint.log',
+						save: './.stylelint.log',
 						console: false
 					}
 				]
