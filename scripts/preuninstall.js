@@ -16,7 +16,7 @@ cartridgeUtil.removeFromRc(packageConfig.name)
 	})
 	.then(function runRemoveStylelintRc() {
 		return cartridgeUtil.removeFromProjectDir([
-			'.stylelintrc',
+			'.stylelintrc.json',
 			'_source/styles'
 		]);
 	})

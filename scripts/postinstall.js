@@ -28,21 +28,22 @@ cartridgeUtil.exitIfDevEnvironment();
 cartridgeUtil.ensureCartridgeExists();
 // Run through the project setup
 cartridgeUtil.addToRc()
-	.then(function runModifyProjectConfig() {
-		return cartridgeUtil.modifyProjectConfig(projectConfigAddPaths);
-	})
-	.then(function runAddModuleConfig(){
-		return cartridgeUtil.addModuleConfig(path.resolve('_config', 'task.' + TASK_NAME + '.js'));
-	})
-	.then(function runMigrateSassFiles(){
+	.then(() => cartridgeUtil.modifyProjectConfig(projectConfigAddPaths))
+	.then(() => cartridgeUtil.addModuleConfig(path.resolve('_config', 'task.' + TASK_NAME + '.js')))
+	.then(() => {
 		return cartridgeUtil.copyToProjectDir([{
 			copyPath: '_source/styles',
 			destinationPath: '_source'
 		}]);
 	})
-	.then(function runAddStylelintRc(){
+	.then(() => {
 		return cartridgeUtil.copyToProjectDir([{
-			copyPath: '.stylelintrc'
+			copyPath: '.stylelintrc.json'
+		}]);
+	})
+	.then(() => {
+		return cartridgeUtil.copyToProjectDir([{
+			copyPath: '.stylelintrc.log'
 		}]);
 	})
 	.then(cartridgeUtil.finishInstall);
