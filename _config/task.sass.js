@@ -1,4 +1,6 @@
 'use strict';
+// Tools
+const merge = require('merge');
 
 // PostCss plugins
 const autoprefixer = require('autoprefixer');
@@ -19,6 +21,10 @@ const postCssConfig = {
 		rootValue: 16,
 	}
 };
+
+const postCssTaskConfig = {
+	main: {}
+}
 
 function getTaskConfig(projectConfig) {
 
@@ -60,18 +66,20 @@ function getTaskConfig(projectConfig) {
 		getPostCssPlugins
 	};
 
-	function getPostCssPlugins() {
+	function getPostCssPlugins(taskName) {
+		// Copy defaultConfig object
+		var taskPostCssConfig = merge(postCssConfig, postCssTaskConfig[taskName] || {});
 
-		var postCssPlugins = [
-			autoprefixer(postCssConfig.autoprefixer),
-			pxToRem(postCssConfig.pxtorem),
-			mqPacker(postCssConfig.mqpacker),
+		let postCssPlugins = [
+			autoprefixer(taskPostCssConfig.autoprefixer),
+			pxToRem(taskPostCssConfig.pxtorem),
+			mqPacker(taskPostCssConfig.mqpacker),
 			minifySelectors(),
 		];
 
 		if (projectConfig.isProd) {
-			if (postCssConfig.cssNano) {
-				postCssPlugins.push(cssNano(postCssConfig.cssNano));
+			if (taskPostCssConfig.cssNano) {
+				postCssPlugins.push(cssNano(taskPostCssConfig.cssNano));
 			} else {
 				postCssPlugins.push(cssNano());
 			}

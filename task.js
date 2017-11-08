@@ -66,7 +66,7 @@ module.exports = function task(gulp, projectConfig, tasks) {
 					includePaths:    [projectConfig.paths.src.components],
 					outputStyle:     'compact'
 				}).on('error', sass.logError))
-				.pipe(postcss(taskConfig.getPostCssPlugins()))
+				.pipe(postcss(taskConfig.getPostCssPlugins(key)))
 				.pipe(gulpif(!projectConfig.isProd, sourcemaps.write('.'))) //Default only
 				.pipe(gulp.dest(projectConfig.paths.dest[TASK_NAME]));
 		});
