@@ -6,29 +6,23 @@
 	 STYLES / SCSS
 \* ============================================================ */
 
-var fs = require('fs-extra');
+const fs = require('fs-extra');
 
 // Gulp dependencies
-var sourcemaps = require('gulp-sourcemaps');
-var gulpif     = require('gulp-if');
-var path       = require('path');
-var merge      = require('merge');
+const sourcemaps = require('gulp-sourcemaps');
+const gulpif     = require('gulp-if');
+const path       = require('path');
 
 // Sass dependencies
-var sgc  = require('gulp-sass-generate-contents');
-var sass = require('gulp-sass');
+const sgc  = require('gulp-sass-generate-contents');
+const sass = require('gulp-sass');
 
 // CSS dependencies
-var autoprefixer    = require('autoprefixer');
-var postcss         = require('gulp-postcss');
-var cssNano         = require('cssnano');
-var pxToRem         = require('postcss-pxtorem');
-var mqPacker        = require('css-mqpacker');
-var minifySelectors = require('postcss-minify-selectors');
-var stylelint       = require('gulp-stylelint');
+const postcss         = require('gulp-postcss');
+const stylelint       = require('gulp-stylelint');
 
-var modulePath = path.resolve('node_modules', 'stylelint-config-standard');
-var projectPath = path.resolve(__dirname, 'node_modules', 'stylelint-config-standard');
+const modulePath = path.resolve('node_modules', 'stylelint-config-standard');
+const projectPath = path.resolve(__dirname, 'node_modules', 'stylelint-config-standard');
 
 fs.ensureSymlinkSync(modulePath, projectPath, 'dir');
 
@@ -43,28 +37,6 @@ module.exports = function task(gulp, projectConfig, tasks) {
 	var taskConfig = require(path.resolve(process.cwd(), projectConfig.dirs.config, 'task.' + TASK_NAME + '.js'))(projectConfig);
 	var sassTasksArr = [];
 
-	function getPostCssPlugins(fileConfig) {
-		// Copy defaultConfig object
-		var defaultConfig = merge(true, taskConfig.defaultConfig);
-		var postCssConfig = merge(defaultConfig, fileConfig || {});
-		var postCssPlugins = [
-			autoprefixer(postCssConfig.autoprefixer),
-			pxToRem(postCssConfig.pxtorem),
-			mqPacker(postCssConfig.mqpacker),
-			minifySelectors()
-		];
-
-		if(projectConfig.isProd) {
-			if(postCssConfig.cssNano) {
-				postCssPlugins.push(cssNano(postCssConfig.cssNano));
-			} else {
-				postCssPlugins.push(cssNano());
-			}
-		}
-
-		return postCssPlugins;
-	}
-
 	/* --------------------
 	*	MODULE TASKS
 	* ---------------------*/
@@ -77,7 +49,7 @@ module.exports = function task(gulp, projectConfig, tasks) {
 
 		gulp.task(stylelintTaskName, function stylelintTask() {
 			return gulp.src(taskConfig.files[key].partials)
-				.pipe(stylelint(taskConfig.defaultConfig.stylelint));
+				.pipe(stylelint(taskConfig.stylelint));
 		});
 
 		gulp.task(generateContentsTaskName, function generateContentsTask() {
@@ -94,7 +66,7 @@ module.exports = function task(gulp, projectConfig, tasks) {
 					includePaths:    [projectConfig.paths.src.components],
 					outputStyle:     'compact'
 				}).on('error', sass.logError))
-				.pipe(postcss(getPostCssPlugins(taskConfig.files[key].config)))
+				.pipe(postcss(taskConfig.getPostCssPlugins()))
 				.pipe(gulpif(!projectConfig.isProd, sourcemaps.write('.'))) //Default only
 				.pipe(gulp.dest(projectConfig.paths.dest[TASK_NAME]));
 		});
