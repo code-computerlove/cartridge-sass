@@ -48,6 +48,7 @@ This module adds the following to a project:
 ## Config
 
 Once installed, the config file `task.sass.js` is created and stored in the `_config` directory in the root of your cartridge project.
+PostCSS plugins are loaded via `task.sass.js` this allows you to add further plugins that may be of use to the project.
 
 The following settings are configured by default:
 
