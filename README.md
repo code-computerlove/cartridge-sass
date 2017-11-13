@@ -9,8 +9,6 @@
 [![Dependency Status](https://david-dm.org/cartridge/cartridge-sass.svg?style=flat-square)](https://david-dm.org/cartridge/cartridge-sass/)
 [![devDependency Status](https://david-dm.org/cartridge/cartridge-sass/dev-status.svg?style=flat-square)](https://david-dm.org/cartridge/cartridge-sass?type=dev)
 
-**If you are using this module on windows, it is recommend to use the [cartridge-sass-legacy](https://github.com/cartridge/cartridge-sass-legacy) module instead to maximise comptability.**
-
 > Sass expansion pack for [Cartridge](https://github.com/cartridge/cartridge)
 
 To use this module, you will need [cartridge-cli](https://github.com/cartridge/cartridge-cli) installed and have a cartridge project setup.
@@ -48,6 +46,7 @@ This module adds the following to a project:
 ## Config
 
 Once installed, the config file `task.sass.js` is created and stored in the `_config` directory in the root of your cartridge project.
+PostCSS plugins are loaded via `task.sass.js` this allows you to add further plugins that may be of use to the project. General configuration is added to `postCssConfig` settings placed here will apply to all uses of PostCSS. Additionally file specific settings can be added to `postCssTaskConfig`, these should be named as per the `taskConfig.files` configuration section.
 
 The following settings are configured by default:
 
