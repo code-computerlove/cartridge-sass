@@ -9,13 +9,13 @@ cache:
 notifications:
     email: false
 node_js:
-    - '6.6'
-    - '5.1'
-    - '4.4'
+    - '8'
+    - '7'
+    - '6'
+    - '5'
+    - '4'
 install:
     - npm install
-before_install:
-    - npm i -g npm@^2.0.0
 before_script:
     - npm prune
 script:
