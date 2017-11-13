@@ -11,7 +11,7 @@
 		"eqeqeq":       "error",
 		"strict":       "error",
 		"camelcase":    "error",
-		"comma-dangle": ["error", "never"],
+		"comma-dangle": ["error", "only-multiline"],
 		"func-names":   ["error", "always"],
 		"quotes":       ["error", "single"],
 		"quote-props":  ["error", "as-needed"],
