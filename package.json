@@ -44,7 +44,7 @@
     "prepush": "npm t"
   },
   "dependencies": {
-    "autoprefixer": "~7.1.5",
+    "autoprefixer": "~7.2.0",
     "cartridge-module-util": "~0.5.1",
     "css-mqpacker": "~6.0.1",
     "cssnano": "~3.10.0",
