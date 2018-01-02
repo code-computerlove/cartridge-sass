@@ -43,7 +43,7 @@ cartridgeUtil.addToRc()
 	})
 	.then(() => {
 		return cartridgeUtil.copyToProjectDir([{
-			copyPath: '.stylelintrc.log'
+			copyPath: '.stylelint.log'
 		}]);
 	})
 	.then(() => {
