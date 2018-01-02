@@ -46,4 +46,9 @@ cartridgeUtil.addToRc()
 			copyPath: '.stylelintrc.log'
 		}]);
 	})
+	.then(() => {
+		return cartridgeUtil.copyToProjectDir([{
+			copyPath: '.stylelintignore'
+		}]);
+	})
 	.then(cartridgeUtil.finishInstall);
