@@ -43,7 +43,12 @@ cartridgeUtil.addToRc()
 	})
 	.then(() => {
 		return cartridgeUtil.copyToProjectDir([{
-			copyPath: '.stylelintrc.log'
+			copyPath: '.stylelint.log'
+		}]);
+	})
+	.then(() => {
+		return cartridgeUtil.copyToProjectDir([{
+			copyPath: '.stylelintignore'
 		}]);
 	})
 	.then(cartridgeUtil.finishInstall);
