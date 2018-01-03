@@ -4,26 +4,29 @@ env:
     - NODE_ENV=development
 cache:
   directories:
+    - ~/.npm
     - node_modules
     - test/mock-project/node_modules
 notifications:
     email: false
 node_js:
-    - '8'
-    - '7'
-    - '6'
-    - '5'
-    - '4'
+  - '9'
+  - '8'
+  - '7'
+  - '6'
+  - '5'
+  - '4'
 install:
-    - npm install
+  - npm install
 before_script:
-    - npm prune
+  - npm prune
 script:
-    - npm t
-    - npm run check-coverage
+  - npm t
+  - npm run check-coverage
 after_success:
-    - npm run report-coverage
-    - npm run semantic-release
+  - npm run report-coverage
+  - npm install -g travis-deploy-once@4
+  - travis-deploy-once "npm run semantic-release"
 branches:
   except:
     - /^v\d+\.\d+\.\d+$/
