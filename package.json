@@ -1,6 +1,6 @@
 {
   "name": "cartridge-sass",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description": "Sass module for the cartridge project",
   "engines": {
     "node": ">=4.4.*"
@@ -33,7 +33,7 @@
     "lint": "eslint task.js \"**/*.js\"",
     "cover": "npm run check-coverage && open coverage/lcov-report/index.html",
     "report": "npm run report-complexity && open report/index.html",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "semantic-release": "semantic-release",
     "semantic-test": "semantic-release pre",
     "regengold:prod": "USE_PROD=1 node scripts/goldmaster.js",
     "regengold:dev": "USE_PROD=0 node scripts/goldmaster.js",
@@ -71,7 +71,7 @@
     "istanbul": "~0.4.3",
     "mocha": "~4.1.0",
     "plato": "~1.7.0",
-    "semantic-release": "~11.0.2",
+    "semantic-release": "^11.0.2",
     "validate-commit-msg": "~2.14.0"
   },
   "release": {
