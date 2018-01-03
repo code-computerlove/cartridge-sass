@@ -17,7 +17,8 @@ cartridgeUtil.removeFromRc(packageConfig.name)
 	.then(function runRemoveStylelintRc() {
 		return cartridgeUtil.removeFromProjectDir([
 			'.stylelintrc.json',
-			'_source/styles'
+			'.stylelint.log',
+			'.stylelintignore'
 		]);
 	})
 	.then(cartridgeUtil.finishUninstall)
