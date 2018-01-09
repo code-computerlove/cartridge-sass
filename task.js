@@ -2,6 +2,10 @@
 	STYLES / SCSS
 \* ============================================================ */
 
+// Enable strict mode for older versions of node
+// eslint-disable-next-line strict, lines-around-directive
+'use strict';
+
 const fs = require('fs-extra');
 
 // Gulp dependencies

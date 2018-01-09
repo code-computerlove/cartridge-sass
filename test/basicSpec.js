@@ -1,5 +1,9 @@
 /* eslint-env node, mocha */
 
+// Enable strict mode for older versions of node
+// eslint-disable-next-line strict, lines-around-directive
+'use strict';
+
 const path = require('path');
 const chai = require('chai');
 
