@@ -1,29 +1,32 @@
-'use strict';
+const path = require('path');
 
-var path = require('path');
-
-var config        = require(path.resolve(process.cwd(), '_config/project.json'));
-var mockGulp = {
+// Dynamic require needed for testing purposes
+// eslint-disable-next-line import/no-dynamic-require
+const config = require(path.resolve(process.cwd(), '_config/project.json'));
+const mockGulp = {
 	registeredTasks: [],
-	task: function mockTask(taskName){
+	task: function mockTask(taskName) {
 		this.registeredTasks.push(taskName);
-		return;
 	}
 };
 
-config.cleanPaths  = [];
-config.creds       = require(path.resolve(process.cwd(), '_config/creds.json'));
-config.cleanPaths  = [];
-config.dirs.config = path.resolve('..', '..', config.dirs.config) + '/';
+config.cleanPaths = [];
+// Dynamic require needed for testing purposes
+// eslint-disable-next-line import/no-dynamic-require
+config.creds = require(path.resolve(process.cwd(), '_config/creds.json'));
+config.cleanPaths = [];
+config.dirs.config = `${path.resolve('..', '..', config.dirs.config)}/`;
 
-var tasks     = {};
+const tasks = {};
 tasks.default = [];
-tasks.watch   = [];
+tasks.watch = [];
 
+// Dynamic require needed for testing purposes
+// eslint-disable-next-line import/no-dynamic-require
 require(path.resolve(process.cwd(), '..', '..', 'task.js'))(mockGulp, config, tasks);
 
 module.exports = {
 	gulpTasks: mockGulp.registeredTasks,
-	tasks:  tasks,
-	config: config
+	tasks,
+	config
 };

@@ -6,15 +6,10 @@
 		"node": true,
 		"es6": true
 	},
-	"extends": "eslint:recommended",
+  "extends": [
+    "airbnb-base",
+    "prettier"
+  ],
 	"rules": {
-		"eqeqeq":       "error",
-		"strict":       "error",
-		"camelcase":    "error",
-		"comma-dangle": ["error", "only-multiline"],
-		"func-names":   ["error", "always"],
-		"quotes":       ["error", "single"],
-		"quote-props":  ["error", "as-needed"],
-		"yoda":         "error"
 	}
 }
