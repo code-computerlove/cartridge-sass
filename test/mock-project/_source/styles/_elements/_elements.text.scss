@@ -13,13 +13,6 @@ ul {
 	margin: 0 0 $G-Gutter $G-Gutter;
 }
 
-ol ol,
-ol ul,
-ul ol,
-ul ul {
-	margin-bottom: 0;
-}
-
 li {
 	padding: $G-Gutter 0;
 }
@@ -31,6 +24,13 @@ ul {
 		padding: 0;
 		text-indent: 0;
 	}
+}
+
+ol ol,
+ol ul,
+ul ol,
+ul ul {
+	margin-bottom: 0;
 }
 
 address {
