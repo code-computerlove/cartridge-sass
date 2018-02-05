@@ -1,4 +1,3 @@
-'use strict';
 // Tools
 const merge = require('merge');
 
@@ -8,73 +7,35 @@ const cssNano = require('cssnano');
 const pxToRem = require('postcss-pxtorem');
 const mqPacker = require('css-mqpacker');
 const minifySelectors = require('postcss-minify-selectors');
+const path = require('path');
 
 const postCssConfig = {
 	autoprefixer: {
-		browsers: ['>5%'],
+		browsers: ['>5%']
 	},
 	mqpacker: {
-		sort: true,
+		sort: true
 	},
 	pxtorem: {
 		replace: false,
-		rootValue: 16,
+		rootValue: 16
 	}
 };
 
 const postCssTaskConfig = {
 	main: {}
-}
+};
 
-function getTaskConfig(projectConfig) {
-
-	var taskConfig = {
-		files: {
-			main: {
-				src: projectConfig.paths.src.sass + '/main.scss',
-				partials: [
-					projectConfig.paths.src.sass + '/_settings/*.scss',
-					'!' + projectConfig.paths.src.sass + '/_settings/_settings.old-ie-8.scss',
-					projectConfig.paths.src.sass + '/_tools/_tools.mixins.scss',
-					projectConfig.paths.src.sass + '/_tools/_tools.functions.scss',
-					projectConfig.paths.src.sass + '/_tools/*.scss',
-					projectConfig.paths.src.sass + '/_scope/*.scss',
-					projectConfig.paths.src.sass + '/_generic/*.scss',
-					projectConfig.paths.src.sass + '/_elements/*.scss',
-					projectConfig.paths.src.sass + '/_objects/*.scss',
-					projectConfig.paths.src.sass + '/_components/*.scss',
-					projectConfig.paths.src.components + '**/*.scss',
-					projectConfig.paths.src.sass + '/_trumps/*.scss',
-				]
-			}
-		},
-		stylelint: {
-			syntax: 'scss',
-			failAfterError: false,
-			reporters: [
-				{
-					formatter: 'string',
-					save: './.stylelint.log',
-					console: false,
-				}
-			]
-		},
-		watch: [
-			projectConfig.paths.src.sass + '**/*.scss',
-			projectConfig.paths.src.components + '**/*.scss',
-		],
-		getPostCssPlugins
-	};
-
-	function getPostCssPlugins(taskName) {
+function getPostCssPluginBuilder(baseConfig, projectConfig) {
+	return taskName => {
 		// Copy defaultConfig object
-		var taskPostCssConfig = merge(postCssConfig, postCssTaskConfig[taskName] || {});
+		const taskPostCssConfig = merge(baseConfig, postCssTaskConfig[taskName] || {});
 
-		let postCssPlugins = [
+		const postCssPlugins = [
 			autoprefixer(taskPostCssConfig.autoprefixer),
 			pxToRem(taskPostCssConfig.pxtorem),
 			mqPacker(taskPostCssConfig.mqpacker),
-			minifySelectors(),
+			minifySelectors()
 		];
 
 		if (projectConfig.isProd) {
@@ -86,7 +47,48 @@ function getTaskConfig(projectConfig) {
 		}
 
 		return postCssPlugins;
-	}
+	};
+}
+
+function getTaskConfig(projectConfig) {
+	const sassPath = projectConfig.paths.src.sass;
+
+	const taskConfig = {
+		files: {
+			main: {
+				src: path.join(sassPath, 'main.scss'),
+				partials: [
+					path.join(sassPath, '_settings', '*.scss'),
+					path.join(sassPath, '_tools', '_tools.mixins.scss'),
+					path.join(sassPath, '_tools', '_tools.functions.scss'),
+					path.join(sassPath, '_tools', '*.scss'),
+					path.join(sassPath, '_scope', '*.scss'),
+					path.join(sassPath, '_generic', '*.scss'),
+					path.join(sassPath, '_elements', '*.scss'),
+					path.join(sassPath, '_objects', '*.scss'),
+					path.join(sassPath, '_components', '*.scss'),
+					path.join(projectConfig.paths.src.components, '**', '*.scss'),
+					path.join(sassPath, '_trumps', '*.scss')
+				]
+			}
+		},
+		stylelint: {
+			syntax: 'scss',
+			failAfterError: false,
+			reporters: [
+				{
+					formatter: 'string',
+					save: './.stylelint.log',
+					console: true
+				}
+			]
+		},
+		watch: [
+			path.join(sassPath, '**', '*.scss'),
+			path.join(projectConfig.paths.src.components, '**', '*.scss')
+		],
+		getPostCssPlugins: getPostCssPluginBuilder(postCssConfig, projectConfig)
+	};
 
 	return taskConfig;
 }
