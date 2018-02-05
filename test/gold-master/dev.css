@@ -79,11 +79,11 @@ p { margin: 0 0 22px; }
 
 ol,ul { margin: 0 0 22px 22px; }
 
-ol ol,ol ul,ul ol,ul ul { margin-bottom: 0; }
-
 li { padding: 22px 0; }
 
 ul>li { list-style-type: disc; margin-bottom: 0; padding: 0; text-indent: 0; }
+
+ol ol,ol ul,ul ol,ul ul { margin-bottom: 0; }
 
 address { display: inline-block; }
 
