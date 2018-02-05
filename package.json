@@ -1,9 +1,9 @@
 {
   "name": "cartridge-sass",
-  "version": "1.0.0",
+  "version": "0.0.0-development",
   "description": "Sass module for the cartridge project",
   "engines": {
-    "node": ">=4.4.*"
+    "node": ">=4.8.*"
   },
   "keywords": [
     "gulp",
@@ -29,11 +29,12 @@
   "scripts": {
     "postinstall": "node scripts/postinstall.js",
     "preuninstall": "node scripts/preuninstall.js",
+    "prettier": "prettier --write '{,!(report)/**/}*.js'",
     "test": "mocha && npm run lint",
     "lint": "eslint task.js \"**/*.js\"",
     "cover": "npm run check-coverage && open coverage/lcov-report/index.html",
     "report": "npm run report-complexity && open report/index.html",
-    "semantic-release": "semantic-release pre && npm publish && semantic-release post",
+    "semantic-release": "semantic-release",
     "semantic-test": "semantic-release pre",
     "regengold:prod": "USE_PROD=1 node scripts/goldmaster.js",
     "regengold:dev": "USE_PROD=0 node scripts/goldmaster.js",
@@ -41,37 +42,43 @@
     "report-coverage": "cat ./coverage/lcov.info | codecov",
     "check-coverage": "istanbul cover _mocha",
     "commitmsg": "validate-commit-msg",
-    "prepush": "npm t"
+		"prepush": "npm t",
+		"precommit": "npm run prettier"
   },
   "dependencies": {
     "autoprefixer": "~7.2.0",
     "cartridge-module-util": "~0.5.1",
     "css-mqpacker": "~6.0.1",
     "cssnano": "~3.10.0",
-    "fs-extra": "~4.0.2",
+    "fs-extra": "~5.0.0",
     "gulp-if": "~2.0.1",
     "gulp-postcss": "~7.0.0",
     "gulp-sass": "~3.1.0",
     "gulp-sass-generate-contents": "~0.3.2",
     "gulp-sourcemaps": "~2.6.0",
-    "gulp-stylelint": "^5.0.0",
+    "gulp-stylelint": "^6.0.0",
     "merge": "^1.2.0",
     "postcss-minify-selectors": "^2.0.5",
     "postcss-pxtorem": "~4.0.0",
-    "stylelint-config-standard": "^17.0.0"
+    "prettier": "^1.9.2",
+    "stylelint": "^8.4.0",
+    "stylelint-config-standard": "^18.0.0"
   },
   "devDependencies": {
     "chai": "~4.1.2",
     "chai-fs": "~2.0.0",
     "codecov.io": "~0.1.6",
     "cz-conventional-changelog": "~2.1.0",
-    "eslint": "~4.12.0",
+    "eslint": "~4.16.0",
+    "eslint-config-airbnb-base": "~12.1.0",
+    "eslint-config-prettier": "^2.9.0",
+    "eslint-plugin-import": "~2.8.0",
     "gulp": "~3.9.1",
     "husky": "^0.14.3",
     "istanbul": "~0.4.3",
-    "mocha": "~4.1.0",
+    "mocha": "~5.0.0",
     "plato": "~1.7.0",
-    "semantic-release": "~11.0.2",
+    "semantic-release": "^12.2.2",
     "validate-commit-msg": "~2.14.0"
   },
   "release": {

@@ -87,6 +87,9 @@ The [FrontEnd CSS guidelines](https://github.com/code-computerlove/frontend-guid
 ## Development
 Please follow the instructions within the [base module development guide](https://github.com/cartridge/base-module/wiki/Development-guide) when working on this project.
 
+### Prettier
+[Prettier](https://prettier.io/) is used on this project to automatically format the JS. It is run automatically on a precommit hook. To use it manually (which you should be) run `npm run prettier`.
+
 ### Branches
 New work should be commited to the `develop` branch and then merged in to master once complete. Documentation changes can be performed on the master branch.
 
