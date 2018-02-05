@@ -79,7 +79,7 @@ function getTaskConfig(projectConfig) {
 				{
 					formatter: 'string',
 					save: './.stylelint.log',
-					console: false
+					console: true
 				}
 			]
 		},
