@@ -46,7 +46,7 @@
 		"precommit": "npm run prettier"
   },
   "dependencies": {
-    "autoprefixer": "~7.2.0",
+    "autoprefixer": "~8.0.0",
     "cartridge-module-util": "~0.5.1",
     "css-mqpacker": "~6.0.1",
     "cssnano": "~3.10.0",
@@ -78,7 +78,7 @@
     "istanbul": "~0.4.3",
     "mocha": "~5.0.0",
     "plato": "~1.7.0",
-    "semantic-release": "^12.2.2",
+    "semantic-release": "^15.0.0",
     "validate-commit-msg": "~2.14.0"
   },
   "release": {
