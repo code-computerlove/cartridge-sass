@@ -3,7 +3,7 @@
   "version": "0.0.0-development",
   "description": "Sass module for the cartridge project",
   "engines": {
-    "node": ">=4.8.*"
+    "node": ">=5"
   },
   "keywords": [
     "gulp",
@@ -46,22 +46,22 @@
 		"precommit": "npm run prettier"
   },
   "dependencies": {
-    "autoprefixer": "~7.2.0",
+    "autoprefixer": "~8.0.0",
     "cartridge-module-util": "~0.5.1",
     "css-mqpacker": "~6.0.1",
     "cssnano": "~3.10.0",
     "fs-extra": "~5.0.0",
     "gulp-if": "~2.0.1",
     "gulp-postcss": "~7.0.0",
-    "gulp-sass": "~3.1.0",
+    "gulp-sass": "~3.2.0",
     "gulp-sass-generate-contents": "~0.3.2",
     "gulp-sourcemaps": "~2.6.0",
-    "gulp-stylelint": "^6.0.0",
+    "gulp-stylelint": "^7.0.0",
     "merge": "^1.2.0",
     "postcss-minify-selectors": "^2.0.5",
     "postcss-pxtorem": "~4.0.0",
-    "prettier": "^1.9.2",
-    "stylelint": "^8.4.0",
+    "prettier": "^1.11.0",
+    "stylelint": "^9.0.0",
     "stylelint-config-standard": "^18.0.0"
   },
   "devDependencies": {
@@ -78,7 +78,7 @@
     "istanbul": "~0.4.3",
     "mocha": "~5.0.0",
     "plato": "~1.7.0",
-    "semantic-release": "^12.2.2",
+    "semantic-release": "^15.0.0",
     "validate-commit-msg": "~2.14.0"
   },
   "release": {
