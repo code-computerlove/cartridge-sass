@@ -4,3 +4,9 @@
 appveyor.yml
 test
 coverage
+node_modules
+.editorconfig
+.eslintignore
+.eslintrc.json
+.nvmrc
+.prettierrc.json
