@@ -42,8 +42,8 @@
     "report-coverage": "cat ./coverage/lcov.info | codecov",
     "check-coverage": "istanbul cover _mocha",
     "commitmsg": "validate-commit-msg",
-		"prepush": "npm t",
-		"precommit": "npm run prettier"
+    "prepush": "npm t",
+    "precommit": "npm run prettier"
   },
   "dependencies": {
     "autoprefixer": "~8.2.0",
