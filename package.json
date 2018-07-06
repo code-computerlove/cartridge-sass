@@ -42,11 +42,11 @@
     "report-coverage": "cat ./coverage/lcov.info | codecov",
     "check-coverage": "istanbul cover _mocha",
     "commitmsg": "validate-commit-msg",
-		"prepush": "npm t",
-		"precommit": "npm run prettier"
+    "prepush": "npm t",
+    "precommit": "npm run prettier"
   },
   "dependencies": {
-    "autoprefixer": "~8.0.0",
+    "autoprefixer": "~8.2.0",
     "cartridge-module-util": "~0.5.1",
     "css-mqpacker": "~6.0.1",
     "cssnano": "~3.10.0",
@@ -72,7 +72,7 @@
     "eslint": "~5.0.0",
     "eslint-config-airbnb-base": "~12.1.0",
     "eslint-config-prettier": "^2.9.0",
-    "eslint-plugin-import": "~2.9.0",
+    "eslint-plugin-import": "~2.10.0",
     "gulp": "~3.9.1",
     "husky": "^0.14.3",
     "istanbul": "~0.4.3",
