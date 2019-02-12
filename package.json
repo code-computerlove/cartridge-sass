@@ -49,7 +49,7 @@
     "autoprefixer": "~8.2.0",
     "cartridge-module-util": "~0.5.1",
     "css-mqpacker": "~6.0.1",
-    "cssnano": "~4.1.0",
+    "cssnano": "~4.1.9",
     "fs-extra": "~6.0.0",
     "gulp-if": "~2.0.1",
     "gulp-postcss": "~7.0.0",
