@@ -76,7 +76,7 @@
     "gulp": "~3.9.1",
     "husky": "^0.14.3",
     "istanbul": "~0.4.3",
-    "mocha": "~5.1.0",
+    "mocha": "~6.1.1",
     "plato": "~1.7.0",
     "semantic-release": "^15.0.0",
     "validate-commit-msg": "~2.14.0"
