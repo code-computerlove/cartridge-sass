@@ -73,7 +73,7 @@
     "eslint-config-airbnb-base": "~13.0.0",
     "eslint-config-prettier": "^2.9.0",
     "eslint-plugin-import": "~2.10.0",
-    "gulp": "~3.9.1",
+    "gulp": "~4.0.2",
     "husky": "^0.14.3",
     "istanbul": "~0.4.3",
     "mocha": "~5.1.0",
