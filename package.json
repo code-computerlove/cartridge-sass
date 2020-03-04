@@ -59,7 +59,7 @@
     "gulp-stylelint": "^7.0.0",
     "merge": "^1.2.0",
     "postcss-minify-selectors": "^4.0.0",
-    "postcss-pxtorem": "~4.0.0",
+    "postcss-pxtorem": "~5.1.1",
     "prettier": "^1.11.0",
     "stylelint": "^9.0.0",
     "stylelint-config-standard": "^18.0.0"
